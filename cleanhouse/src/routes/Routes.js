@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //Importe das páginas/componentes
 import Home from "../components/home/Home";
+import Navbar from "../components/Navbar";
 
 const NotFound = () => {
   return (
@@ -14,6 +15,7 @@ const NotFound = () => {
 const Routes = () => (
   <Router>
     <div className="App">
+      <Navbar />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route component={NotFound} />

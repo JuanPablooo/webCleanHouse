@@ -1,0 +1,85 @@
+/* Padrão */
+.separador-de-sessao {
+  height: 400px;
+  background-image: url("../images/separa-sessao.webp");
+  background-attachment: fixed;
+}
+
+/* Home */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  #section-header {
+    height: 430px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #section-header {
+    height: 410px;
+  }
+}
+
+@media (min-width: 1200px) {
+  #section-header {
+    height: 320px;
+  }
+}
+
+/* O que somos */
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  #section-o-que-somos {
+    height: 850px;
+    background-image: url("../images/Union-blue-dark-md.svg");
+    background-repeat: no-repeat;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #section-o-que-somos {
+    height: 850px;
+    background-image: url("../images/Union-blue-dark-lg.svg");
+    background-repeat: no-repeat;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  #section-o-que-somos {
+    height: 850px;
+    background-image: url("../images/Union-blue-dark.svg");
+    background-repeat: no-repeat;
+  }
+}
+/* Como funciona */
+.marcador {
+  width: 70px;
+  height: 126px;
+}
+
+@media (min-width: 1200px) {
+  #section-como-funciona {
+    height: 450px;
+  }
+
+  #section-como-funciona .container {
+    height: 450px;
+    background-image: url("../images/Union-blue.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #section-como-funciona {
+    height: 500px;
+  }
+
+  #section-como-funciona .container {
+    height: 500px;
+    background-image: url("../images/Union-blue-lg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
