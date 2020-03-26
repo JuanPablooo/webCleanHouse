@@ -63,7 +63,7 @@ export default class Home extends Component {
           <div className="container bg-white">
             <div className="marcador bg-blue ml-auto mr-auto"></div>
 
-            <h1 className="text-brown text-capitalize mt-5">Como funciona?</h1>
+            <h1 className="text-yellow text-capitalize mt-5">Como funciona?</h1>
 
             <div className="row mt-5">
               <div className="col-md-6"></div>
@@ -126,7 +126,9 @@ export default class Home extends Component {
 
         <section>
           <div className="container text-gray">
-            <h1 className="text-center mt-5 text-yellow">Vantagens</h1>
+            <h1 className="text-center mt-5 text-uppercase text-yellow">
+              Vantagens
+            </h1>
 
             <div className="row">
               <div className="col-md-12">
@@ -246,8 +248,10 @@ export default class Home extends Component {
         </section>
 
         <section>
-          <div className="container text-gray pb-5">
-            <h1 className="text-center mt-5 text-blue-dark mb-3">Regiões</h1>
+          <div className="container text-gray pb-5 border-bottom border-primary">
+            <h1 className="text-center text-capitalize mt-5 text-blue-dark mb-3">
+              quais regiões nós atendemos?
+            </h1>
             <div className="row mt-5">
               <div className="offset-md-2 col-md-4 img-regioes"></div>
               <div className="col-md-6 row">
@@ -263,6 +267,162 @@ export default class Home extends Component {
                   >
                     Veja o mapa
                   </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div className="container lead">
+            <h1 className="text-center mt-3 text-primary text-capitalize mb-3">
+              Depoimentos de alguns clientes
+            </h1>
+            <div className="row lead d-flex">
+              <div className="col-md-4 align-self-center">
+                <div
+                  class="card card-depoimentos-clientes border border-primary
+                  text-gray mb-5"
+                >
+                  <div class="card-body">
+                    <div
+                      className="icon-vantagem icon-vantagem01 ml-auto mr-auto mb-1"
+                      id="img-depoimentos-01"
+                    ></div>
+                    <blockquote class="blockquote">
+                      <p className="card-text">
+                        “Melhor coisa que eu fiz esse ano foi ter me cadastrado,
+                        agora a minha casa está sempre impecável. Para mim, que
+                        trabalho o dia todo fora é uma maravilha, hoje mesmo vai
+                        uma cozinheira lá em casa preparar o almoço de domingo.”
+                      </p>
+                      <footer class="blockquote-footer text-right">
+                        por
+                        <cite> Vitória Nunes</cite>
+                      </footer>
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-4 align-self-center">
+                <div class="card card-depoimentos-clientes bg-primary text-white mb-5">
+                  <div class="card-body">
+                    <div
+                      className="icon-vantagem icon-vantagem01 ml-auto mr-auto mb-1"
+                      id="img-depoimentos-01"
+                    ></div>
+                    <blockquote class="blockquote">
+                      <p className="card-text">
+                        “No começo tive desconfiança em relação a deixar um
+                        desconhecido entrar na minha casa, mas o vídeo de
+                        apresentação dos profissionais fez esse medo passar.
+                        Hoje adoro os serviços e só vivo contratando. Parabéns
+                        aos envolvidos”
+                      </p>
+                      <footer class="blockquote-footer text-white text-right">
+                        por
+                        <cite> Gustavo Ganabara</cite>
+                      </footer>
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-4 align-self-center">
+                <div
+                  class="card card-depoimentos-clientes border border-primary 
+                  text-gray mb-5"
+                >
+                  <div class="card-body">
+                    <div
+                      className="icon-vantagem icon-vantagem01 ml-auto mr-auto mb-1"
+                      id="img-depoimentos-01"
+                    ></div>
+                    <blockquote class="blockquote">
+                      <p className="card-text">
+                        “Serviços maravilhosos e a última profissional que
+                        contratei me surpreendeu, por se tratar de algo online e
+                        novo no mercado pensei que ela iria se atrasar e não
+                        cumprir o combinado, pelo contrário, ela foi maravilhosa
+                        super indico.“
+                      </p>
+                      <footer class="blockquote-footer text-right">
+                        por
+                        <cite> Gabriela Ferraz</cite>
+                      </footer>
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h1 className="text-center mt-3 text-blue-dark text-capitalize mb-3">
+              Depoimentos de alguns profissionais
+            </h1>
+            <div className="row d-flex">
+              <div className="col-md-4 align-self-center">
+                <div class="card bg-white text-gray border-blue-card mb-5">
+                  <div class="card-body">
+                    <div
+                      className="icon-vantagem icon-vantagem01 ml-auto mr-auto mb-1"
+                      id="img-depoimentos-01"
+                    ></div>
+                    <blockquote class="blockquote">
+                      <p className="card-text">
+                        “Simplesmente ameiiiii, melhor plataforma que já
+                        utilizei para oferecer meus serviços, parabéns a toda
+                        equipe!!!!”
+                      </p>
+                      <footer class="blockquote-footer text-right">
+                        por
+                        <cite> Maria Clara</cite>
+                      </footer>
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-md-4 align-self-center">
+                <div class="card bg-blue-card text-white mb-5">
+                  <div class="card-body">
+                    <div
+                      className="icon-vantagem icon-vantagem01 ml-auto mr-auto mb-1"
+                      id="img-depoimentos-01"
+                    ></div>
+                    <blockquote class="blockquote">
+                      <p className="card-text">
+                        “Eu estava há muito tempo fora do mercado de trabalho e
+                        por ter mais de 40 anos encontrava várias portas
+                        fechadas, a CleanHouse me ajudou muito. Muito obrigada
+                        mesmo!!!”
+                      </p>
+                      <footer class="blockquote-footer text-white text-right">
+                        por
+                        <cite> Rúbia Mel</cite>
+                      </footer>
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-md-4 align-self-center">
+                <div class="card bg-white text-gray mb-5 border-blue-card">
+                  <div class="card-body">
+                    <div
+                      className="icon-vantagem icon-vantagem01 ml-auto mr-auto mb-1"
+                      id="img-depoimentos-01"
+                    ></div>
+                    <blockquote class="blockquote">
+                      <p className="card-text">
+                        “Aplicativo super confiável, fiz o meu primeiro serviço
+                        ontem e não vejo a hora de ser contratada de novo, estou
+                        muito feliz :D”
+                      </p>
+                      <footer class="blockquote-footer text-right">
+                        por
+                        <cite> Patricia Lima</cite>
+                      </footer>
+                    </blockquote>
+                  </div>
                 </div>
               </div>
             </div>
