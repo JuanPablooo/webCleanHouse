@@ -83,3 +83,55 @@
     background-size: cover;
   }
 }
+
+/* Vantagens */
+.icon-vantagem {
+  width: 120px;
+  height: 120px;
+  background-size: cover;
+}
+.icon-vantagem01 {
+  background-image: url("../images/star.png");
+}
+
+.icon-vantagem02 {
+  background-image: url("../images/clock.png");
+}
+
+.icon-vantagem03 {
+  background-image: url("../images/contract.png");
+}
+
+.icon-vantagem04 {
+  background-image: url("../images/pin.png");
+}
+.icon-vantagem05 {
+  background-image: url("../images/money.png");
+}
+
+.icon-vantagem06 {
+  background-image: url("../images/pin.png");
+}
+
+.icon-vantagem07 {
+  background-image: url("../images/star.png");
+}
+
+.icon-vantagem08 {
+  background-image: url("../images/calendar.png");
+}
+
+.icon-vantagem09 {
+  background-image: url("../images/money2.png");
+}
+
+.text-yellow {
+  color: #fad24d;
+}
+
+/* Regiões */
+.img-regioes {
+  height: 200px;
+  background-image: url("../images/separa-sessao.webp");
+  background-size: cover;
+}
