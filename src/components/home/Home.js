@@ -33,10 +33,10 @@ export default class Home extends Component {
             <div className="row">
               <div className="col-md-7"></div>
               <div className="col-md-5">
-                <h1 className="text-blue-dark text-capitalize mt-5">
+                <h1 className="text-blue-dark lead text-title text-capitalize mt-5">
                   O que somos?
                 </h1>
-                <div className="text-gray mt-5">
+                <div className="text-gray mt-4">
                   <p>
                     Criada no ano de 2020 por um time de sócios desenvolvedores,
                     a CleanHouse é o caminho certo para aqueles que buscam
@@ -63,7 +63,9 @@ export default class Home extends Component {
           <div className="container bg-white">
             <div className="marcador bg-blue ml-auto mr-auto"></div>
 
-            <h1 className="text-yellow text-capitalize mt-5">Como funciona?</h1>
+            <h1 className="text-yellow lead text-title text-capitalize mt-5">
+              Como funciona?
+            </h1>
 
             <div className="row mt-5">
               <div className="col-md-6"></div>
@@ -88,7 +90,9 @@ export default class Home extends Component {
             <div className="row">
               <div className="col-md-6 d-flex border-bottom border-white">
                 <div className="justify-content-center align-self-center">
-                  <h1 className="text-uppercase mt-5 mb-5">pagamento</h1>
+                  <h1 className="text-uppercase lead text-title mt-5 mb-5">
+                    pagamento
+                  </h1>
                   <p className="ml-auto mr-auto col-8 text-center mb-5">
                     Recebimento do pagamento ocorre de forma segura, diretamente
                     da plataforma. Além disso, a renda de cada serviço realizado
@@ -106,7 +110,9 @@ export default class Home extends Component {
             <div className="row">
               <div className="col-md-6 d-flex">
                 <div className="justify-content-center align-self-center">
-                  <h1 className="text-uppercase mt-5 mb-5">SERVIÇOS</h1>
+                  <h1 className="text-uppercase lead text-title mt-5 mb-5">
+                    SERVIÇOS
+                  </h1>
                   <p className="ml-auto mr-auto col-9 text-center">
                     Limpeza: Empregados (as) que limpam todos os cômodos da sua
                     casa
@@ -125,18 +131,29 @@ export default class Home extends Component {
         </section>
 
         <section>
-          <div className="container text-gray">
-            <h1 className="text-center mt-5 text-uppercase text-yellow">
-              Vantagens
-            </h1>
+          <div className="bg-yellow">
+            <div className="container bg-white">
+              <h1
+                className="text-center mt-5 lead text-capitalize text-yellow 
+              text-title mb-5"
+              >
+                Conheça as nossas Vantagens
+              </h1>
+            </div>
+          </div>
 
+          <div class="skew negative bg-blue">
+            <h2
+              className="text-center lead text-subtitle pt-1 text-white 
+                text-capitalize"
+            >
+              Para o profissional
+            </h2>
+          </div>
+
+          <div className="container text-gray">
             <div className="row">
-              <div className="col-md-12">
-                <h2 className="offset-md-1 text-left mt-3 mb-3 text-blue text-capitalize">
-                  Para o profissional
-                </h2>
-              </div>
-              <div className="col-md-12">
+              <div className="col-md-12 mt-5">
                 <div className="ml-auto mr-auto icon-vantagem icon-vantagem01 mb-3"></div>
                 <p className="offset-md-4 col-md-4">
                   A cada serviço realizado, acontece uma avaliação para o
@@ -189,13 +206,20 @@ export default class Home extends Component {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
 
-              <div className="col-md-12">
-                <h2 className="offset-md-1 text-left mt-5 mb-3 text-blue text-capitalize">
-                  Para o cliente
-                </h2>
-              </div>
+          <div class="skew negative bg-blue">
+            <h2
+              className="text-center pl-2 lead text-subtitle pt-1 text-white 
+                text-capitalize"
+            >
+              Para o cliente
+            </h2>
+          </div>
 
+          <div className="container text-gray">
+            <div className="row">
               <div className="col-md-12 row mt-5">
                 <div className="col-md-6">
                   <div
@@ -244,12 +268,15 @@ export default class Home extends Component {
               </div>
             </div>
           </div>
-          <div className="separador-de-sessao mt-5"></div>
+          <div className="separador-de-sessao-small mt-5"></div>
         </section>
 
         <section>
-          <div className="container text-gray pb-5 border-bottom border-primary">
-            <h1 className="text-center text-capitalize mt-5 text-blue-dark mb-3">
+          <div className="container text-gray pb-5 background-gray">
+            <h1
+              className="text-center lead text-title text-capitalize mt-5
+              text-blue-dark mb-3"
+            >
               quais regiões nós atendemos?
             </h1>
             <div className="row mt-5">
@@ -271,18 +298,24 @@ export default class Home extends Component {
               </div>
             </div>
           </div>
+          <div className="separador-de-sessao-small"></div>
         </section>
 
         <section>
-          <div className="container lead">
-            <h1 className="text-center mt-3 text-primary text-capitalize mb-3">
-              Depoimentos de alguns clientes
-            </h1>
+          <div className="container lead background-gray">
             <div className="row lead d-flex">
-              <div className="col-md-4 align-self-center">
+              <div className="col-12">
+                <h1
+                  className="text-center text-title lead mt-3 text-primary 
+              text-capitalize mb-3"
+                >
+                  Depoimentos de alguns clientes
+                </h1>
+              </div>
+              <div className="col-lg-4 col-md-6 align-self-center">
                 <div
                   class="card card-depoimentos-clientes border border-primary
-                  text-gray mb-5"
+                  text-gray mb-5 mt-5"
                 >
                   <div class="card-body">
                     <div
@@ -304,7 +337,7 @@ export default class Home extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-md-4 align-self-center">
+              <div className="col-lg-4 col-md-6 align-self-center pb-3">
                 <div class="card card-depoimentos-clientes bg-primary text-white mb-5">
                   <div class="card-body">
                     <div
@@ -327,10 +360,10 @@ export default class Home extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-md-4 align-self-center">
+              <div className="col-lg-4 ml-md-auto mr-md-auto col-md-6 align-self-center">
                 <div
                   class="card card-depoimentos-clientes border border-primary 
-                  text-gray mb-5"
+                  text-gray mb-5 mt-lg-5 mt-md-3"
                 >
                   <div class="card-body">
                     <div
@@ -353,14 +386,16 @@ export default class Home extends Component {
                   </div>
                 </div>
               </div>
-            </div>
-
-            <h1 className="text-center mt-3 text-blue-dark text-capitalize mb-3">
-              Depoimentos de alguns profissionais
-            </h1>
-            <div className="row d-flex">
-              <div className="col-md-4 align-self-center">
-                <div class="card bg-white text-gray border-blue-card mb-5">
+              <div className="col-12">
+                <h1
+                  className="text-center mt-3 text-title lead text-blue-dark 
+              text-capitalize mb-3"
+                >
+                  Depoimentos de alguns profissionais
+                </h1>
+              </div>
+              <div className="col-lg-4 col-md-6 align-self-center">
+                <div class="card bg-white text-gray border-blue-card mb-5 mt-5">
                   <div class="card-body">
                     <div
                       className="icon-vantagem icon-vantagem01 ml-auto mr-auto mb-1"
@@ -381,7 +416,7 @@ export default class Home extends Component {
                 </div>
               </div>
 
-              <div className="col-md-4 align-self-center">
+              <div className="col-lg-4 col-md-6 align-self-center">
                 <div class="card bg-blue-card text-white mb-5">
                   <div class="card-body">
                     <div
@@ -404,8 +439,8 @@ export default class Home extends Component {
                 </div>
               </div>
 
-              <div className="col-md-4 align-self-center">
-                <div class="card bg-white text-gray mb-5 border-blue-card">
+              <div className="col-lg-4 col-md-6 ml-md-auto mr-md-auto align-self-center">
+                <div class="card bg-white text-gray mb-5 border-blue-card mt-lg-5 mt-md-3">
                   <div class="card-body">
                     <div
                       className="icon-vantagem icon-vantagem01 ml-auto mr-auto mb-1"

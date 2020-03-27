@@ -1,6 +1,12 @@
 /* Padrão */
 .separador-de-sessao {
-  height: 400px;
+  height: 412px;
+  background-image: url("../images/separa-sessao.webp");
+  background-attachment: fixed;
+}
+
+.separador-de-sessao-small {
+  height: 300px;
   background-image: url("../images/separa-sessao.webp");
   background-attachment: fixed;
 }
@@ -12,7 +18,30 @@
 .border-blue-card {
   border: solid 1px #2c6bb8;
 }
-/* Home */
+.text-title {
+  font-size: 45px;
+}
+
+.text-subtitle {
+  font-size: 35px;
+}
+
+.skew {
+  width: 550px;
+  height: 50px;
+  padding-right: 10px;
+  background: black;
+  -webkit-transform: skew(0deg); /* Chrome, Opera */
+  -ms-transform: skew(0deg); /* IE */
+  transform: skew(0deg); /* Padrão */
+}
+.negative {
+  -webkit-transform: skew(-18deg); /* Chrome, Opera */
+  -ms-transform: skew(-18deg); /* IE */
+  transform: skew(-18deg); /* Padrão */
+}
+
+/* Header */
 @media (min-width: 768px) and (max-width: 991.98px) {
   #section-header {
     height: 430px;
@@ -136,6 +165,10 @@
   color: #fad24d;
 }
 
+.bg-yellow {
+  background-color: #fad24d;
+}
+
 /* Regiões */
 .img-regioes {
   height: 200px;
@@ -145,8 +178,11 @@
 
 /* Depoimentos */
 .card-depoimentos-profissionais {
-  height: 350px;
+  min-height: 350px;
 }
 .card-depoimentos-clientes {
-  height: 420px;
+  min-height: 420px;
+}
+.background-gray {
+  background-image: url("../images/back-gray.png");
 }
