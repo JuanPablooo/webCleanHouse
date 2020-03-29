@@ -23,7 +23,9 @@ export default class Home extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-md-5"></div>
+              <div className="col-md-5">
+                <div className="img-header mt-1"></div>
+              </div>
             </div>
           </div>
         </section>
