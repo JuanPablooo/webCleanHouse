@@ -5,7 +5,6 @@
   background-size: cover;
   background-attachment: fixed;
 }
-
 .separador-de-sessao-small {
   height: 300px;
   background-image: url("../images/separa-sessao.jpg");
@@ -13,26 +12,11 @@
   background-attachment: fixed;
 }
 
-.bg-blue-card {
-  background-color: #2c6bb8;
-}
-
-.border-blue-card {
-  border: solid 1px #2c6bb8;
-}
 .text-title {
   font-size: 45px;
 }
-
 .text-subtitle {
   font-size: 35px;
-}
-
-.img-header {
-  height: 315px;
-  width: 230px;
-  background-size: cover;
-  background-image: url("../images/header.svg");
 }
 
 .skew {
@@ -50,10 +34,27 @@
   transform: skew(-18deg); /* Padrão */
 }
 
-/* Header */
+.text-yellow {
+  color: #fad24d;
+}
+.bg-yellow {
+  background-color: #fad24d;
+}
+
+.background-gray {
+  background-image: url("../images/back-gray.png");
+}
+
+/* Seção Header */
 @media (min-width: 768px) and (max-width: 991.98px) {
   #section-header {
     height: 430px;
+  }
+  .img-header {
+    margin-top: 10px;
+  }
+  .img-header {
+    margin-top: 70px;
   }
 }
 
@@ -61,16 +62,28 @@
   #section-header {
     height: 410px;
   }
+  .img-header {
+    margin-top: 45px;
+  }
 }
 
 @media (min-width: 1200px) {
   #section-header {
     height: 320px;
   }
+  .img-header {
+    margin-top: 5px;
+  }
 }
 
-/* O que somos */
-/* Medium devices (tablets, 768px and up) */
+.img-header {
+  height: 315px;
+  width: 230px;
+  background-size: cover;
+  background-image: url("../images/header.svg");
+}
+
+/* Seção O que somos */
 @media (min-width: 768px) and (max-width: 991.98px) {
   #section-o-que-somos {
     height: 850px;
@@ -79,7 +92,6 @@
   }
 }
 
-/* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
   #section-o-que-somos {
     height: 850px;
@@ -88,7 +100,6 @@
   }
 }
 
-/* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
   #section-o-que-somos {
     height: 850px;
@@ -96,7 +107,8 @@
     background-repeat: no-repeat;
   }
 }
-/* Como funciona */
+
+/* Seção Como funciona */
 .marcador {
   width: 70px;
   height: 126px;
@@ -104,18 +116,17 @@
 
 @media (min-width: 1200px) {
   #section-como-funciona {
-    height: 450px;
+    height: 500px;
   }
 
   #section-como-funciona .container {
-    height: 450px;
+    height: 500px;
     background-image: url("../images/Union-blue.png");
     background-repeat: no-repeat;
     background-size: cover;
   }
 }
 
-/* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
   #section-como-funciona {
     height: 500px;
@@ -129,7 +140,7 @@
   }
 }
 
-/* Vantagens */
+/* Seção Vantagens */
 .icon-vantagem {
   width: 120px;
   height: 120px;
@@ -138,60 +149,57 @@
 .icon-vantagem01 {
   background-image: url("../images/star.png");
 }
-
 .icon-vantagem02 {
   background-image: url("../images/clock.png");
 }
-
 .icon-vantagem03 {
   background-image: url("../images/contract.png");
 }
-
 .icon-vantagem04 {
   background-image: url("../images/pin.png");
 }
 .icon-vantagem05 {
   background-image: url("../images/money.png");
 }
-
 .icon-vantagem06 {
   background-image: url("../images/pin.png");
 }
-
 .icon-vantagem07 {
   background-image: url("../images/star.png");
 }
-
 .icon-vantagem08 {
   background-image: url("../images/calendar.png");
 }
-
 .icon-vantagem09 {
   background-image: url("../images/money2.png");
 }
 
-.text-yellow {
-  color: #fad24d;
+/* Seção Pagamento e serviços */
+.img-pagamento {
+  width: 400px;
+  height: 358px;
+  background-image: url("../images/pagamento.svg");
+  background-size: cover;
 }
 
-.bg-yellow {
-  background-color: #fad24d;
-}
-
-/* Regiões */
+/* Seção Regiões */
 .img-regioes {
   height: 200px;
   background-image: url("../images/separa-sessao.webp");
   background-size: cover;
 }
 
-/* Depoimentos */
+/* Seção Depoimentos */
 .card-depoimentos-profissionais {
   min-height: 350px;
 }
 .card-depoimentos-clientes {
   min-height: 420px;
 }
-.background-gray {
-  background-image: url("../images/back-gray.png");
+
+.bg-blue-card {
+  background-color: #2c6bb8;
+}
+.border-blue-card {
+  border: solid 1px #2c6bb8;
 }

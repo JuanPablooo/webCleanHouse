@@ -24,7 +24,7 @@ export default class Home extends Component {
                 </div>
               </div>
               <div className="col-md-5">
-                <div className="img-header mt-1"></div>
+                <div className="img-header d-none d-md-block"></div>
               </div>
             </div>
           </div>
@@ -88,9 +88,9 @@ export default class Home extends Component {
         </section>
 
         <section className="text-white bg-blue-dark">
-          <div className="container">
+          <div className="container border-bottom border-white pb-3">
             <div className="row">
-              <div className="col-md-6 d-flex border-bottom border-white">
+              <div className="col-md-6 d-flex">
                 <div className="justify-content-center align-self-center">
                   <h1 className="text-uppercase lead text-title mt-5 mb-5">
                     pagamento
@@ -102,7 +102,9 @@ export default class Home extends Component {
                   </p>
                 </div>
               </div>
-              <div className="col-md-6"></div>
+              <div className="col-md-6 mt-3">
+                <div className="img-pagamento mr-auto"></div>
+              </div>
             </div>
           </div>
         </section>
