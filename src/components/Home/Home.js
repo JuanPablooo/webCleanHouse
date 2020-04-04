@@ -1,7 +1,13 @@
-import React, { Component } from "react";
+import React, { Component, Link} from 'react';
 import "./home.css";
+import {Redirect } from 'react-router-dom';
+import Cadastro from '../Cadastro/Cadastro';
 
-export default function Home(){
+// const TrocaPagina = (pagina)=>{
+
+// }
+
+export default function Home(props){
     return (
       <div>
         <section className="bg-blue text-white" id="section-header">
@@ -16,7 +22,11 @@ export default function Home(){
                     da sua casa.
                   </p>
                   <div className="ml-auto d-flex mt-4" width="200px">
-                    <button className="btn btn-blue-dark btn-radius ml-auto">
+                    <button className="btn btn-blue-dark btn-radius ml-auto" 
+                    onClick={()=>{
+                        props.history.push('/cadastro')
+                      }}
+                       >
                       Cadastre-se
                     </button>
                   </div>
@@ -141,7 +151,7 @@ export default function Home(){
             </div>
           </div>
 
-          <div class="skew negative bg-blue">
+          <div className="skew negative bg-blue">
             <h2
               className="text-center lead text-subtitle pt-1 text-white 
                 text-capitalize"
@@ -208,7 +218,7 @@ export default function Home(){
             </div>
           </div>
 
-          <div class="skew negative bg-blue">
+          <div className="skew negative bg-blue">
             <h2
               className="text-center pl-2 lead text-subtitle pt-1 text-white 
                 text-capitalize"
@@ -313,22 +323,22 @@ export default function Home(){
               </div>
               <div className="col-lg-4 col-md-6 align-self-center">
                 <div
-                  class="card card-depoimentos-clientes border border-primary
+                  className="card card-depoimentos-clientes border border-primary
                   text-gray mb-5 mt-5"
                 >
-                  <div class="card-body">
+                  <div className="card-body">
                     <div
                       className="icon-vantagem icon-vantagem01 ml-auto mr-auto mb-1"
                       id="img-depoimentos-01"
                     ></div>
-                    <blockquote class="blockquote">
+                    <blockquote className="blockquote">
                       <p className="card-text">
                         “Melhor coisa que eu fiz esse ano foi ter me cadastrado,
                         agora a minha casa está sempre impecável. Para mim, que
                         trabalho o dia todo fora é uma maravilha, hoje mesmo vai
                         uma cozinheira lá em casa preparar o almoço de domingo.”
                       </p>
-                      <footer class="blockquote-footer text-right">
+                      <footer className="blockquote-footer text-right">
                         por
                         <cite> Vitória Nunes</cite>
                       </footer>
@@ -337,13 +347,13 @@ export default function Home(){
                 </div>
               </div>
               <div className="col-lg-4 col-md-6 align-self-center pb-3">
-                <div class="card card-depoimentos-clientes bg-primary text-white mb-5">
-                  <div class="card-body">
+                <div className="card card-depoimentos-clientes bg-primary text-white mb-5">
+                  <div className="card-body">
                     <div
                       className="icon-vantagem icon-vantagem01 ml-auto mr-auto mb-1"
                       id="img-depoimentos-01"
                     ></div>
-                    <blockquote class="blockquote">
+                    <blockquote className="blockquote">
                       <p className="card-text">
                         “No começo tive desconfiança em relação a deixar um
                         desconhecido entrar na minha casa, mas o vídeo de
@@ -351,7 +361,7 @@ export default function Home(){
                         Hoje adoro os serviços e só vivo contratando. Parabéns
                         aos envolvidos”
                       </p>
-                      <footer class="blockquote-footer text-white text-right">
+                      <footer className="blockquote-footer text-white text-right">
                         por
                         <cite> Gustavo Ganabara</cite>
                       </footer>
@@ -361,15 +371,15 @@ export default function Home(){
               </div>
               <div className="col-lg-4 ml-md-auto mr-md-auto col-md-6 align-self-center">
                 <div
-                  class="card card-depoimentos-clientes border border-primary 
+                  className="card card-depoimentos-clientes border border-primary 
                   text-gray mb-5 mt-lg-5 mt-md-3"
                 >
-                  <div class="card-body">
+                  <div className="card-body">
                     <div
                       className="icon-vantagem icon-vantagem01 ml-auto mr-auto mb-1"
                       id="img-depoimentos-01"
                     ></div>
-                    <blockquote class="blockquote">
+                    <blockquote className="blockquote">
                       <p className="card-text">
                         “Serviços maravilhosos e a última profissional que
                         contratei me surpreendeu, por se tratar de algo online e
@@ -377,7 +387,7 @@ export default function Home(){
                         cumprir o combinado, pelo contrário, ela foi maravilhosa
                         super indico.“
                       </p>
-                      <footer class="blockquote-footer text-right">
+                      <footer className="blockquote-footer text-right">
                         por
                         <cite> Gabriela Ferraz</cite>
                       </footer>
@@ -394,19 +404,19 @@ export default function Home(){
                 </h1>
               </div>
               <div className="col-lg-4 col-md-6 align-self-center">
-                <div class="card bg-white text-gray border-blue-card mb-5 mt-5">
-                  <div class="card-body">
+                <div className="card bg-white text-gray border-blue-card mb-5 mt-5">
+                  <div className="card-body">
                     <div
                       className="icon-vantagem icon-vantagem01 ml-auto mr-auto mb-1"
                       id="img-depoimentos-01"
                     ></div>
-                    <blockquote class="blockquote">
+                    <blockquote className="blockquote">
                       <p className="card-text">
                         “Simplesmente ameiiiii, melhor plataforma que já
                         utilizei para oferecer meus serviços, parabéns a toda
                         equipe!!!!”
                       </p>
-                      <footer class="blockquote-footer text-right">
+                      <footer className="blockquote-footer text-right">
                         por
                         <cite> Maria Clara</cite>
                       </footer>
@@ -416,20 +426,20 @@ export default function Home(){
               </div>
 
               <div className="col-lg-4 col-md-6 align-self-center">
-                <div class="card bg-blue-card text-white mb-5">
-                  <div class="card-body">
+                <div className="card bg-blue-card text-white mb-5">
+                  <div className="card-body">
                     <div
                       className="icon-vantagem icon-vantagem01 ml-auto mr-auto mb-1"
                       id="img-depoimentos-01"
                     ></div>
-                    <blockquote class="blockquote">
+                    <blockquote className="blockquote">
                       <p className="card-text">
                         “Eu estava há muito tempo fora do mercado de trabalho e
                         por ter mais de 40 anos encontrava várias portas
                         fechadas, a CleanHouse me ajudou muito. Muito obrigada
                         mesmo!!!”
                       </p>
-                      <footer class="blockquote-footer text-white text-right">
+                      <footer className="blockquote-footer text-white text-right">
                         por
                         <cite> Rúbia Mel</cite>
                       </footer>
@@ -439,19 +449,19 @@ export default function Home(){
               </div>
 
               <div className="col-lg-4 col-md-6 ml-md-auto mr-md-auto align-self-center">
-                <div class="card bg-white text-gray mb-5 border-blue-card mt-lg-5 mt-md-3">
-                  <div class="card-body">
+                <div className="card bg-white text-gray mb-5 border-blue-card mt-lg-5 mt-md-3">
+                  <div className="card-body">
                     <div
                       className="icon-vantagem icon-vantagem01 ml-auto mr-auto mb-1"
                       id="img-depoimentos-01"
                     ></div>
-                    <blockquote class="blockquote">
+                    <blockquote className="blockquote">
                       <p className="card-text">
                         “Aplicativo super confiável, fiz o meu primeiro serviço
                         ontem e não vejo a hora de ser contratada de novo, estou
                         muito feliz :D”
                       </p>
-                      <footer class="blockquote-footer text-right">
+                      <footer className="blockquote-footer text-right">
                         por
                         <cite> Patricia Lima</cite>
                       </footer>
