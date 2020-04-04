@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-export default class Navbar extends Component {
-  render() {
+export default function Navbar()  {
+  
     return (
       <nav className="navbar navbar-expand-md navbar-dark bg-blue">
         <Link To="/" className="navbar-brand bg-white">
@@ -17,10 +17,10 @@ export default class Navbar extends Component {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div id="navegacao" className="collapse navbar-collapse">
+        <div id="navegacao" className="collapse navbar-collapse ">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <Link className="nav-link"> O que Somos?</Link>
+              <Link className="nav-link"> Quem somos ?</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link"> Como funciona?</Link>
@@ -41,5 +41,5 @@ export default class Navbar extends Component {
         </div>
       </nav>
     );
-  }
+  
 }
