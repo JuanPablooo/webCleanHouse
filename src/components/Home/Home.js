@@ -2,6 +2,7 @@ import React, { Component, Link} from 'react';
 import "./home.css";
 import {Redirect } from 'react-router-dom';
 import Cadastro from '../Cadastro/Cadastro';
+ import Navbar from "../Navbar";
 
 // const TrocaPagina = (pagina)=>{
 
@@ -9,6 +10,8 @@ import Cadastro from '../Cadastro/Cadastro';
 
 export default function Home(props){
     return (
+      <>
+      <Navbar/>
       <div>
         <section className="bg-blue text-white" id="section-header">
           <div className="container">
@@ -473,6 +476,7 @@ export default function Home(props){
           </div>
         </section>
       </div>
+      </>
     );
   
 }
