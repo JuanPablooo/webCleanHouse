@@ -26,3 +26,11 @@
     background: url("../images/fundo1.svg") no-repeat;
    
 }
+.img-passos{
+    max-width: 80vw;
+}
+/* .passo-a-passo{
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+} */
