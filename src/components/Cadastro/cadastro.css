@@ -1,0 +1,28 @@
+.bg-header{
+    background-color: #1677C7;
+}
+.h-header{
+    height: 20vh;
+}
+.logo > img{
+    height: 50px;
+    width: 50px;
+}
+.cor-teste{
+    background-color: purple;
+}
+.btn-sair{
+    border-radius: 15px;
+    background-color: #18B8D4;
+}
+
+.svgm{
+    position: fixed;
+    width: 90vw;
+    height: 70vh;
+    top: 60vh;
+    left: 0;
+    z-index: -1;
+    background: url("../images/fundo1.svg") no-repeat;
+   
+}
