@@ -4,15 +4,14 @@ import React, {useState, useEffect}from 'react';
 import "./cadastro.css"
 import imgFundoLogo from '../images/pin.png';
 import Passo1Cliente from './Passo1Cliente';
-import Passo2Cliente from './Passo2Cliente';
 
 
 export default function Cadastro(props){
-  const [todosPassos, setTodosPassos] = useState([
-    {'id':1, 'passo':Passo1Cliente},
-    {'id':2, 'passo':Passo2Cliente},
-  ])
-  const [passo, setPasso] = useState(todosPassos[0].passo); 
+  // const [todosPassos, setTodosPassos] = useState([
+  //   {'id':1, 'passo':Passo1Cliente},
+  //   {'id':2, 'passo':Passo2Cliente},
+  // ])
+  const [passo, setPasso] = useState(Passo1Cliente); 
 
   useEffect(()=>{
     //aqui vamos fazer animacoes
@@ -22,11 +21,11 @@ export default function Cadastro(props){
     setPasso(passodesejado)
   }
 
-  function mudaPassoPeloId(id){
-    todosPassos.map((pass)=>{
-      pass.id == id ? mudaPasso(pass.passo) : mudaPasso(passo);
-    })
-  }
+  // function mudaPassoPeloId(id){
+  //   todosPassos.map((pass)=>{
+  //     pass.id == id ? mudaPasso(pass.passo) : mudaPasso(passo);
+  //   })
+  // }
   
   return(
     <>
