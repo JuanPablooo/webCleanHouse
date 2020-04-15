@@ -7,6 +7,6 @@ const actionsTypes = {
 const todosPassos = [Passo1Cliente, Passo2Cliente];
 
 
-const passoInicial = { passo: todosPassos[0]}
+const passoInicial = { passo : todosPassos[0]}
 
 export { actionsTypes, todosPassos, passoInicial }

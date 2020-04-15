@@ -1,31 +1,20 @@
 import React, {useState, useEffect}from 'react';
-
+import { useSelector, useDispatch } from 'react-redux';
+ 
 
 import "./cadastro.css"
 import imgFundoLogo from '../images/pin.png';
-import Passo1Cliente from './Passo1Cliente';
-
+import actionsPassos from '../../actions/passosActions'
 
 export default function Cadastro(props){
-  // const [todosPassos, setTodosPassos] = useState([
-  //   {'id':1, 'passo':Passo1Cliente},
-  //   {'id':2, 'passo':Passo2Cliente},
-  // ])
-  const [passo, setPasso] = useState(Passo1Cliente); 
+  
+  const passo  = useSelector(state => <state.passo/>);
 
-  useEffect(()=>{
-    //aqui vamos fazer animacoes
-  });
+
 
   function mudaPasso(passodesejado){
-    setPasso(passodesejado)
+    //setPasso(passodesejado)
   }
-
-  // function mudaPassoPeloId(id){
-  //   todosPassos.map((pass)=>{
-  //     pass.id == id ? mudaPasso(pass.passo) : mudaPasso(passo);
-  //   })
-  // }
   
   return(
     <>
@@ -37,18 +26,16 @@ export default function Cadastro(props){
             <div className=" col-6 saudacao align-self-end mb-3 ">
                 <h2>A Clean House le deseja boas vindas!</h2>
             </div>
-
             <div className="col-3">
               <button className="btn btn-sair text-white col-3">Sair</button>
             </div>
         </header>
         <div className=""> 
-          {passo}
+          { passo }
  
         </div>
         <div className="svgm"></div>
-      </div>
-    
+      </div>    
     </>
   )
 

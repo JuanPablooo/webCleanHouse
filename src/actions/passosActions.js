@@ -1,6 +1,9 @@
+import { actionsTypes } from '../constants/passosConstants';
+
+
 const actions = {
     mudaPasso: () => ({
-        type: "MUDA_PASSO"
+        type: actionsTypes.MUDA_PASSO
     })
 }
 

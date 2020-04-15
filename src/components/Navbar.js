@@ -5,9 +5,9 @@ export default function Navbar()  {
   
     return (
       <nav className="navbar navbar-expand-md navbar-dark bg-blue">
-        <Link To="/" className="navbar-brand bg-white">
+        {/* <Link To="/" className="navbar-brand bg-white">
           {" "}
-        </Link>
+        </Link> */}
 
         <button
           className="navbar-toggler"
@@ -23,7 +23,7 @@ export default function Navbar()  {
               <Link className="nav-link"> Quem somos ?</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link"> Como funciona?</Link>
+              <Link className="nav-link"> Como funciona ?</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link"> Vantagens</Link>

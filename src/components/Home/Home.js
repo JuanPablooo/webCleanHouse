@@ -1,12 +1,6 @@
 import React from 'react';
 import "./home.css";
-//import {Redirect } from 'react-router-dom';
-//import Cadastro from '../Cadastro/Cadastro';
  import Navbar from "../Navbar";
-
-// const TrocaPagina = (pagina)=>{
-
-// }
 
 export default function Home(props){
     return (
