@@ -1,10 +1,12 @@
-import React, {useState, useEffect}from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+//import React, {useState, useEffect}from 'react';
+//import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
  
 
 import "./cadastro.css"
 import imgFundoLogo from '../images/pin.png';
-import actionsPassos from '../../actions/passosActions'
+//import actionsPassos from '../../actions/passosActions'
 
 export default function Cadastro(props){
   
@@ -12,9 +14,9 @@ export default function Cadastro(props){
 
 
 
-  function mudaPasso(passodesejado){
-    //setPasso(passodesejado)
-  }
+  // function mudaPasso(passodesejado){
+  //   setPasso(passodesejado)
+  // }
   
   return(
     <>

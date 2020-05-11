@@ -29,6 +29,10 @@
 .img-passos{
     max-width: 80vw;
 }
+.preview{
+    height: 30vh;
+    width: 20vw;
+}
 /* .passo-a-passo{
     background-color: red;
     display: flex;

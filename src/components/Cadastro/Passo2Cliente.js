@@ -1,7 +1,17 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+
+
 import ImgPasso1 from '../images/c1.png';
+import { actions } from '../../actions/passosActions';
+
 
 export default function Passo2Cliente(props){
+    const dispatch = useDispatch();
+
+    function proximoPasso(){
+        dispatch(actions.mudaPasso(2))
+    }
     return(
         <>
         <section className="passo-a-passo  d-flex flex-column row my-3">
@@ -78,7 +88,7 @@ export default function Passo2Cliente(props){
 
             <div className="col-md-5 col-sm-12">
                 <div className="form-group">
-                <button  type="button" className="btn btn-sair text-white" >CONTINUAR</button>
+                <button  type="button" className="btn btn-sair text-white" onClick={proximoPasso}>CONTINUAR</button>
                 </div>
             </div>
 

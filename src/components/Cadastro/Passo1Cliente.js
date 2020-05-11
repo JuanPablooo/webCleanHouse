@@ -8,7 +8,7 @@ export default function Passo1Cliente(props){
     const dispatch = useDispatch();
 
     function proximoPasso () {
-        dispatch(actions.mudaPasso());
+        dispatch(actions.mudaPasso(1));
     }
 
 
@@ -88,7 +88,7 @@ export default function Passo1Cliente(props){
 
             <div className="col-md-5 col-sm-12">
                 <div className="form-group">
-                <button  type="button" className="btn btn-sair text-white" onClick={proximoPasso}>CONTINUAR</button>
+                    <button  type="button" className="btn btn-sair text-white" onClick={proximoPasso}>CONTINUAR</button>
                 </div>
             </div>
 
