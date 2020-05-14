@@ -1,6 +1,6 @@
 import React from 'react';
 //import { useSelector, useDispatch } from 'react-redux';
-import ImgPasso3 from '../images/c1.png';
+import ImgPasso3 from '../images/c3.png';
 
 export default function Passo3Cliente(){
 

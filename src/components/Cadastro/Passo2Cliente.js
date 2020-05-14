@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 
-import ImgPasso1 from '../images/c1.png';
+import ImgPasso1 from '../images/c2.png';
 import { actions } from '../../actions/passosActions';
 
 
