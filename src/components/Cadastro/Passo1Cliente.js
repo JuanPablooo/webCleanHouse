@@ -3,30 +3,9 @@ import { useDispatch } from 'react-redux';
 
 import ImgPasso1 from '../images/c1.png';
 import { actions } from '../../actions/passosActions';
-import { Field, ErrorMessage } from 'formik';
-
-export function FormGroup(props){
-    // const input = props.field;
-    const name  = props.id;
-    const tituloDoCampo = props.titulo;
-    const messageDeErro = props.errorMessage;
-    const type = props.type;
-    const placeholder = props.placeholder;
-    const require = props.require;
-
-    return(
-    <div className="col-md-5 col-sm-12 ">
-        <div className="form-group">
-    <label className="input-group" htmlFor={ name } > { tituloDoCampo }{ require && <span className="text-danger">*</span> }</label>
-            <Field type={ type } className="form-control" placeholder={ placeholder } name={ name } id={ name }/>
-            <ErrorMessage className="text-danger" name={ name } component="span" />
-        </div>
-    </div>
-
-    )
-}
 
 export default function Passo1Cliente(props){
+    const FormGroup = props.formGroup;
     const dispatch = useDispatch();
 
     function proximoPasso () {
