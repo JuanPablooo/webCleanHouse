@@ -5,6 +5,27 @@ import ImgPasso1 from '../images/c1.png';
 import { actions } from '../../actions/passosActions';
 import { Field, ErrorMessage } from 'formik';
 
+export function FormGroup(props){
+    // const input = props.field;
+    const name  = props.id;
+    const tituloDoCampo = props.titulo;
+    const messageDeErro = props.errorMessage;
+    const type = props.type;
+    const placeholder = props.placeholder;
+    const require = props.require;
+
+    return(
+    <div className="col-md-5 col-sm-12 ">
+        <div className="form-group">
+    <label className="input-group" htmlFor={ name } > { tituloDoCampo }{ require && <span className="text-danger">*</span> }</label>
+            <Field type={ type } className="form-control" placeholder={ placeholder } name={ name } id={ name }/>
+            <ErrorMessage className="text-danger" name={ name } component="span" />
+        </div>
+    </div>
+
+    )
+}
+
 export default function Passo1Cliente(props){
     const dispatch = useDispatch();
 
@@ -31,73 +52,28 @@ export default function Passo1Cliente(props){
         </section>
         <div className="formulario col w-75 mx-auto">
 
-            <div className="row justify-content-around">
-            <div className="col-md-5 col-sm-12 ">
-                <div className="form-group">
-                <label className="input-group" htmlFor="nome"> Nome Completo<span className="text-danger">*</span> </label>
-                <Field type="text" className="form-control" placeholder="digite seu nome" id="nome" name="nome"></Field> 
-                <ErrorMessage className="text-danger" component="span" name="nome"/>
-                </div>
-            </div>
-
-            <div className="col-md-5 col-sm-12">
-                <div className="form-group">
-                <label htmlFor="telefone"> Telefone</label>
-                <Field type="text" className="form-control" placeholder="digite seu telefone" name="telefone" id="telefone"/>
-                <ErrorMessage className="text-danger" component="span" name="telefone"/>
-                </div>
-            </div>
-
+            <div className="row justify-content-around">               
+                <FormGroup  id="name" placeholder="Digite seu nome" type="text" titulo="Nome Completo" require/>
+                <FormGroup  id="telefone" placeholder="Digite seu telefone" type="text" titulo="Telefone"/>
             </div>
 
             <div className="row justify-content-around">
-            <div className="col-md-5 col-sm-12" >
-                <div className="form-group">
-                    <label htmlFor="email">Email<span className="text-danger">*</span> </label>
-                    <Field type="email" className="form-control" placeholder="digite seu email" name="email" id="email"/>
-                    <ErrorMessage className="text-danger" component="span" name="email"/>
-                </div>
-            </div>
-            <div className="col-md-5 col-sm-12" >
-                <div className="form-group">
-                    <label htmlFor="celular">Celular<span className="text-danger">*</span> </label>
-                    <Field type="text" className="form-control" placeholder="digite seu celular" id="celular" name="celular"/>
-                    <ErrorMessage className="text-danger" name="celular" component="span" />
-                </div>
-            </div>
+                <FormGroup id="email" type="email" require titulo="E-mail" placeholder="Digite seu email"/>
+                <FormGroup id="celular" type="text" require titulo="Celular" placeholder="Digite seu celular"/>
             </div>
 
             <div className="row justify-content-around">
-            <div className="col-md-5 col-sm-12">
-                <div className="form-group">
-                <label htmlFor="cpf">CPF<span className="text-danger">*</span> </label>
-                <Field type="text" className="form-control" placeholder="digite seu cpf" id="cpf" name="cpf"/>
-                <ErrorMessage className="text-danger" name="cpf" component="span" />
-                </div>
-            </div>
-
-            <div className="col-md-5 col-sm-12">
-                <div className="form-group">
-                <label htmlFor="senha">Senha<span className="text-danger">*</span></label>
-                <input type="password" id="senha" className="form-control" placeholder="digite senha" ></input>
-                </div>
-            </div>
+                <FormGroup id="cpf" type="text" require titulo="CPF" placeholder="Digite seu cpf"/>
+                <FormGroup id="senha" type="password" require titulo="Senha" placeholder="Digite sua senha"/>
             </div>
 
             <div className="row justify-content-around">
-            <div className="col-md-5 col-sm-12">
-                <div className="form-group">
-                <label htmlFor="data-nascimento">Data de Nascimento<span className="text-danger">*</span></label>
-                <input type="password" id="data-nascimento" className="form-control" placeholder="digite sua data de nascimento" ></input>
+                <FormGroup id="data-nascimento" placeholder="Digite sua data de nascimento" require type="text" titulo="Data de nascimento" />
+                <div className="col-md-5 col-sm-12">
+                    <div className="form-group">                       
+                        <button  type="button" className="btn btn-sair text-white" onClick={proximoPasso}>CONTINUAR</button>
+                    </div>
                 </div>
-            </div>
-
-            <div className="col-md-5 col-sm-12">
-                <div className="form-group">
-                    <button  type="submit" className="btn btn-sair text-white" >CONTINUAR</button>
-                    {/* <button  type="button" className="btn btn-sair text-white" onClick={proximoPasso}>CONTINUAR</button> */}
-                </div>
-            </div>
 
             </div>
         </div>

@@ -1,13 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { ErrorMessage, Formik, Form as FormikForm, Field} from 'formik';
+import {  Formik, Form as FormikForm } from 'formik';
 import * as yup from 'yup';
 
 const validations = yup.object().shape({
     nome: yup.string()
-    .min(3, 'seu nome deve ter no minimo 3 letras')
-    .required('preencha o campo do nome'),
+        .min(3, 'Seu nome deve ter no minimo 3 letras')
+        .required('Preencha o campo do nome'),
+    email: yup.string()
+        .email('Digite um email valido')
+        .required('Preencha o campo E-mail'),
+    senha: yup.string()
+        .min(6, 'A senha deve ter no minimo 6 caracteres')
+        .required('Preencha o campo de senha'),
+    telefone: yup.string(),
+
+    celular: yup.string(),
+    
+    
+
 
 })
 

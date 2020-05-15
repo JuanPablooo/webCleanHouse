@@ -1,28 +1,13 @@
-import React, { useState } from 'react';
-// import { useSelector } from 'react-redux';
-
-// import PropTypes from 'prop-types';
-// import {Formik, Form as FormikForm, Field} from 'formik';
-
-
-//import { useSelector, useDispatch } from 'react-redux';
- 
+import React from 'react';
 
 import "./cadastro.css"
 import MyForm from "./Form";
 import imgFundoLogo from '../images/pin.png';
-//import actionsPassos from '../../actions/passosActions'
+
 const handleSubmit = values => alert(JSON.stringify(values));
 const initialValues = {};
 
-export default function Cadastro(props){
-  
-  
- 
-
-  // const passo  = useSelector(state => <state.passo />);
-
-  
+export default function Cadastro(props){  
   
   return(
     <>
