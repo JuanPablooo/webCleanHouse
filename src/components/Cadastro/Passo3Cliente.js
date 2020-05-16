@@ -43,7 +43,7 @@ export default function Passo3Cliente(){
                 <div className="col-md-5 col-sm-12 d-flex  align-items-end">
                     <div className="form-group row w-100 justify-content-around">
                         <button  type="button" className="btn btn-sair text-white col-md-5 col-sm-12" >PULAR</button>
-                        <button  type="button" className="btn btn-sair text-white col-md-5 col-sm-12" >CONTINUAR</button>
+                        <button  type="submit" className="btn btn-sair text-white col-md-5 col-sm-12" >CONTINUAR</button>
                     </div>
                 </div>
             </div>

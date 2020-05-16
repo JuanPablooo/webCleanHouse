@@ -32,7 +32,7 @@ export default function Passo1Cliente(props){
         <div className="formulario col w-75 mx-auto">
 
             <div className="row justify-content-around">               
-                <FormGroup  id="name" placeholder="Digite seu nome" type="text" titulo="Nome Completo" require/>
+                <FormGroup  id="nome" placeholder="Digite seu nome" type="text" titulo="Nome Completo" require/>
                 <FormGroup  id="telefone" placeholder="Digite seu telefone" type="text" titulo="Telefone"/>
             </div>
 
