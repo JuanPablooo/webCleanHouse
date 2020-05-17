@@ -1,71 +1,69 @@
 import React from 'react';
-import axios from 'axios';
-
 
 import "./cadastro.css"
-import UrlsApi from '../../constants/api'
 import MyForm from "./Form";
+import api from '../services/api';
 import imgFundoLogo from '../images/pin.png';
 
 const handleSubmit = async ( values ) => {
-  console.log(values);
   const jsonBody = {
     usuario:{
       email: values.email,
       senha: values.senha
     },
     nomeCompleto: values.nome,
-    dataNascimento: "1998-10-3",
+    dataNascimento: "1998-10-03",
     cpf: values.cpf,
     telefoneFixo: values.telefone,
     celular: values.celular
   }
-  const myHeadera = new Headers();
   const options = {
     method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      "Content-type": 'application/json',
-      'Access-Control-Allow-Origin':'http://localhost:3000',
-      'Access-Control-Allow-Credentials' : 'true',
-      mode: 'no-cors'
-    },
+    mode: 'cors', 
+    headers: new Headers({
+      'Content-type': 'application/json'
+    }),
+    // headers: {
+    //   Accept: 'application/json',
+    //   'Content-type': 'application/json',
+
+    // },
     body: JSON.stringify( jsonBody )
   }
-  
-  const url = UrlsApi.URL_BASE + 'clientes';
-  const resposta = await fetch( url, options);
+  const url = api.URL_BASE + 'clientes';
+  const req = await fetch(url, options);
+  console.log(req);
   console.log("-=-=-=-=")
-  console.log(resposta);
+  const resposta = await req.json();
+  console.log(resposta)
   console.log("-=-=-=-=")
-  
+  // const resposta = await axios.post('http://192.168.15.12:8080/v1/clientes', jsonBody);
+  // console.log(resposta.data);  
+ 
 
 };
 const initialValues = {};
-const  buscaApi  = async ()=> {
-  const url = 'viacep.com.br/ws/01001000/json/';
-  const api = axios.create({
-    // baseURL : 'https://api.tvmaze.com/search/shows?q=star%20wars'
-    baseURL : 'http://192.168.15.11:8080/v1/clientes',
-  })
-  const res = await api.get('');
-  console.log("=--=-=-")
-  console.log(res.data)
-  console.log("=--=-=-")
-  // const url = UrlsApi.URL_BASE + 'clientes';
-  // const resposta = await fetch( url);
-  // const resposta2 = await resposta.json();
-  return res.data;
-}
+
+// const  buscaApi  = async ()=> {
+//   const url = 'viacep.com.br/ws/01001000/json/';
+//   const api = axios.create({
+//     // baseURL : 'https://api.tvmaze.com/search/shows?q=star%20wars'
+//     baseURL : 'http://192.168.15.12:8080/v1/clientes',
+//   })
+//   const res = await api.get('');
+//   console.log("=--=-=-")
+//   console.log(res.data)
+//   console.log("=--=-=-")
+//   // const url = UrlsApi.URL_BASE + 'clientes';
+//   // const resposta = await fetch( url);
+//   // const resposta2 = await resposta.json();
+//   return res.data;
+// }
 
 export default function Cadastro(props){  
   
   return(
     <>
-    {
-      console.log(buscaApi())
-
-    }
       <div className="container-fluid">
         <header className="bg-header h-header text-white row justify-content-around ">
             <div className="logo mt-3 col-3">
