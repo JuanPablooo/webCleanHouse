@@ -23,11 +23,6 @@ const handleSubmit = async ( values ) => {
     headers: new Headers({
       'Content-type': 'application/json'
     }),
-    // headers: {
-    //   Accept: 'application/json',
-    //   'Content-type': 'application/json',
-
-    // },
     body: JSON.stringify( jsonBody )
   }
   const url = api.URL_BASE + 'clientes';
@@ -37,28 +32,9 @@ const handleSubmit = async ( values ) => {
   const resposta = await req.json();
   console.log(resposta)
   console.log("-=-=-=-=")
-  // const resposta = await axios.post('http://192.168.15.12:8080/v1/clientes', jsonBody);
-  // console.log(resposta.data);  
- 
 
 };
 const initialValues = {};
-
-// const  buscaApi  = async ()=> {
-//   const url = 'viacep.com.br/ws/01001000/json/';
-//   const api = axios.create({
-//     // baseURL : 'https://api.tvmaze.com/search/shows?q=star%20wars'
-//     baseURL : 'http://192.168.15.12:8080/v1/clientes',
-//   })
-//   const res = await api.get('');
-//   console.log("=--=-=-")
-//   console.log(res.data)
-//   console.log("=--=-=-")
-//   // const url = UrlsApi.URL_BASE + 'clientes';
-//   // const resposta = await fetch( url);
-//   // const resposta2 = await resposta.json();
-//   return res.data;
-// }
 
 export default function Cadastro(props){  
   
