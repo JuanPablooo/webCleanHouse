@@ -25,7 +25,7 @@ const handleSubmit = async ( values ) => {
     }),
     body: JSON.stringify( jsonBody )
   }
-  const url = api.URL_BASE + 'clientes';
+  const url = api.URL_BASE + api.clientes;
   const req = await fetch(url, options);
   console.log(req);
   console.log("-=-=-=-=")

@@ -1,17 +1,10 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 
-import ImgPasso1 from '../images/c1.png';
-import { actions } from '../../actions/passosActions';
-
-export default function Passo1Cliente(props){
+export default function Passo1(props){
     const FormGroup = props.formGroup;
-    const dispatch = useDispatch();
-
-    function proximoPasso () {
-        dispatch(actions.mudaPasso(1));
-    }
-
+    const proximoPasso = props.proximoPasso;
+    const imgPasso = props.img;
+    const infoSubtitulo = props.infoSubtitulo;
 
     return(
         <>
@@ -22,11 +15,11 @@ export default function Passo1Cliente(props){
             </div>
 
             <div className="align-self-center">
-            <p className="text-muted">Precisamos dessas informações para montar o seu perfil. Profissionais só terão acesso ao seu nome</p>
+    <p className="text-muted">Precisamos dessas informações para montar o seu perfil. {infoSubtitulo}</p>
             </div>
 
             <div className="align-self-center col-sm-10 row d-flex justify-content-center">
-            <img src={ImgPasso1} alt="passo 1" className="img-passos" ></img>
+            <img src={imgPasso} alt="passo 1" className="img-passos" ></img>
             </div>
         </section>
         <div className="formulario col w-75 mx-auto">

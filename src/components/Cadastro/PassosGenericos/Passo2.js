@@ -1,18 +1,12 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 
 
-import ImgPasso1 from '../images/c2.png';
-import { actions } from '../../actions/passosActions';
-
-
-export default function Passo2Cliente(props){
+export default function Passo2(props){
     const FormGroup = props.formGroup;
-    const dispatch = useDispatch();
+    const proximoPasso = props.proximoPasso;
+    const imgPasso = props.img;
+    const infoSubtitulo = props.infoSubtitulo;
 
-    function proximoPasso(){
-        dispatch(actions.mudaPasso(2))
-    }
     return(
         <>
         <section className="passo-a-passo  d-flex flex-column row my-3">
@@ -21,11 +15,11 @@ export default function Passo2Cliente(props){
             </div>
 
             <div className="align-self-center">
-            <p className="text-muted">Precisamos de seu endereço para que o profissional vá até sua residência</p>
+    <p className="text-muted">{infoSubtitulo}</p>
             </div>
 
             <div className="align-self-center col-sm-10 row d-flex justify-content-center">
-            <img src={ImgPasso1} alt="passo 1" className="img-passos" ></img>
+            <img src={imgPasso} alt="passo 1" className="img-passos" ></img>
             </div>
         </section>
         <div className="formulario col w-75 mx-auto">
