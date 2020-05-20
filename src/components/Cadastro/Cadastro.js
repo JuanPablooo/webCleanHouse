@@ -2,7 +2,7 @@ import React from 'react';
 
 import "./cadastro.css"
 import MyForm from "./Form";
-import api from '../services/api';
+import api from '../../services/api';
 import imgFundoLogo from '../images/pin.png';
 
 const handleSubmit = async ( values ) => {

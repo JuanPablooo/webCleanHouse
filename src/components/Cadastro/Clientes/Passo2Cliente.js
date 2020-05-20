@@ -13,7 +13,7 @@ export default function Passo2Cliente(props){
     const subitutulo = 'Precisamos de seu endereço para que o profissional vá até sua residência';
     function proximoPasso(){
         dispatch(actions.mudaPasso(2))
-    }
+    } 
     return(
         <>
             <Passo2 formGroup={FormGroup} proximoPasso={proximoPasso} 
