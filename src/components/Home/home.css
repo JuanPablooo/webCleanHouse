@@ -114,30 +114,45 @@
   height: 126px;
 }
 
-@media (min-width: 1200px) {
-  #section-como-funciona {
-    height: 500px;
-  }
+.img-como-funciona {
+  width: 330px;
+  height: 330px;
+  background-image: url("../images/como-funciona.png");
+  background-size: cover;
+}
 
-  #section-como-funciona .container {
-    height: 500px;
-    background-image: url("../images/Union-blue.png");
+@media (min-width: 992px) {
+  #section-como-funciona {
+    background-image: url("../images/Rectangle\ 61.png");
     background-repeat: no-repeat;
-    background-size: cover;
   }
 }
 
-@media (min-width: 992px) and (max-width: 1199.98px) {
+@media (max-width: 991px) {
   #section-como-funciona {
-    height: 500px;
+    padding-bottom: 15px;
   }
+}
 
-  #section-como-funciona .container {
-    height: 500px;
-    background-image: url("../images/Union-blue-lg.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+/* Seção Pagamento e serviços */
+.img-pagamento {
+  width: 600px;
+  height: 370px;
+  background-image: url("../images/pagamento.svg");
+  background-repeat: no-repeat;
+}
+
+.img-limpeza {
+  width: 340px;
+  height: 370px;
+  background-image: url("../images/limpeza.svg");
+  background-repeat: no-repeat;
+}
+
+.img-cozinha-roupas {
+  width: 382px;
+  height: 347px;
+  background-image: url("../images/cozinha-roupa.svg");
 }
 
 /* Seção Vantagens */
@@ -172,14 +187,6 @@
 }
 .icon-vantagem09 {
   background-image: url("../images/money2.png");
-}
-
-/* Seção Pagamento e serviços */
-.img-pagamento {
-  width: 400px;
-  height: 358px;
-  background-image: url("../images/pagamento.svg");
-  background-size: cover;
 }
 
 /* Seção Regiões */

@@ -1,0 +1,51 @@
+.bg-header {
+  background-color: #1677c7;
+}
+
+/* @media (max-width: 767.98px) {
+  .h-header {
+    height: 50vh;
+  }
+}
+@media (min-width: 767.99px) {
+  .h-header {
+    height: 25vh;
+  }
+} */
+.h-header {
+  height: 25vh;
+}
+
+.logo > img {
+  height: 128px;
+  width: 152px;
+}
+.cor-teste {
+  background-color: purple;
+}
+.btn-sair {
+  border-radius: 15px;
+  background-color: #18b8d4;
+}
+
+.svgm {
+  position: fixed;
+  width: 90vw;
+  height: 70vh;
+  top: 60vh;
+  left: 0;
+  z-index: -1;
+  background: url("../images/fundo1.svg") no-repeat;
+}
+.img-passos {
+  max-width: 80vw;
+}
+.preview {
+  height: 30vh;
+  width: 20vw;
+}
+/* .passo-a-passo{
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+} */
