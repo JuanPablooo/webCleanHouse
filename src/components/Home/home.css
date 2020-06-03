@@ -1,4 +1,14 @@
 /* Padrão */
+@media (min-width: 1500px) {
+  p {
+    font-size: 25px;
+  }
+  button,
+  nav {
+    font-size: 22px;
+  }
+}
+
 .separador-de-sessao {
   height: 412px;
   background-image: url("../images/separa-sessao2.jpg");
@@ -135,11 +145,21 @@
 }
 
 /* Seção Pagamento e serviços */
-.img-pagamento {
-  width: 600px;
-  height: 370px;
-  background-image: url("../images/pagamento.svg");
-  background-repeat: no-repeat;
+@media (min-width: 992px) {
+  .img-pagamento {
+    width: 600px;
+    height: 370px;
+    background-image: url("../images/pagamento.svg");
+    background-repeat: no-repeat;
+  }
+}
+@media (max-width: 991px) {
+  .img-pagamento {
+    width: 450px;
+    height: 278px;
+    background-image: url("../images/pagamento.svg");
+    background-repeat: no-repeat;
+  }
 }
 
 .img-limpeza {
@@ -147,6 +167,16 @@
   height: 370px;
   background-image: url("../images/limpeza.svg");
   background-repeat: no-repeat;
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .img-limpeza {
+    width: 491px;
+    height: 317px;
+    background-image: url("../images/serviços.svg");
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .img-cozinha-roupas {
@@ -191,8 +221,9 @@
 
 /* Seção Regiões */
 .img-regioes {
-  height: 200px;
-  background-image: url("../images/separa-sessao.webp");
+  height: 38vh;
+  width: 60vw;
+  background-image: url("../images/regioes.png");
   background-size: cover;
 }
 
@@ -209,4 +240,31 @@
 }
 .border-blue-card {
   border: solid 1px #2c6bb8;
+}
+
+.img-depoimentos {
+  width: 120px;
+  height: 120px;
+  background-size: cover;
+  border-radius: 60px;
+}
+
+.img-cli1 {
+  background-image: url("../images/cliente1.jpg");
+}
+.img-cli2 {
+  background-image: url("../images/cliente2.jpg");
+}
+.img-cli3 {
+  background-image: url("../images/cliente3.jpg");
+}
+
+.img-pro1 {
+  background-image: url("../images/pro1.jpg");
+}
+.img-pro2 {
+  background-image: url("../images/pro2.jpg");
+}
+.img-pro3 {
+  background-image: url("../images/pro3.jpg");
 }

@@ -1,22 +1,23 @@
 import React from "react";
-//import { Link } from "react-router-dom";
+import "./efeitos/ancora";
 
 export default function Navbar() {
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-blue">
-      {/* <Link To="/" className="navbar-brand bg-white">
-          {" "}
-        </Link> */}
+    <nav
+      className="navbar navbar-expand-md navbar-dark 
+      bg-blue d-flex align-items-start"
+    >
+      <div className="logotipo"></div>
 
       <button
         className="navbar-toggler"
         data-toggle="collapse"
         data-target="#navegacao"
       >
-        <span className="navbar-toggler-icon"></span>
+        <span className="navbar-toggler-icon mr-3"></span>
       </button>
 
-      <div id="navegacao" className="collapse navbar-collapse ">
+      <div id="navegacao" className="collapse navbar-collapse">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
             <a href="#section-o-que-somos" className="nav-link">
@@ -26,16 +27,6 @@ export default function Navbar() {
           <li className="nav-item">
             <a href="#section-como-funciona" className="nav-link">
               Como funciona ?
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#section-pagamento" className="nav-link">
-              Pagamento
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#section-serviços" className="nav-link">
-              Serviços
             </a>
           </li>
           <li className="nav-item">

@@ -79,3 +79,43 @@
 .show > .btn-blue-dark.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }
+
+/* Logotipo */
+.logotipo {
+  width: 138px;
+  height: 116px;
+  background-image: url("./images/logo.png");
+  background-size: cover;
+}
+
+/* Rodapé */
+.redes-sociais {
+  width: 55px;
+  height: 55px;
+  background-size: cover;
+  cursor: pointer;
+  border: solid 1px white;
+  border-radius: 25px;
+}
+
+#facebook {
+  background-image: url("./images/facebook.png");
+}
+#twitter {
+  background-image: url("./images/twitter.png");
+}
+
+#instagram {
+  background-image: url("./images/instagram.png");
+}
+
+#android {
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-image: url("./images/iconfinder_Android_robot_social_271510.png");
+}
+
+.rodape-link {
+  cursor: pointer;
+}

@@ -101,10 +101,10 @@ export default function Home(props) {
             id="section-pagamento"
           >
             <div className="row">
-              <div className="col-md-4 mt-3 mb-3 pl-5 d-none d-md-block">
+              <div className="col-lg-4 col-md-4 mt-3 mb-3 pl-5 d-none d-sm-block">
                 <div className="img-pagamento"></div>
               </div>
-              <div className="col-md-6 d-flex ">
+              <div className="col-lg-6 col-md-8 d-flex ">
                 <div className="justify-content-center align-self-center">
                   <h1 className="text-uppercase text-center lead text-title mt-5 mb-5">
                     pagamento
@@ -116,7 +116,7 @@ export default function Home(props) {
                   </p>
                 </div>
               </div>
-              <div className="col-md-1"></div>
+              <div className="col-lg-1"></div>
             </div>
           </div>
         </section>
@@ -124,10 +124,10 @@ export default function Home(props) {
         <section className="text-white bg-blue-dark">
           <div className="container" id="section-serviços">
             <div className="row">
-              <div className="col-md-3 mt-3 mb-3 d-none d-md-block">
-                <div className="img-limpeza mr-auto"></div>
+              <div className="col-lg-3 col-md-4 mt-3 mb-3 d-none d-sm-block">
+                <div className="img-limpeza mr-auto "></div>
               </div>
-              <div className="col-md-5 d-flex">
+              <div className="col-lg-5 col-md-8 d-flex">
                 <div className="justify-content-center align-self-center">
                   <h1 className="text-uppercase text-center lead text-title mt-5 mb-5">
                     SERVIÇOS
@@ -144,7 +144,7 @@ export default function Home(props) {
                   </p>
                 </div>
               </div>
-              <div className="col-md-4 mt-3 d-none d-md-block">
+              <div className="col-lg-4 mt-3 d-none d-lg-block">
                 <div className="img-cozinha-roupas"></div>
               </div>
             </div>
@@ -346,7 +346,7 @@ export default function Home(props) {
                 >
                   <div className="card-body">
                     <div
-                      className="icon-vantagem icon-vantagem01 ml-auto mr-auto mb-1"
+                      className="img-depoimentos img-cli1 ml-auto mr-auto mb-1"
                       id="img-depoimentos-01"
                     ></div>
                     <blockquote className="blockquote">
@@ -368,7 +368,7 @@ export default function Home(props) {
                 <div className="card card-depoimentos-clientes bg-primary text-white mb-5">
                   <div className="card-body">
                     <div
-                      className="icon-vantagem icon-vantagem01 ml-auto mr-auto mb-1"
+                      className="img-depoimentos img-cli2 ml-auto mr-auto mb-1"
                       id="img-depoimentos-01"
                     ></div>
                     <blockquote className="blockquote">
@@ -394,7 +394,7 @@ export default function Home(props) {
                 >
                   <div className="card-body">
                     <div
-                      className="icon-vantagem icon-vantagem01 ml-auto mr-auto mb-1"
+                      className="img-depoimentos img-cli3 ml-auto mr-auto mb-1"
                       id="img-depoimentos-01"
                     ></div>
                     <blockquote className="blockquote">
@@ -425,7 +425,7 @@ export default function Home(props) {
                 <div className="card bg-white text-gray border-blue-card mb-5 mt-5">
                   <div className="card-body">
                     <div
-                      className="icon-vantagem icon-vantagem01 ml-auto mr-auto mb-1"
+                      className="img-depoimentos img-pro1 ml-auto mr-auto mb-1"
                       id="img-depoimentos-01"
                     ></div>
                     <blockquote className="blockquote">
@@ -447,7 +447,7 @@ export default function Home(props) {
                 <div className="card bg-blue-card text-white mb-5">
                   <div className="card-body">
                     <div
-                      className="icon-vantagem icon-vantagem01 ml-auto mr-auto mb-1"
+                      className="img-depoimentos img-pro2 ml-auto mr-auto mb-1"
                       id="img-depoimentos-01"
                     ></div>
                     <blockquote className="blockquote">
@@ -470,18 +470,18 @@ export default function Home(props) {
                 <div className="card bg-white text-gray mb-5 border-blue-card mt-lg-5 mt-md-3">
                   <div className="card-body">
                     <div
-                      className="icon-vantagem icon-vantagem01 ml-auto mr-auto mb-1"
+                      className="img-depoimentos img-pro3 ml-auto mr-auto mb-1"
                       id="img-depoimentos-01"
                     ></div>
                     <blockquote className="blockquote">
                       <p className="card-text">
                         “Aplicativo super confiável, fiz o meu primeiro serviço
-                        ontem e não vejo a hora de ser contratada de novo, estou
+                        ontem e não vejo a hora de ser contratado de novo, estou
                         muito feliz :D”
                       </p>
                       <footer className="blockquote-footer text-right">
                         por
-                        <cite> Patricia Lima</cite>
+                        <cite> Lucas Souza</cite>
                       </footer>
                     </blockquote>
                   </div>
@@ -490,6 +490,53 @@ export default function Home(props) {
             </div>
           </div>
         </section>
+
+        <footer className="bg-blue-dark">
+          <div className="container text-white ">
+            <div className="row">
+              <div className="col-md-4">
+                <div className="offset-md-1">
+                  <p className="text-uppercase mt-5 mb-4">
+                    Siga as nossas redes sociais
+                  </p>
+                  <div className="row">
+                    <div className="col-md-8 d-flex justify-content-around">
+                      <a className="redes-sociais" id="facebook"></a>
+                      <a className="redes-sociais" id="instagram"></a>
+                      <a className="redes-sociais" id="twitter"></a>
+                    </div>
+                    <div className="col-md-4"></div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-4">
+                <div className="d-flex flex-column align-items-center mt-5">
+                  <a className="rodape-link mb-2">Fale Conosco</a>
+                  <a className="rodape-link mb-2"> Termos de Uso </a>
+                  <div>
+                    <a className="rodape-link">Entre </a> ou{" "}
+                    <a
+                      className="rodape-link"
+                      onClick={() => {
+                        props.history.push("/cadastro");
+                      }}
+                    >
+                      Cadastre-se
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-4">
+                <p className="text-uppercase mt-5 mb-2 text-center">
+                  baixe o nosso app
+                </p>
+                <div className="d-flex justify-content-center">
+                  <button id="android" className="btn"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
     </>
   );
