@@ -3,7 +3,7 @@ import React from "react";
 import "./cadastro.css";
 import MyForm from "./Form";
 import api from "../../services/api";
-import imgFundoLogo from "../images/logo.png";
+import { Link } from "react-router-dom";
 
 const handleSubmit = async (values) => {
   const jsonBody = {
@@ -66,7 +66,9 @@ export default function Cadastro(props) {
               </h2>
             </div>
             <div className="col-4 col-md-2 col-sm-3">
-              <button className="btn btn-sair text-white">Sair</button>
+              <Link to="/" className="btn btn-sair text-white">
+                Sair
+              </Link>
             </div>
           </div>
         </div>
