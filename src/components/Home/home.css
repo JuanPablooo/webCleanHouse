@@ -1,7 +1,7 @@
 /* Padrão */
 @media (min-width: 1500px) {
   p {
-    font-size: 25px;
+    font-size: 20px;
   }
   button,
   nav {
@@ -133,7 +133,7 @@
 
 @media (min-width: 992px) {
   #section-como-funciona {
-    background-image: url("../images/Rectangle\ 61.png");
+    background-image: url("../images/Rectangle\ 117.png");
     background-repeat: no-repeat;
   }
 }
@@ -221,8 +221,8 @@
 
 /* Seção Regiões */
 .img-regioes {
-  height: 38vh;
-  width: 60vw;
+  height: 250px;
+  width: 300px;
   background-image: url("../images/regioes.png");
   background-size: cover;
 }
