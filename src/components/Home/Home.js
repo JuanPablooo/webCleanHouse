@@ -1,5 +1,5 @@
 import React from "react";
-import "./home.css";
+import "./Home.css";
 import Navbar from "../Navbar";
 
 export default function Home(props) {
@@ -514,7 +514,15 @@ export default function Home(props) {
                   <a className="rodape-link mb-2">Fale Conosco</a>
                   <a className="rodape-link mb-2"> Termos de Uso </a>
                   <div>
-                    <a className="rodape-link">Entre </a> ou{" "}
+                    <a
+                      className="rodape-link"
+                      onClick={() => {
+                        props.history.push("/login");
+                      }}
+                    >
+                      Entre
+                    </a>{" "}
+                    ou{" "}
                     <a
                       className="rodape-link"
                       onClick={() => {

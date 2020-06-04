@@ -1,5 +1,6 @@
 import React from "react";
 import "./efeitos/ancora";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -45,7 +46,9 @@ export default function Navbar() {
             </a>
           </li>
         </ul>
-        <button className="btn btn-blue-dark btn-radius btn-nav">Entrar</button>
+        <Link to="/login" className="btn btn-blue-dark btn-radius btn-nav">
+          Entrar
+        </Link>
       </div>
     </nav>
   );

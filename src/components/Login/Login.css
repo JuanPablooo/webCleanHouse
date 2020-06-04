@@ -1,0 +1,9 @@
+.svg {
+  position: fixed;
+  width: 90vw;
+  height: 70vh;
+  top: 60vh;
+  left: 65vw;
+  z-index: -1;
+  background: url("../images/Rectangle\ 54.svg") no-repeat;
+}

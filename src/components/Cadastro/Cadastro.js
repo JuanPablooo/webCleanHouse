@@ -40,19 +40,6 @@ export default function Cadastro(props) {
     <>
       <header className="bg-header h-header pt-2 text-white">
         <div className="container">
-          {/* <div className="logo mt-3 col-md-3 col-sm-5">
-            <img src={imgFundoLogo} alt="logo da empresa"></img>
-          </div>
-          <div className="col-md-6 saudacao col-sm-2 align-self-center">
-            <h2 className="d-none d-md-block">
-              A Clean House lhe deseja boas vindas!
-            </h2>
-          </div>
-          <div className="col-md-3 col-sm-5">
-            <button className="btn btn-sair text-white align-items">
-              Sair
-            </button>
-          </div> */}
           <div className="row">
             <div className="col-4 col-md-2 col-sm-3">
               <div className="logotipo"></div>

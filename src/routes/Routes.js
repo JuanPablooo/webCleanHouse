@@ -4,7 +4,8 @@ import { Provider } from "react-redux";
 
 //Importe das páginas/componentes
 import { store } from "../store/store";
-import Home from "../components/home/Home";
+import Home from "../components/Home/Home";
+import Login from "../components/Login/Login";
 
 import Cadastro from "../components/Cadastro/Cadastro";
 
@@ -22,6 +23,7 @@ const Routes = () => (
       <Provider store={store}>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route path="/login" component={Login} />
           <Route path="/cadastro" component={Cadastro} />
           <Route component={NotFound} />
         </Switch>
