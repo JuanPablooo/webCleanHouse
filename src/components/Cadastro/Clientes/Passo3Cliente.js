@@ -36,7 +36,6 @@ export default function Passo3Cliente() {
               </div>
             </div>
           </div>
-          {/* <div className="col-md-5 col-sm-12 "></div> */}
         </div>
 
         <div className="row justify-content-around  ">

@@ -52,12 +52,12 @@ export default function Login() {
               flex-column mt-5"
               >
                 <input
-                  class="form-control w-50"
+                  className="form-control w-50"
                   type="text"
                   placeholder="e-mail"
                 />
                 <input
-                  class="form-control mt-3 w-50"
+                  className="form-control mt-3 w-50"
                   type="text"
                   placeholder="senha"
                 />
@@ -72,8 +72,9 @@ export default function Login() {
                 </div>
               </div>
             </div>
-            <div className="col-md-6">
-              <div className="d-flex justify-content-center align-items-center"></div>
+            <div className="col-md-6 d-flex justify-content-start align-items-center">
+              <div className="icon-login login1"></div>
+              <div className="icon-login login2"></div>
             </div>
           </div>
           <div className="svg"></div>

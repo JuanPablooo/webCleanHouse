@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { Formik, Form as FormikForm, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 
+//Validações
 const validations = yup.object().shape({
   nome: yup
     .string()
@@ -62,8 +63,10 @@ const Form = ({ handleSubmit, initialValues }) => {
     </Formik>
   );
 };
+
 Form.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   initialValues: PropTypes.object.isRequired,
 };
+
 export default Form;

@@ -25,14 +25,19 @@ const handleSubmit = async (values) => {
     }),
     body: JSON.stringify(jsonBody),
   };
+
   const url = api.URL_BASE + api.clientes;
+
   const req = await fetch(url, options);
-  console.log(req);
+  console.log(url);
   console.log("-=-=-=-=");
+  console.log(req);
   const resposta = await req.json();
+  console.log("-=-=-=-=");
   console.log(resposta);
   console.log("-=-=-=-=");
 };
+
 const initialValues = {};
 
 export default function Cadastro(props) {
