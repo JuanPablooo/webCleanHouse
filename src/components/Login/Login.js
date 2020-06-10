@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./Login.css";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+
+  function inputHandler(e) {
+    const { value, type } = e.target;
+
+    if (type == "email") {
+      setEmail(value);
+    } else {
+      setSenha(value);
+      console.log(senha);
+    }
+  }
+
   return (
     <>
       <section className="bg-blue text-white">
@@ -53,13 +67,15 @@ export default function Login() {
               >
                 <input
                   className="form-control w-50"
-                  type="text"
+                  type="email"
                   placeholder="e-mail"
+                  onChange={inputHandler}
                 />
                 <input
                   className="form-control mt-3 w-50"
-                  type="text"
+                  type="password"
                   placeholder="senha"
+                  onChange={inputHandler}
                 />
                 <div className="d-flex justify-content-between w-50 mt-4">
                   <Link className="text-blue">Esqueci minha senha</Link>
