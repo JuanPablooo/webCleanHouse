@@ -18,7 +18,7 @@ const validations = yup.object().shape({
 
   senha: yup
     .string()
-    .min(6, "A senha deve ter no minimo 6 caracteres")
+    .min(8, "A senha deve ter no minimo 8 caracteres")
     .required("Preencha o campo de senha"),
 
   telefone: yup.string(),

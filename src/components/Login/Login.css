@@ -21,3 +21,9 @@
 .login2 {
   background-image: url("../images/login2.png");
 }
+
+span {
+  color: #fb6f91;
+  margin: 0 0 10px;
+  font-weight: bold;
+}

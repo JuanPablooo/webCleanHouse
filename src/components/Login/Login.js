@@ -1,22 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import { Form, Input } from "@rocketseat/unform";
+import * as Yup from "yup";
 
 import "./Login.css";
+import { signIn } from "../../services/auth";
+
+const schema = Yup.object().shape({
+  email: Yup.string()
+    .email("Insira um email válido")
+    .required("O email é obrigatório"),
+  password: Yup.string().required("A senha é obrigatória"),
+});
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+  const handleSubmit = async (data) => {
+    try {
+      const user = {
+        email: data.email,
+        senha: data.password,
+      };
+      console.log(user);
 
-  function inputHandler(e) {
-    const { value, type } = e.target;
+      const response = await signIn(user);
 
-    if (type == "email") {
-      setEmail(value);
-    } else {
-      setSenha(value);
-      console.log(senha);
+      if (response.ok) {
+        this.props.history.push("/home/cliente");
+      }
+    } catch (error) {
+      console.log(error);
     }
-  }
+  };
 
   return (
     <>
@@ -61,32 +75,36 @@ export default function Login() {
         <div className="container">
           <div className="row container-login">
             <div className="col-md-6 pt-5 pb-5 ">
-              <div
+              <Form
+                schema={schema}
+                onSubmit={handleSubmit}
                 className="d-flex justify-content-center align-items-center
               flex-column mt-5"
               >
-                <input
+                <Input
                   className="form-control w-50"
                   type="email"
+                  name="email"
                   placeholder="e-mail"
-                  onChange={inputHandler}
                 />
-                <input
+                <Input
                   className="form-control mt-3 w-50"
                   type="password"
                   placeholder="senha"
-                  onChange={inputHandler}
+                  name="password"
                 />
                 <div className="d-flex justify-content-between w-50 mt-4">
-                  <Link className="text-blue">Esqueci minha senha</Link>
+                  <Link to="/" className="text-blue">
+                    Esqueci minha senha
+                  </Link>
                   <button
-                    type="button"
+                    type="submit"
                     className="btn btn-blue-dark text-white"
                   >
                     Entrar
                   </button>
                 </div>
-              </div>
+              </Form>
             </div>
             <div className="col-md-6 d-flex justify-content-start align-items-center">
               <div className="icon-login login1"></div>
