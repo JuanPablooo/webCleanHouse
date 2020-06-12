@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Form, Input } from "@rocketseat/unform";
 import * as Yup from "yup";
@@ -13,7 +13,15 @@ const schema = Yup.object().shape({
   password: Yup.string().required("A senha é obrigatória"),
 });
 
-export default function Login() {
+const MsgErro = (props) => {
+  if (props.mensagem) {
+    return <span>{props.mensagem}</span>;
+  } else return "";
+};
+
+export default function Login(props) {
+  const [msgErro, setMsgErro] = useState("");
+
   const handleSubmit = async (data) => {
     try {
       const user = {
@@ -24,8 +32,12 @@ export default function Login() {
 
       const response = await signIn(user);
 
+      if (!response.ok) {
+        setMsgErro("Usuário ou Senha incorretos!");
+      }
+
       if (response.ok) {
-        this.props.history.push("/home/cliente");
+        props.history.push("/home/cliente");
       }
     } catch (error) {
       console.log(error);
@@ -75,6 +87,7 @@ export default function Login() {
         <div className="container">
           <div className="row container-login">
             <div className="col-md-6 pt-5 pb-5 ">
+              <MsgErro mensagem={msgErro} />
               <Form
                 schema={schema}
                 onSubmit={handleSubmit}

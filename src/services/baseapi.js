@@ -1,5 +1,6 @@
 //import { getToken } from "./auth";
-import url from "./base-url";
+
+const url = "http://localhost:8080/";
 
 //Faz requisição privada
 export const doRequest = async (rota, method, data = "", urlParam = "") => {
