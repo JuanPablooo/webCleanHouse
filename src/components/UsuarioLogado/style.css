@@ -36,3 +36,14 @@
     #4ac6dc;
   padding-top: 100px;
 }
+
+.bg-green-water {
+  background-color: #1b9c94;
+}
+
+.btn-editar-foto:hover {
+  background-color: #198a83;
+}
+.btn-controller:hover {
+  background-color: #03579c;
+}

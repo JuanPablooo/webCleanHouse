@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { signOut } from "../../../services/auth";
 import "../style.css";
-import fotoPerfilPadrao from "../../images/user1.png";
+import fotoPerfilPadrao from "../../images/perfil.png";
 
 export default function HomeCliente() {
   //Resgata os dados do usuário no localStorage
@@ -32,7 +32,7 @@ export default function HomeCliente() {
       <div className="bg-blue-dark">
         <div className="container">
           {/* Colocar em um arquivo separado dps */}
-          <div className="navbar navbar-expand-md bg-blue-dark">
+          <div className="navbar navbar-expand-md ">
             <h1 className="text-white ml-auto mr-auto mt-2 mb-2">
               Olá, {primeiroNome}
             </h1>
@@ -60,8 +60,40 @@ export default function HomeCliente() {
             <div className="foto-grande ml-auto mr-auto">
               <FotoPerfil />
             </div>
-            <div className=""></div>
-            <div className=""></div>
+            <div className="d-flex justify-content-center">
+              <button
+                className="btn btn-editar-foto text-uppercase 
+              bg-green-water text-white mt-3"
+              >
+                Editar
+              </button>
+            </div>
+            <div className="d-flex justify-content-center flex-column">
+              <button
+                className="btn btn-controller text-uppercase 
+                bg-blue-dark text-white mt-4 mr-3 ml-3"
+              >
+                Meu perfil
+              </button>
+              <button
+                className="btn btn-controller text-uppercase 
+                bg-blue-dark text-white mt-3 mr-3 ml-3"
+              >
+                Meu endereço
+              </button>
+              <button
+                className="btn btn-controller text-uppercase 
+                bg-blue-dark text-white mt-3 mr-3 ml-3"
+              >
+                pagamento
+              </button>
+              <button
+                className="btn btn-controller text-uppercase 
+                bg-blue-dark text-white mt-3 mr-3 ml-3"
+              >
+                minhas residências
+              </button>
+            </div>
           </div>
         </div>
       </div>
