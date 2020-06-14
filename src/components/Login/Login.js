@@ -21,6 +21,7 @@ const MsgErro = (props) => {
 
 export default function Login(props) {
   const [msgErro, setMsgErro] = useState("");
+  const [typeUser, setTypeUser] = useState("");
 
   const handleSubmit = async (data) => {
     try {
@@ -30,14 +31,19 @@ export default function Login(props) {
       };
       console.log(user);
 
-      const response = await signIn(user);
+      const retorno = await signIn(user);
+
+      //Separando o retorno
+      const response = retorno.response;
+      const usuario = retorno.usuario;
 
       if (!response.ok) {
         setMsgErro("Usuário ou Senha incorretos!");
       }
 
       if (response.ok) {
-        props.history.push("/home/cliente");
+        if (usuario.tipo === "cliente") props.history.push("/home/cliente");
+        else props.history.push("/home/profissional");
       }
     } catch (error) {
       console.log(error);

@@ -8,7 +8,8 @@ import { store } from "../store/store";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
 import Cadastro from "../components/Cadastro/Cadastro";
-import HomeCliente from "../components/HomeCliente/HomeCliente";
+import HomeCliente from "../components/UsuarioLogado/HomeCliente/HomeCliente";
+import HomeProfissional from "../components/UsuarioLogado/HomeProfissional/HomeProfissional";
 
 const NotFound = () => {
   return (
@@ -27,6 +28,11 @@ const Routes = () => (
           <Route path="/login" component={Login} />
           <Route path="/cadastro" component={Cadastro} />
           <Route path="/home/cliente" component={HomeCliente} isPrivate />
+          <Route
+            path="/home/profissional"
+            component={HomeProfissional}
+            isPrivate
+          />
           <Route component={NotFound} />
         </Switch>
       </Provider>

@@ -1,5 +1,4 @@
 import { doPublicRequest } from "./baseapi";
-import { Redirect } from "react-router-dom";
 
 //const TOKEN = "@Usuarios:token";
 const TOKEN = "user";
@@ -18,7 +17,10 @@ export const signIn = async (usuario) => {
     }
     console.log("requisição feita - status:");
     console.log(response.status);
-    return response;
+
+    const retorno = { response: response, usuario: usuario };
+
+    return retorno;
   } catch (erro) {
     console.log(erro);
     return erro;

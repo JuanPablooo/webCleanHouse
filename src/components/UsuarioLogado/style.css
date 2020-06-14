@@ -1,0 +1,38 @@
+.btn-sair {
+  width: 70px;
+  height: 37px;
+  background-color: #ffffff;
+}
+
+.btn-sair:hover {
+  background-color: rgb(205, 221, 231);
+  color: #0069be;
+}
+
+.foto-pequena,
+.foto-pequena img {
+  width: 87px;
+  height: 87px;
+}
+
+.foto-pequena {
+  border-radius: 20px;
+}
+
+.foto-grande,
+.foto-grande img {
+  width: 150px;
+  height: 150px;
+}
+
+.foto-grande {
+  border-radius: 45px;
+}
+
+#container-controller {
+  width: 250px;
+  height: 100vh;
+  background: linear-gradient(180deg, #19b8d4 0%, rgba(255, 255, 255, 0) 100%),
+    #4ac6dc;
+  padding-top: 100px;
+}
