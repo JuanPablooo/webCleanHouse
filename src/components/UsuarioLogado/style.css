@@ -37,13 +37,64 @@
   padding-top: 100px;
 }
 
-.bg-green-water {
+.btn-green-water {
   background-color: #1b9c94;
 }
 
-.btn-editar-foto:hover {
+.btn-green-water:hover {
   background-color: #198a83;
 }
 .btn-controller:hover {
   background-color: #03579c;
+}
+
+.btn-green {
+  background-color: #16c772;
+}
+
+.btn-green:hover {
+  background-color: #07ab5c;
+}
+.container-home {
+  background-image: url("../images/back-gray.png");
+}
+
+#container-notification {
+  width: 250px;
+  height: 439px;
+  background: linear-gradient(180deg, #19b8d4 0%, rgba(255, 255, 255, 0) 100%),
+    #4ac6dc;
+  padding-top: 100px;
+}
+
+#logo,
+#logo img {
+  width: 175px;
+  height: 148px;
+}
+
+#notificaçao {
+  height: 75px;
+  border: solid 1px #585858;
+  border-radius: 15px;
+}
+
+#notificaçao p {
+  width: 115px;
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+#vetor-notificaçao,
+#vetor-notificaçao img {
+  height: 45px;
+  width: 38px;
+}
+
+.form-container {
+  margin-top: 100px;
+}
+
+.w-35 {
+  width: 35%;
 }
