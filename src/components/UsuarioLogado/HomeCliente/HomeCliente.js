@@ -1,16 +1,21 @@
 import React, { useState, useEffect, useCallback } from "react";
 
 import "../style.css";
-import Endereços from "../Formularios/endereços";
-import Perfil from "../Formularios/perfil";
+
+//Componentes da parte do meio
+import Endereços from "../FormulariosGenericos/endereços";
+import Perfil from "../FormulariosGenericos/perfil";
 import Foto from "./foto";
 import Serviços from "./serviços";
-import Header from "../header";
 
+//Cabeçalho e menu lateral
+import Header from "../header";
+import Menu from "../menu";
+
+//Imagens
 import fotoPerfilPadrao from "../../images/perfil.png";
 import logo from "../../images/logo.png";
 import vetorNotificaçao from "../../images/Vector.png";
-import Menu from "../menu";
 
 export default function HomeCliente() {
   const [foto, setFoto] = useState("");
@@ -22,18 +27,22 @@ export default function HomeCliente() {
   const nomeUsuario = JSON.stringify(usuario.nomeCompleto).split(" ");
   const primeiroNome = nomeUsuario[0].replace('"', "");
 
+  //Executado assim que o componente é renderizado
   useEffect(() => {
+    //Verifca se a foto está nula
     usuario.fotoPerfil !== null
       ? setFoto(usuario.fotoPerfil)
       : setFoto(fotoPerfilPadrao);
   }, []);
 
+  //Executado caso o estado da foto seja alterado
   useEffect(() => {
     usuario.fotoPerfil !== null
       ? setFoto(usuario.fotoPerfil)
       : setFoto(fotoPerfilPadrao);
   }, [foto]);
 
+  //Função para alterar o controller de acordo com o clique
   const handleButtonChange = useCallback((estado) => {
     setController(estado);
   });
@@ -53,11 +62,11 @@ export default function HomeCliente() {
               button2={"minhas residências"}
             />
 
-            {/* Parte do meio */}
+            {/* Componentes do meio */}
             <Serviços controller={controller} />
             <Foto controller={controller} />
             <Perfil controller={controller} user={usuario} />
-            <Endereços controller={controller} />
+            <Endereços controller={controller} user={usuario} />
 
             {/* Notificações */}
             <div id="container-notification">

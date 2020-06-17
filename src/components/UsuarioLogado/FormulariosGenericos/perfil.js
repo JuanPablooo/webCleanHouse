@@ -1,8 +1,9 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
+import { buscarCliente, atualizarCliente } from "../../../services/clientes";
 import { Form, Input } from "@rocketseat/unform";
 import * as Yup from "yup";
 
-// Terminar validações
+//Terminar validações
 const schema = Yup.object().shape({
   email: Yup.string()
     .email("Insira um email válido")
@@ -20,14 +21,61 @@ export default function Perfil(props) {
   const user = props.user;
 
   const [msgErro, setMsgErro] = useState("");
-  const [usuario, setUsuario] = useState(user);
 
+  //State usuário
+  const [nomeCompleto, setNomeCompleto] = useState(user.nomeCompleto);
+  const [email, setEmail] = useState(user.email);
+  const [telefoneFixo, setTelefoneFixo] = useState(user.telefoneFixo);
+  const [celular, setCelular] = useState(user.celular);
+  const [cpf, setCpf] = useState(user.cpf);
+  const [dataNascimento, setDataNascimento] = useState(user.dataNascimento);
+
+  //Chamada no evento da input, atualizando o estado do usuário
   const inputHandler = useCallback((e) => {
     const { name, value } = e.target;
-    setUsuario({ [name]: value });
+
+    switch (name) {
+      case "nomeCompleto":
+        setNomeCompleto(value);
+        break;
+      case "email":
+        setEmail(value);
+        break;
+      case "cpf":
+        setCpf(value);
+        break;
+      case "dataNascimento":
+        setDataNascimento(value);
+        break;
+      case "telefoneFixo":
+        setTelefoneFixo(value);
+        break;
+      case "celular":
+        setCelular(value);
+        break;
+    }
   });
 
-  const handleSubmit = async (data) => {};
+  const handleSubmit = async () => {
+    var retorno = "";
+
+    if (user.tipo === "cliente") {
+      retorno = await buscarCliente(user.id);
+    }
+
+    const usuario = await retorno.json();
+
+    //Altera os dados
+    usuario.nomeCompleto = nomeCompleto;
+    usuario.usuario.email = email;
+    usuario.cpf = cpf;
+    usuario.dataNascimento = dataNascimento;
+    usuario.telefoneFixo = telefoneFixo;
+    usuario.celular = celular;
+
+    const response = await atualizarCliente(usuario);
+    console.log(response);
+  };
 
   if (controller !== 2) return null;
   else {
@@ -43,50 +91,54 @@ export default function Perfil(props) {
           <Input
             className="form-control w-75"
             type="text"
-            name="nome"
-            value={usuario.nomeCompleto}
+            name="nomeCompleto"
+            value={nomeCompleto}
+            placeholder="nome completo"
             onChange={inputHandler}
           />
           <Input
             className="form-control mt-3 w-75"
             type="email"
-            value={usuario.email}
+            value={email}
             name="email"
+            placeholder="email"
             onChange={inputHandler}
           />
           <Input
             className="form-control mt-3 w-75"
             type="text"
-            value={usuario.cpf}
+            value={cpf}
             name="cpf"
+            placeholder="cpf"
             onChange={inputHandler}
           />
           <Input
             className="form-control mt-3 w-75"
             type="text"
-            value={usuario.dataNascimento}
+            value={dataNascimento}
             name="dataNascimento"
+            placeholder="data de nascimento"
             onChange={inputHandler}
           />
           <Input
             className="form-control mt-3 w-75"
             type="text"
-            value={
-              usuario.telefoneFixo !== null ? usuario.telefoneFixo : "Telefone"
-            }
+            value={telefoneFixo !== null ? telefoneFixo : ""}
             name="telefoneFixo"
+            placeholder="telefone"
             onChange={inputHandler}
           />
           <Input
             className="form-control mt-3 w-75"
             type="text"
-            value={usuario.celular}
+            value={celular}
             name="celular"
+            placeholder="celular"
             onChange={inputHandler}
           />
           <div className="d-flex justify-content-center w-100 mt-4 pb-5">
             <button
-              type="submit"
+              type="button"
               className="btn btn-blue-dark text-white w-35 text-uppercase mr-3"
             >
               Mudar Senha

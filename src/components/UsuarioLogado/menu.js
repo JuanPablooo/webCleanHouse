@@ -1,9 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-//Definir propTypes
+//Menu lateral
 export default function Menu(props) {
   const handleButtonChange = props.handleButtonChange;
   const foto = props.foto;
+
+  //Botões que mudam de acordo com o tipo do usuário
   const button1 = props.button1;
   const button2 = props.button2;
 
@@ -64,3 +67,10 @@ export default function Menu(props) {
     </div>
   );
 }
+
+//Definindo o tipo das propriedades
+Menu.propTypes = {
+  button1: PropTypes.string,
+  button2: PropTypes.string,
+  handleButtonChange: PropTypes.func.isRequired,
+};

@@ -1,16 +1,19 @@
-const RESOURCE = "clientes/";
+import { doRequest } from "./baseapi";
 
-export const listar = () => {
-  return requisitaApi(RESOURCE, "GET");
+const RESOURSE = "v1/clientes/";
+
+export const buscarCliente = (id) => {
+  return doRequest(RESOURSE, "GET", "", id);
 };
 
-export const inserir = (serie) => {
-  return requisitaApi(RESOURCE, "POST", serie);
+export const inserirCliente = (usuario) => {
+  return doRequest(RESOURSE, "POST", usuario);
 };
 
-export const remover = (id) => {
-  return requisitaApi(RESOURCE, "DELETE", "", id);
+export const removerCliente = (id) => {
+  return doRequest(RESOURSE, "DELETE", "", id);
 };
-export const atualizar = (serie) => {
-  return requisitaApi(RESOURCE, "PUT", serie, serie.id);
+
+export const atualizarCliente = (usuario) => {
+  return doRequest(RESOURSE, "PUT", usuario, usuario.id);
 };

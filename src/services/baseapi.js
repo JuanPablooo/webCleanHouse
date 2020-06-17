@@ -7,7 +7,7 @@ export const doRequest = async (rota, method, data = "", urlParam = "") => {
   const params = {
     method: method,
     headers: {
-      Accept: "applicatiom/json",
+      //Accept: "applicatiom/json",
       "Content-Type": "application/json",
       //Authorization: "Bearer " + getToken(),
     },

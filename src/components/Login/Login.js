@@ -21,7 +21,6 @@ const MsgErro = (props) => {
 
 export default function Login(props) {
   const [msgErro, setMsgErro] = useState("");
-  const [typeUser, setTypeUser] = useState("");
 
   const handleSubmit = async (data) => {
     try {
