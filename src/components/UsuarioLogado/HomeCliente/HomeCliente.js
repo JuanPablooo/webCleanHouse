@@ -49,12 +49,18 @@ export default function HomeCliente() {
 
   return (
     <>
+      {/* Cabeçalho passando como props o nome e a foto do usuário */}
       <Header primeiroNome={primeiroNome} foto={foto} />
 
       <div className="container-home">
         <div className="container">
           <div className="d-flex flex-row justify-content-between">
-            {/* Menu */}
+            {/* Menu
+                passando a função que altera o estado controller
+                a foto do usuário
+                e as strings dos botões que mudam dependendo do 
+                tipo de usuário
+            */}
             <Menu
               handleButtonChange={handleButtonChange}
               foto={foto}

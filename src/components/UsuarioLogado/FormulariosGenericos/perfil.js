@@ -1,5 +1,9 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { buscarCliente, atualizarCliente } from "../../../services/clientes";
+import {
+  buscarProfissional,
+  atualizarProfissional,
+} from "../../../services/profissionais";
 import { Form, Input } from "@rocketseat/unform";
 import * as Yup from "yup";
 
@@ -10,7 +14,7 @@ const schema = Yup.object().shape({
     .required("O email é obrigatório"),
 });
 
-const MsgErro = (props) => {
+const Mensagem = (props) => {
   if (props.mensagem) {
     return <span>{props.mensagem}</span>;
   } else return "";
@@ -20,7 +24,7 @@ export default function Perfil(props) {
   const controller = props.controller;
   const user = props.user;
 
-  const [msgErro, setMsgErro] = useState("");
+  const [mensagem, setMensagem] = useState("");
 
   //State usuário
   const [nomeCompleto, setNomeCompleto] = useState(user.nomeCompleto);
@@ -57,10 +61,16 @@ export default function Perfil(props) {
   });
 
   const handleSubmit = async () => {
+    //Definindo variáveis
     var retorno = "";
+    var response = "";
+    var tipo = user.tipo;
 
-    if (user.tipo === "cliente") {
+    //Busca cliente ou profissional
+    if (tipo === "cliente") {
       retorno = await buscarCliente(user.id);
+    } else if (tipo === "profissional") {
+      retorno = await buscarProfissional(user.id);
     }
 
     const usuario = await retorno.json();
@@ -73,15 +83,31 @@ export default function Perfil(props) {
     usuario.telefoneFixo = telefoneFixo;
     usuario.celular = celular;
 
-    const response = await atualizarCliente(usuario);
-    console.log(response);
+    //Atualiza cliente ou profissional
+    if (tipo === "cliente") {
+      response = await atualizarCliente(usuario);
+    } else if (tipo === "profissional") {
+      response = await atualizarProfissional(usuario);
+    }
+
+    //Verifica se atualizou
+    if (response.ok) {
+      setMensagem("Usuário atualizado com sucesso");
+      //atualiza no localstoage
+      //retornar uma modal?
+    } else {
+      setMensagem(
+        "Erro ao atualizar, certifique-se de que seus dados estão corretos."
+      );
+    }
   };
 
+  // Caso o valor do estado de controller não for 2, não retorna nada
   if (controller !== 2) return null;
   else {
     return (
       <section className="w-50 bg-white h-75 form-container">
-        <MsgErro mensagem={msgErro} />
+        <Mensagem mensagem={mensagem} />
         <Form
           schema={schema}
           onSubmit={handleSubmit}

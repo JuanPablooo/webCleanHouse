@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-//Menu lateral
+//Menu lateral, chamado em HomeCliente e HomeProfissional
 export default function Menu(props) {
+  //Função chamada no clique do botão
+  //Para mudar o estado de controller
   const handleButtonChange = props.handleButtonChange;
-  const foto = props.foto;
+  const foto = props.foto; //foto do usuário
 
   //Botões que mudam de acordo com o tipo do usuário
   const button1 = props.button1;
@@ -70,7 +72,7 @@ export default function Menu(props) {
 
 //Definindo o tipo das propriedades
 Menu.propTypes = {
-  button1: PropTypes.string,
-  button2: PropTypes.string,
+  button1: PropTypes.string.isRequired,
+  button2: PropTypes.string.isRequired,
   handleButtonChange: PropTypes.func.isRequired,
 };

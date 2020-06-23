@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 
 import { signOut } from "../../services/auth";
 
+//Cabeçalho chamado em HomeCliente e HomeProfissional
 export default function Header(props) {
+  //Recebe o nome e a foto do usuário
   const primeiroNome = props.primeiroNome;
   const foto = props.foto;
 
