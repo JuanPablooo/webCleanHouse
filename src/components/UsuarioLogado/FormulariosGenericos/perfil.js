@@ -1,4 +1,5 @@
-import React, { useState, useCallback, useEffect } from "react";
+//IMPORTES
+import React, { useState, useCallback } from "react";
 import { buscarCliente, atualizarCliente } from "../../../services/clientes";
 import {
   buscarProfissional,
@@ -7,19 +8,21 @@ import {
 import { Form, Input } from "@rocketseat/unform";
 import * as Yup from "yup";
 
-//Terminar validações
+//VALIDAÇÕES (TERMINAR DPS)
 const schema = Yup.object().shape({
   email: Yup.string()
     .email("Insira um email válido")
     .required("O email é obrigatório"),
 });
 
+//MENSAGEM
 const Mensagem = (props) => {
   if (props.mensagem) {
     return <span>{props.mensagem}</span>;
   } else return "";
 };
 
+//-------------------PERFIL-------------------------------
 export default function Perfil(props) {
   const controller = props.controller;
   const user = props.user;
@@ -38,6 +41,7 @@ export default function Perfil(props) {
   const inputHandler = useCallback((e) => {
     const { name, value } = e.target;
 
+    //Verifica o name da input para atualizar o state certo
     switch (name) {
       case "nomeCompleto":
         setNomeCompleto(value);
@@ -60,6 +64,7 @@ export default function Perfil(props) {
     }
   });
 
+  //Chamada no submit do botão
   const handleSubmit = async () => {
     //Definindo variáveis
     var retorno = "";
@@ -93,8 +98,6 @@ export default function Perfil(props) {
     //Verifica se atualizou
     if (response.ok) {
       setMensagem("Usuário atualizado com sucesso");
-      //atualiza no localstoage
-      //retornar uma modal?
     } else {
       setMensagem(
         "Erro ao atualizar, certifique-se de que seus dados estão corretos."
@@ -108,6 +111,7 @@ export default function Perfil(props) {
     return (
       <section className="w-50 bg-white h-75 form-container">
         <Mensagem mensagem={mensagem} />
+
         <Form
           schema={schema}
           onSubmit={handleSubmit}
