@@ -5,6 +5,7 @@ import "../style.css";
 //Componentes da parte do meio
 import Endereços from "../FormulariosGenericos/endereços";
 import Perfil from "../FormulariosGenericos/perfil";
+import Senha from "../FormulariosGenericos/senha";
 
 //Cabeçalho e menu lateral
 import Header from "../header";
@@ -69,6 +70,7 @@ export default function HomeProfissional() {
             {/* Componentes do meio */}
             <Perfil controller={controller} user={usuario} />
             <Endereços controller={controller} user={usuario} />
+            <Senha controller={controller} user={usuario} />
 
             {/* Notificações */}
             <div id="container-notification">

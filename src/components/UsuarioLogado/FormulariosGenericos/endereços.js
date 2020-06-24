@@ -65,6 +65,17 @@ export default function Endereços(props) {
     }
   });
 
+  //Chamada no clique do botão cancelar
+  const initialState = () => {
+    setCep(user.enderecos[0].cep);
+    setRua(user.enderecos[0].rua);
+    setComplemento(user.enderecos[0].complemento);
+    setEstado(user.enderecos[0].estado);
+    setNumero(user.enderecos[0].numero);
+    setBairro(user.enderecos[0].bairro);
+    setPontoReferencia(user.enderecos[0].pontoReferencia);
+  };
+
   //Chamada no submit do botão
   const handleSubmit = async () => {
     //Definindo variáveis
@@ -108,8 +119,8 @@ export default function Endereços(props) {
     }
   };
 
-  // Caso o valor do estado de controller não for 3, não retorna nada
-  if (controller !== 3) return null;
+  // Caso o valor do estado de controller não for 4, não retorna nada
+  if (controller !== 4) return null;
   else {
     return (
       <section className="w-50 bg-white h-75 form-container">
@@ -145,7 +156,7 @@ export default function Endereços(props) {
             onChange={inputHandler}
           />
 
-          <div class="d-flex w-75 justify-content-between">
+          <div className="d-flex w-75 justify-content-between">
             <Input
               className="form-control mt-3 w-47"
               type="text"
@@ -185,8 +196,11 @@ export default function Endereços(props) {
             <button
               type="button"
               className="btn btn-blue-dark text-white w-35 text-uppercase mr-3"
+              onClick={() => {
+                initialState();
+              }}
             >
-              Mudar Senha
+              Cancelar
             </button>
             <button
               type="submit"

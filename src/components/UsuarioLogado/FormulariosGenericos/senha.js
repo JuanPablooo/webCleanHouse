@@ -1,0 +1,183 @@
+//IMPORTES
+import React, { useState, useCallback } from "react";
+import { buscarCliente, atualizarCliente } from "../../../services/clientes";
+import {
+  buscarProfissional,
+  atualizarProfissional,
+} from "../../../services/profissionais";
+import { Form, Input } from "@rocketseat/unform";
+
+//VALIDAÇÕES (TERMINAR DPS)
+
+//MENSAGEM
+const Mensagem = (props) => {
+  if (props.mensagem) {
+    return <span>{props.mensagem}</span>;
+  } else return "";
+};
+const MensagemSenha = (props) => {
+  if (props.mensagem) {
+    return <span>{props.mensagem}</span>;
+  } else return "";
+};
+const MensagemSenhaAtual = (props) => {
+  if (props.mensagem) {
+    return <span>{props.mensagem}</span>;
+  } else return "";
+};
+
+//-------------------SENHA-------------------------------
+export default function Senha(props) {
+  //Resgate das props
+  const controller = props.controller;
+  const user = props.user;
+
+  const [mensagem, setMensagem] = useState("");
+  const [mensagemSenha, setMensagemSenha] = useState("");
+  const [mensagemSenhaAtual, setMensagemSenhaAtual] = useState("");
+
+  //State usuário
+  const [senha, setSenha] = useState("");
+  const [newSenha, setNewSenha] = useState("");
+  const [confirmNewSenha, setConfirmNewSenha] = useState("");
+
+  //Chamada no evento da input, atualizando o estado do usuário
+  const inputHandler = useCallback((e) => {
+    const { name, value } = e.target;
+
+    //Verifica o name da input para atualizar o state certo
+    switch (name) {
+      case "senha":
+        setSenha(value);
+        break;
+      case "newSenha":
+        setNewSenha(value);
+        break;
+      case "confirmNewSenha":
+        setConfirmNewSenha(value);
+        break;
+    }
+  });
+
+  //Chamada no clique do botão cancelar
+  const cancelar = () => {
+    setSenha("");
+    setNewSenha("");
+    setConfirmNewSenha("");
+  };
+
+  //Chamada no submit do botão
+  const handleSubmit = async () => {
+    //Definindo variáveis
+    var retorno = "";
+    var response = "";
+    var status = true;
+    var tipo = user.tipo;
+
+    //Verifica se a nova senha não é igual a confirmar nova senha
+    if (newSenha !== confirmNewSenha) {
+      setMensagemSenha("Senhas não correspondem");
+      status = false;
+    }
+
+    //Busca cliente ou profissional
+    if (tipo === "cliente") {
+      retorno = await buscarCliente(user.id);
+    } else if (tipo === "profissional") {
+      retorno = await buscarProfissional(user.id);
+    }
+
+    const usuario = await retorno.json();
+
+    //verifica se a senha atual não é igual a senha salva no bd
+    if (usuario.usuario.senha !== senha) {
+      setMensagemSenhaAtual("Senha incorreta");
+      status = false;
+    }
+
+    //Verifica status
+    if (status) {
+      //Altera os dados
+      usuario.usuario.senha = newSenha;
+
+      // //Atualiza cliente ou profissional
+      if (tipo === "cliente") {
+        response = await atualizarCliente(usuario);
+      } else if (tipo === "profissional") {
+        response = await atualizarProfissional(usuario);
+      }
+
+      //Verifica se atualizou
+      if (response.ok) {
+        setMensagem("Usuário atualizado com sucesso");
+      } else {
+        setMensagem(
+          "Erro ao atualizar, certifique-se de que seus dados estão corretos."
+        );
+      }
+    }
+  };
+
+  // Caso o valor do estado de controller não for 3, não retorna nada
+  if (controller !== 3) return null;
+  else {
+    return (
+      <section className="w-50 bg-white h-75 form-container">
+        <Mensagem mensagem={mensagem} />
+
+        <Form
+          onSubmit={handleSubmit}
+          className="d-flex justify-content-center align-items-center
+              flex-column mt-5"
+        >
+          <MensagemSenhaAtual mensagem={mensagemSenhaAtual} />
+          <Input
+            className="form-control w-75"
+            required
+            type="text"
+            name="senha"
+            value={senha}
+            placeholder="Senha atual"
+            onChange={inputHandler}
+          />
+          <Input
+            className="form-control mt-3 w-75"
+            required
+            type="text"
+            name="newSenha"
+            value={newSenha}
+            placeholder="Nova senha"
+            onChange={inputHandler}
+          />
+          <MensagemSenha mensagem={mensagemSenha} />
+          <Input
+            className="form-control mt-3 w-75"
+            required
+            type="text"
+            value={confirmNewSenha}
+            name="confirmNewSenha"
+            placeholder="Confirmar nova senha"
+            onChange={inputHandler}
+          />
+          <div className="d-flex justify-content-center w-100 mt-4 pb-5">
+            <button
+              type="button"
+              className="btn btn-blue-dark text-white w-35 text-uppercase mr-3"
+              onClick={() => {
+                cancelar();
+              }}
+            >
+              Cancelar
+            </button>
+            <button
+              type="submit"
+              className="btn btn-green text-white w-35 text-uppercase ml-3"
+            >
+              Atualizar
+            </button>
+          </div>
+        </Form>
+      </section>
+    );
+  }
+}

@@ -45,6 +45,15 @@ export default function Menu(props) {
             handleButtonChange(3);
           }}
         >
+          SENHA
+        </button>
+        <button
+          className="btn btn-controller text-uppercase 
+                bg-blue-dark text-white mt-3 mr-3 ml-3"
+          onClick={() => {
+            handleButtonChange(4);
+          }}
+        >
           Meu endereço
         </button>
         <button
