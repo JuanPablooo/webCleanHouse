@@ -6,6 +6,10 @@ import {
   atualizarProfissional,
 } from "../../../services/profissionais";
 import { Form, Input } from "@rocketseat/unform";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ToastSuccess from "../toastSuccess";
+import ToastError from "../toastError";
 
 //VALIDAÇÕES (TERMINAR DPS)
 
@@ -50,14 +54,20 @@ export default function Senha(props) {
   });
 
   //Chamada no clique do botão cancelar
-  const cancelar = () => {
+  const initialState = () => {
     setSenha("");
     setNewSenha("");
     setConfirmNewSenha("");
   };
 
+  toast.configure();
+
   //Chamada no submit do botão
   const handleSubmit = async () => {
+    //Volta o state inicial das mensagens
+    setMensagemSenha("");
+    setMensagemSenhaAtual("");
+
     //Definindo variáveis
     var retorno = "";
     var response = "";
@@ -99,11 +109,10 @@ export default function Senha(props) {
 
       //Verifica se atualizou
       if (response.ok) {
-        setMensagem("Usuário atualizado com sucesso");
+        initialState();
+        ToastSuccess();
       } else {
-        setMensagem(
-          "Erro ao atualizar, certifique-se de que seus dados estão corretos."
-        );
+        ToastError();
       }
     }
   };
@@ -124,7 +133,7 @@ export default function Senha(props) {
           <Input
             className="form-control w-75"
             required
-            type="text"
+            type="password"
             name="senha"
             value={senha}
             placeholder="Senha atual"
@@ -134,7 +143,7 @@ export default function Senha(props) {
           <Input
             className="form-control mt-3 w-75"
             required
-            type="text"
+            type="password"
             name="newSenha"
             value={newSenha}
             placeholder="Nova senha"
@@ -143,7 +152,7 @@ export default function Senha(props) {
           <Input
             className="form-control mt-3 w-75"
             required
-            type="text"
+            type="password"
             value={confirmNewSenha}
             name="confirmNewSenha"
             placeholder="Confirmar nova senha"
@@ -154,7 +163,7 @@ export default function Senha(props) {
               type="button"
               className="btn btn-blue-dark text-white w-35 text-uppercase mr-3"
               onClick={() => {
-                cancelar();
+                initialState();
               }}
             >
               Cancelar

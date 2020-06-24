@@ -5,6 +5,7 @@ import "../style.css";
 //Componentes da parte do meio
 import Endereços from "../FormulariosGenericos/endereços";
 import Perfil from "../FormulariosGenericos/perfil";
+import Senha from "../FormulariosGenericos/senha";
 
 //Cabeçalho e menu lateral
 import Header from "../header";
@@ -18,9 +19,6 @@ import vetorNotificaçao from "../../images/Vector.png";
 export default function HomeProfissional() {
   const [foto, setFoto] = useState("");
   const [controller, setController] = useState(0);
-
-  const [mensagem, setMensagem] = useState("");
-  const [isModalVisible, setIsModalVisible] = useState(false);
 
   //Resgata os dados do usuário, converte seu nome em array
   //e substitui as aspas por nada
@@ -48,18 +46,6 @@ export default function HomeProfissional() {
     setController(estado);
   });
 
-  const onClose = () => {
-    setIsModalVisible(false);
-  };
-
-  const changeMessage = (mensagem = "") => {
-    setMensagem(mensagem);
-  };
-
-  const onOpenModal = () => {
-    setIsModalVisible(true);
-  };
-
   return (
     <>
       {/* Cabeçalho passando como props o nome e a foto do usuário */}
@@ -82,13 +68,9 @@ export default function HomeProfissional() {
             />
 
             {/* Componentes do meio */}
-            <Perfil
-              controller={controller}
-              user={usuario}
-              changeMessage={changeMessage}
-              onOpenModal={onOpenModal}
-            />
+            <Perfil controller={controller} user={usuario} />
             <Endereços controller={controller} user={usuario} />
+            <Senha controller={controller} user={usuario} />
 
             {/* Notificações */}
             <div id="container-notification">

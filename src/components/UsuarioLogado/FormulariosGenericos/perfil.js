@@ -5,8 +5,11 @@ import {
   buscarProfissional,
   atualizarProfissional,
 } from "../../../services/profissionais";
-// import Modal from "../modal";
 import { Form, Input } from "@rocketseat/unform";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ToastSuccess from "../toastSuccess";
+import ToastError from "../toastError";
 import * as Yup from "yup";
 
 //VALIDAÇÕES (TERMINAR DPS)
@@ -16,23 +19,10 @@ const schema = Yup.object().shape({
     .required("O email é obrigatório"),
 });
 
-//MENSAGEM
-const Mensagem = (props) => {
-  if (props.mensagem) {
-    return <span>{props.mensagem}</span>;
-  } else return "";
-};
-
 //-------------------PERFIL-------------------------------
 export default function Perfil(props) {
   const controller = props.controller;
   const user = props.user;
-  const changeMessage = props.changeMessage;
-  const onOpenModal = props.onOpenModal;
-
-  //State mensagens
-  // const [mensagem, setMensagem] = useState("");
-  // const [isModalVisible, setIsModalVisible] = useState(false);
 
   //State usuário
   const [nomeCompleto, setNomeCompleto] = useState(user.nomeCompleto);
@@ -79,10 +69,7 @@ export default function Perfil(props) {
     setCelular(user.celular);
   };
 
-  //Altera o state da modal
-  // const onClose = () => {
-  //   setIsModalVisible(false);
-  // };
+  toast.configure();
 
   //Chamada no submit do botão
   const handleSubmit = async () => {
@@ -117,14 +104,10 @@ export default function Perfil(props) {
 
     //Verifica se atualizou
     if (response.ok) {
-      changeMessage("Usuário atualizado com sucesso");
+      ToastSuccess();
     } else {
-      changeMessage(
-        "Erro ao atualizar, certifique-se de que seus dados estão corretos."
-      );
+      ToastError();
     }
-
-    onOpenModal();
   };
 
   // Caso o valor do estado de controller não for 2, não retorna nada
@@ -132,11 +115,6 @@ export default function Perfil(props) {
   else {
     return (
       <section className="w-50 bg-white h-75 form-container">
-        {/* <Mensagem mensagem={mensagem} /> */}
-        {/* {isModalVisible ? (
-          <Modal mensagem={mensagem} onClose={onClose} id="Modal" />
-        ) : null} */}
-
         <Form
           schema={schema}
           onSubmit={handleSubmit}

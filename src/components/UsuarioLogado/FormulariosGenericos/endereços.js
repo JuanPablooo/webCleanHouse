@@ -6,6 +6,10 @@ import {
   atualizarProfissional,
 } from "../../../services/profissionais";
 import { Form, Input } from "@rocketseat/unform";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ToastSuccess from "../toastSuccess";
+import ToastError from "../toastError";
 
 //VALIDAÇÕES (TERMINAR DPS)
 
@@ -34,6 +38,8 @@ export default function Endereços(props) {
   const [pontoReferencia, setPontoReferencia] = useState(
     user.enderecos[0].pontoReferencia
   );
+
+  toast.configure();
 
   //Chamada no evento da input, atualizando o estado do usuário
   const inputHandler = useCallback((e) => {
@@ -64,6 +70,17 @@ export default function Endereços(props) {
         break;
     }
   });
+
+  //Chamada no clique do botão cancelar
+  const initialState = () => {
+    setCep(user.enderecos[0].cep);
+    setRua(user.enderecos[0].rua);
+    setComplemento(user.enderecos[0].complemento);
+    setEstado(user.enderecos[0].estado);
+    setNumero(user.enderecos[0].numero);
+    setBairro(user.enderecos[0].bairro);
+    setPontoReferencia(user.enderecos[0].pontoReferencia);
+  };
 
   //Chamada no submit do botão
   const handleSubmit = async () => {
@@ -100,16 +117,14 @@ export default function Endereços(props) {
 
     //Verifica se atualizou
     if (response.ok) {
-      setMensagem("Usuário atualizado com sucesso");
+      ToastSuccess();
     } else {
-      setMensagem(
-        "Erro ao atualizar, certifique-se de que seus dados estão corretos."
-      );
+      ToastError();
     }
   };
 
   // Caso o valor do estado de controller não for 3, não retorna nada
-  if (controller !== 3) return null;
+  if (controller !== 4) return null;
   else {
     return (
       <section className="w-50 bg-white h-75 form-container">
@@ -145,7 +160,7 @@ export default function Endereços(props) {
             onChange={inputHandler}
           />
 
-          <div class="d-flex w-75 justify-content-between">
+          <div className="d-flex w-75 justify-content-between">
             <Input
               className="form-control mt-3 w-47"
               type="text"
@@ -185,8 +200,11 @@ export default function Endereços(props) {
             <button
               type="button"
               className="btn btn-blue-dark text-white w-35 text-uppercase mr-3"
+              onClick={() => {
+                initialState();
+              }}
             >
-              Mudar Senha
+              Cancelar
             </button>
             <button
               type="submit"
