@@ -10,6 +10,7 @@ import Senha from "../FormulariosGenericos/senha";
 //Cabeçalho e menu lateral
 import Header from "../header";
 import Menu from "../menu";
+import Modal from "../modal";
 
 //Imagens
 import fotoPerfilPadrao from "../../images/perfil.png";
@@ -19,6 +20,9 @@ import vetorNotificaçao from "../../images/Vector.png";
 export default function HomeProfissional() {
   const [foto, setFoto] = useState("");
   const [controller, setController] = useState(0);
+
+  const [mensagem, setMensagem] = useState("");
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   //Resgata os dados do usuário, converte seu nome em array
   //e substitui as aspas por nada
@@ -46,12 +50,27 @@ export default function HomeProfissional() {
     setController(estado);
   });
 
+  const onClose = () => {
+    setIsModalVisible(false);
+  };
+
+  const changeMessage = (mensagem = "") => {
+    setMensagem(mensagem);
+  };
+
+  const onOpenModal = () => {
+    setIsModalVisible(true);
+  };
+
   return (
     <>
       {/* Cabeçalho passando como props o nome e a foto do usuário */}
       <Header primeiroNome={primeiroNome} foto={foto} />
 
       <div className="container-home">
+        {isModalVisible ? (
+          <Modal mensagem={mensagem} onClose={onClose} id="Modal" />
+        ) : null}
         <div className="container">
           <div className="d-flex flex-row justify-content-between">
             {/* Menu
@@ -68,7 +87,12 @@ export default function HomeProfissional() {
             />
 
             {/* Componentes do meio */}
-            <Perfil controller={controller} user={usuario} />
+            <Perfil
+              controller={controller}
+              user={usuario}
+              changeMessage={changeMessage}
+              onOpenModal={onOpenModal}
+            />
             <Endereços controller={controller} user={usuario} />
             <Senha controller={controller} user={usuario} />
 

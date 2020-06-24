@@ -5,6 +5,7 @@ import {
   buscarProfissional,
   atualizarProfissional,
 } from "../../../services/profissionais";
+// import Modal from "../modal";
 import { Form, Input } from "@rocketseat/unform";
 import * as Yup from "yup";
 
@@ -26,8 +27,12 @@ const Mensagem = (props) => {
 export default function Perfil(props) {
   const controller = props.controller;
   const user = props.user;
+  const changeMessage = props.changeMessage;
+  const onOpenModal = props.onOpenModal;
 
-  const [mensagem, setMensagem] = useState("");
+  //State mensagens
+  // const [mensagem, setMensagem] = useState("");
+  // const [isModalVisible, setIsModalVisible] = useState(false);
 
   //State usuário
   const [nomeCompleto, setNomeCompleto] = useState(user.nomeCompleto);
@@ -64,6 +69,21 @@ export default function Perfil(props) {
     }
   });
 
+  //Chamada no clique do botão cancelar
+  const initialState = () => {
+    setNomeCompleto(user.nomeCompleto);
+    setEmail(user.email);
+    setCpf(user.cpf);
+    setDataNascimento(user.dataNascimento);
+    setTelefoneFixo(user.telefoneFixo);
+    setCelular(user.celular);
+  };
+
+  //Altera o state da modal
+  // const onClose = () => {
+  //   setIsModalVisible(false);
+  // };
+
   //Chamada no submit do botão
   const handleSubmit = async () => {
     //Definindo variáveis
@@ -97,12 +117,14 @@ export default function Perfil(props) {
 
     //Verifica se atualizou
     if (response.ok) {
-      setMensagem("Usuário atualizado com sucesso");
+      changeMessage("Usuário atualizado com sucesso");
     } else {
-      setMensagem(
+      changeMessage(
         "Erro ao atualizar, certifique-se de que seus dados estão corretos."
       );
     }
+
+    onOpenModal();
   };
 
   // Caso o valor do estado de controller não for 2, não retorna nada
@@ -110,7 +132,10 @@ export default function Perfil(props) {
   else {
     return (
       <section className="w-50 bg-white h-75 form-container">
-        <Mensagem mensagem={mensagem} />
+        {/* <Mensagem mensagem={mensagem} /> */}
+        {/* {isModalVisible ? (
+          <Modal mensagem={mensagem} onClose={onClose} id="Modal" />
+        ) : null} */}
 
         <Form
           schema={schema}
@@ -170,8 +195,11 @@ export default function Perfil(props) {
             <button
               type="button"
               className="btn btn-blue-dark text-white w-35 text-uppercase mr-3"
+              onClick={() => {
+                initialState();
+              }}
             >
-              Mudar Senha
+              cancelar
             </button>
             <button
               type="submit"

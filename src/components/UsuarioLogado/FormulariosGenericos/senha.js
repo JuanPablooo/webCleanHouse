@@ -15,16 +15,6 @@ const Mensagem = (props) => {
     return <span>{props.mensagem}</span>;
   } else return "";
 };
-const MensagemSenha = (props) => {
-  if (props.mensagem) {
-    return <span>{props.mensagem}</span>;
-  } else return "";
-};
-const MensagemSenhaAtual = (props) => {
-  if (props.mensagem) {
-    return <span>{props.mensagem}</span>;
-  } else return "";
-};
 
 //-------------------SENHA-------------------------------
 export default function Senha(props) {
@@ -130,7 +120,7 @@ export default function Senha(props) {
           className="d-flex justify-content-center align-items-center
               flex-column mt-5"
         >
-          <MensagemSenhaAtual mensagem={mensagemSenhaAtual} />
+          <Mensagem mensagem={mensagemSenhaAtual} />
           <Input
             className="form-control w-75"
             required
@@ -140,6 +130,7 @@ export default function Senha(props) {
             placeholder="Senha atual"
             onChange={inputHandler}
           />
+          <Mensagem mensagem={mensagemSenha} />
           <Input
             className="form-control mt-3 w-75"
             required
@@ -149,7 +140,6 @@ export default function Senha(props) {
             placeholder="Nova senha"
             onChange={inputHandler}
           />
-          <MensagemSenha mensagem={mensagemSenha} />
           <Input
             className="form-control mt-3 w-75"
             required
