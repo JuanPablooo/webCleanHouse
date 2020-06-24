@@ -5,12 +5,10 @@ import "../style.css";
 //Componentes da parte do meio
 import Endereços from "../FormulariosGenericos/endereços";
 import Perfil from "../FormulariosGenericos/perfil";
-import Senha from "../FormulariosGenericos/senha";
 
 //Cabeçalho e menu lateral
 import Header from "../header";
 import Menu from "../menu";
-import Modal from "../modal";
 
 //Imagens
 import fotoPerfilPadrao from "../../images/perfil.png";
@@ -68,9 +66,6 @@ export default function HomeProfissional() {
       <Header primeiroNome={primeiroNome} foto={foto} />
 
       <div className="container-home">
-        {isModalVisible ? (
-          <Modal mensagem={mensagem} onClose={onClose} id="Modal" />
-        ) : null}
         <div className="container">
           <div className="d-flex flex-row justify-content-between">
             {/* Menu
@@ -94,7 +89,6 @@ export default function HomeProfissional() {
               onOpenModal={onOpenModal}
             />
             <Endereços controller={controller} user={usuario} />
-            <Senha controller={controller} user={usuario} />
 
             {/* Notificações */}
             <div id="container-notification">
