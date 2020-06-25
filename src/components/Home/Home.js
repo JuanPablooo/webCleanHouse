@@ -133,14 +133,14 @@ export default function Home(props) {
                     SERVIÇOS
                   </h1>
                   <p className="ml-auto mr-auto col-9 text-center">
-                    Limpeza: Empregados (as) que limpam todos os cômodos da sua
+                    Limpeza: Profissionais que limpam todos os cômodos da sua
                     casa
                   </p>
                   <p className="ml-auto mr-auto col-9 text-center">
-                    Cozinha: Empregados (as) que fazem o preparo da sua comida
+                    Cozinha: Profissionais que fazem o preparo da sua comida
                   </p>
                   <p className="ml-auto mr-auto col-9 text-center mb-5">
-                    Roupas: Empregados (as) que lavam e passam suas roupas
+                    Roupas: Profissionais que lavam e passam suas roupas
                   </p>
                 </div>
               </div>
@@ -308,7 +308,7 @@ export default function Home(props) {
               <div className="col-md-6 row">
                 <div className="col-md-8 pl-3 mt-4 pt-1">
                   <p>
-                    Atualmente os nossos serviços estão disponíveis apenas para
+                    Atualmente os nossjos serviços estão disponíveis apenas para
                     a região metropolitana de São Paulo.
                   </p>
                   <a
