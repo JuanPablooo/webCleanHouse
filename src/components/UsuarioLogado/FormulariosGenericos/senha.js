@@ -11,8 +11,6 @@ import "react-toastify/dist/ReactToastify.css";
 import ToastSuccess from "../toastSuccess";
 import ToastError from "../toastError";
 
-//VALIDAÇÕES (TERMINAR DPS)
-
 //MENSAGEM
 const Mensagem = (props) => {
   if (props.mensagem) {
@@ -26,7 +24,6 @@ export default function Senha(props) {
   const controller = props.controller;
   const user = props.user;
 
-  const [mensagem, setMensagem] = useState("");
   const [mensagemSenha, setMensagemSenha] = useState("");
   const [mensagemSenhaAtual, setMensagemSenhaAtual] = useState("");
 
@@ -74,12 +71,6 @@ export default function Senha(props) {
     var status = true;
     var tipo = user.tipo;
 
-    //Verifica se a nova senha não é igual a confirmar nova senha
-    if (newSenha !== confirmNewSenha) {
-      setMensagemSenha("Senhas não correspondem");
-      status = false;
-    }
-
     //Busca cliente ou profissional
     if (tipo === "cliente") {
       retorno = await buscarCliente(user.id);
@@ -89,9 +80,21 @@ export default function Senha(props) {
 
     const usuario = await retorno.json();
 
+    //Verifica se a nova senha não é igual a confirmar nova senha
+    if (newSenha !== confirmNewSenha) {
+      setMensagemSenha("Senhas não correspondem");
+      status = false;
+    }
+
     //verifica se a senha atual não é igual a senha salva no bd
     if (usuario.usuario.senha !== senha) {
       setMensagemSenhaAtual("Senha incorreta");
+      status = false;
+    }
+
+    //verifica a quantidade de caracteres da nova senha
+    if (newSenha.length < 8) {
+      setMensagemSenha("A senha deve ter no mínimo 8 caracteres");
       status = false;
     }
 
@@ -122,14 +125,11 @@ export default function Senha(props) {
   else {
     return (
       <section className="w-50 bg-white h-75 form-container">
-        <Mensagem mensagem={mensagem} />
-
         <Form
           onSubmit={handleSubmit}
           className="d-flex justify-content-center align-items-center
               flex-column mt-5"
         >
-          <Mensagem mensagem={mensagemSenhaAtual} />
           <Input
             className="form-control w-75"
             required
@@ -139,7 +139,7 @@ export default function Senha(props) {
             placeholder="Senha atual"
             onChange={inputHandler}
           />
-          <Mensagem mensagem={mensagemSenha} />
+          <Mensagem mensagem={mensagemSenhaAtual} />
           <Input
             className="form-control mt-3 w-75"
             required
@@ -149,6 +149,7 @@ export default function Senha(props) {
             placeholder="Nova senha"
             onChange={inputHandler}
           />
+          <Mensagem mensagem={mensagemSenha} />
           <Input
             className="form-control mt-3 w-75"
             required
@@ -158,6 +159,7 @@ export default function Senha(props) {
             placeholder="Confirmar nova senha"
             onChange={inputHandler}
           />
+          <Mensagem mensagem={mensagemSenha} />
           <div className="d-flex justify-content-center w-100 mt-4 pb-5">
             <button
               type="button"

@@ -88,18 +88,12 @@ export default function HomeCliente() {
                 >
                   CHAT
                 </button>
-                <div
-                  id="notificaçao"
-                  className="d-flex flex-row bg-white w-75 ml-auto mr-auto 
-                  mt-4 justify-content-around align-items-center"
+                <button
+                  className="btn text-uppercase 
+                btn-green text-white mt-4 mr-3 ml-3"
                 >
-                  <div id="vetor-notificaçao">
-                    <img alt="icone notificação" src={vetorNotificaçao} />
-                  </div>
-                  <p className="text-uppercase text-gray">
-                    Seu pedido foi aceito!
-                  </p>
-                </div>
+                  NOVO SERVIÇO
+                </button>
               </div>
             </div>
           </div>

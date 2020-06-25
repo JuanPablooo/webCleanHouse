@@ -59,6 +59,9 @@ export default function Menu(props) {
         <button
           className="btn btn-controller text-uppercase 
                 bg-blue-dark text-white mt-3 mr-3 ml-3"
+          onClick={() => {
+            handleButtonChange(5);
+          }}
         >
           {button1}
         </button>

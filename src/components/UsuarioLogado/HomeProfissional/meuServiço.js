@@ -10,31 +10,17 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ToastSuccess from "../toastSuccess";
 import ToastError from "../toastError";
-import * as yup from "yup";
+import * as Yup from "yup";
 
 //VALIDAÇÕES (TERMINAR DPS)
-/*
- Máscaras tel, cel, cpf e data de nascimento
- Validar cpf e data de nascimento (+18)
- */
-const validations = yup.object().shape({
-  nomeCompleto: yup
-    .string()
-    .min(3, "Seu nome deve ter no minimo 3 letras")
-    .required("Preencha o campo do nome"),
-
-  email: yup
-    .string()
-    .email("Digite um email valido")
-    .required("Preencha o campo E-mail"),
-
-  telefoneFixo: yup.string(),
-
-  celular: yup.string(),
+const schema = Yup.object().shape({
+  email: Yup.string()
+    .email("Insira um email válido")
+    .required("O email é obrigatório"),
 });
 
-//-------------------PERFIL-------------------------------
-export default function Perfil(props) {
+//-------------------MEU SERVIÇO -------------------------------
+export default function MeuServiço(props) {
   const controller = props.controller;
   const user = props.user;
 
@@ -130,13 +116,14 @@ export default function Perfil(props) {
     }
   };
 
-  // Caso o valor do estado de controller não for 2, não retorna nada
-  if (controller !== 2) return null;
+  // Caso o valor do estado de controller não for 5, não retorna nada
+  if (controller !== 5) return null;
   else {
     return (
       <section className="w-50 bg-white h-75 form-container">
+        <h1>Ignorem esse formulário, estou aguardando o back</h1>
         <Form
-          schema={validations}
+          schema={schema}
           onSubmit={handleSubmit}
           className="d-flex justify-content-center align-items-center
               flex-column mt-5"
