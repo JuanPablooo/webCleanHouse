@@ -133,14 +133,14 @@ export default function Home(props) {
                     SERVIÇOS
                   </h1>
                   <p className="ml-auto mr-auto col-9 text-center">
-                    Limpeza: Profissionais que limpam todos os cômodos da sua
+                    Limpeza: profissionais que limpam todos os cômodos da sua
                     casa
                   </p>
                   <p className="ml-auto mr-auto col-9 text-center">
-                    Cozinha: Profissionais que fazem o preparo da sua comida
+                    Cozinha: profissionais que fazem o preparo da sua comida
                   </p>
                   <p className="ml-auto mr-auto col-9 text-center mb-5">
-                    Roupas: Profissionais que lavam e passam suas roupas
+                    Roupas: profissionais que lavam e passam suas roupas
                   </p>
                 </div>
               </div>
