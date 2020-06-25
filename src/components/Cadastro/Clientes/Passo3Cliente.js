@@ -57,7 +57,7 @@ export default function Passo3Cliente() {
                 CONTINUAR
               </button>
               <button
-                type="submit"
+                type="button"
                 className="btn mt-3 btn-blue-dark text-white col-md-5 col-sm-12"
               >
                 VOLTAR

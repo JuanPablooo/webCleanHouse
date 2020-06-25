@@ -102,9 +102,15 @@ export default function Perfil(props) {
       response = await atualizarProfissional(usuario);
     }
 
+    //Alterações necessárias para salvar no localstorage
+    usuario.email = usuario.usuario.email;
+    usuario.tipo = usuario.usuario.tipo;
+    delete usuario.usuario;
+
     //Verifica se atualizou
     if (response.ok) {
       ToastSuccess();
+      localStorage.setItem("user", JSON.stringify(usuario));
     } else {
       ToastError();
     }

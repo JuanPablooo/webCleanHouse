@@ -3,8 +3,9 @@ import React, { useState, useEffect, useCallback } from "react";
 import "../style.css";
 
 //Componentes da parte do meio
-import Endereços from "../FormulariosGenericos/endereços";
+import Endereços from "./endereços";
 import Perfil from "../FormulariosGenericos/perfil";
+import Senha from "../FormulariosGenericos/senha";
 import Foto from "./foto";
 import Serviços from "./serviços";
 
@@ -72,6 +73,7 @@ export default function HomeCliente() {
             <Serviços controller={controller} />
             <Foto controller={controller} />
             <Perfil controller={controller} user={usuario} />
+            <Senha controller={controller} user={usuario} />
             <Endereços controller={controller} user={usuario} />
 
             {/* Notificações */}

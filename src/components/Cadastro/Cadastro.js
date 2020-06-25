@@ -16,6 +16,19 @@ const handleSubmit = async (values) => {
     cpf: values.cpf,
     telefoneFixo: values.telefone,
     celular: values.celular,
+    residencias: [
+      {
+        endereco: {
+          cep: values.cep,
+          rua: values.rua,
+          bairro: values.bairro,
+          estado: values.estado,
+          pais: "Brasil",
+          complemento: values.complemento,
+          numero: values.numero,
+        },
+      },
+    ],
   };
   const options = {
     method: "POST",
@@ -33,7 +46,7 @@ const handleSubmit = async (values) => {
   console.log("-=-=-=-=");
   console.log(req);
   const resposta = await req.json();
-  console.log("-=-=-=-=");
+  console.log("-=-=Resposta-=-=");
   console.log(resposta);
   console.log("-=-=-=-=");
 };
