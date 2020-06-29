@@ -3,11 +3,11 @@ import React, { useState, useEffect, useCallback } from "react";
 import "../style.css";
 
 //Componentes da parte do meio
+import Inicio from "./inicio";
 import Endereços from "./endereços";
 import Perfil from "../FormulariosGenericos/perfil";
 import Senha from "../FormulariosGenericos/senha";
 import Foto from "./foto";
-import Serviços from "./serviços";
 
 //Cabeçalho e menu lateral
 import Header from "../header";
@@ -70,7 +70,7 @@ export default function HomeCliente() {
             />
 
             {/* Componentes do meio */}
-            <Serviços controller={controller} />
+            <Inicio controller={controller} />
             <Foto controller={controller} />
             <Perfil controller={controller} user={usuario} />
             <Senha controller={controller} user={usuario} />

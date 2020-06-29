@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import "../style.css";
 
 //Componentes da parte do meio
+import Inicio from "./inicio";
 import Endereço from "./endereço";
 import Perfil from "../FormulariosGenericos/perfil";
 import Senha from "../FormulariosGenericos/senha";
@@ -69,6 +70,7 @@ export default function HomeProfissional() {
             />
 
             {/* Componentes do meio */}
+            <Inicio controller={controller} />
             <Perfil controller={controller} user={usuario} />
             <Senha controller={controller} user={usuario} />
             <Endereço controller={controller} user={usuario} />
