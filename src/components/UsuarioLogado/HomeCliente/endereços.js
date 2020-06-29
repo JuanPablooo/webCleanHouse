@@ -29,6 +29,7 @@ export default function Endereços(props) {
   const [pontoReferencia, setPontoReferencia] = useState(
     user.residencias[0].endereco.pontoReferencia
   );
+  const [json, setJson] = useState("teste");
 
   toast.configure();
 
@@ -85,7 +86,11 @@ export default function Endereços(props) {
 
     const usuario = await retorno.json();
 
+    var rsData = usuario.dataNascimento.split("/");
+    const data = rsData[2] + "-" + rsData[1] + "-" + rsData[0];
+
     //Altera os dados
+    usuario.dataNascimento = data;
     usuario.residencias[0].endereco.cep = cep;
     usuario.residencias[0].endereco.rua = rua;
     usuario.residencias[0].endereco.complemento = complemento;
@@ -115,6 +120,7 @@ export default function Endereços(props) {
   else {
     return (
       <section className="w-50 bg-white h-75 form-container">
+        <p>{json}</p>
         <FormEnderecos
           handleSubmit={handleSubmit}
           inputHandler={inputHandler}

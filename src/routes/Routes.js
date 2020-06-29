@@ -27,12 +27,8 @@ const Routes = () => (
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/cadastro" component={Cadastro} />
-          <Route path="/home/cliente" component={HomeCliente} isPrivate />
-          <Route
-            path="/home/profissional"
-            component={HomeProfissional}
-            isPrivate
-          />
+          <Route path="/cliente" component={HomeCliente} isPrivate />
+          <Route path="/profissional" component={HomeProfissional} isPrivate />
           <Route component={NotFound} />
         </Switch>
       </Provider>

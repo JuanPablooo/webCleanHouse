@@ -100,6 +100,11 @@ export default function Senha(props) {
 
     //Verifica status
     if (status) {
+      var rsData = usuario.dataNascimento.split("/");
+      const data = rsData[2] + "-" + rsData[1] + "-" + rsData[0];
+
+      usuario.dataNascimento = data;
+
       //Altera os dados
       usuario.usuario.senha = newSenha;
 

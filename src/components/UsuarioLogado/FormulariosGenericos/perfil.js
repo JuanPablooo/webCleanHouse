@@ -101,11 +101,14 @@ export default function Perfil(props) {
 
     const usuario = await retorno.json();
 
+    var rsData = dataNascimento.split("/");
+    const data = rsData[2] + "-" + rsData[1] + "-" + rsData[0];
+
     //Altera os dados
     usuario.nomeCompleto = nomeCompleto;
     usuario.usuario.email = email;
     usuario.cpf = cpf;
-    usuario.dataNascimento = dataNascimento;
+    usuario.dataNascimento = data;
     usuario.telefoneFixo = telefoneFixo;
     usuario.celular = celular;
 

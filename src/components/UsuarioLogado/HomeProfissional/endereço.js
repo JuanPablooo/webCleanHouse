@@ -83,7 +83,11 @@ export default function Endereços(props) {
 
     const usuario = await retorno.json();
 
+    var rsData = usuario.dataNascimento.split("/");
+    const data = rsData[2] + "-" + rsData[1] + "-" + rsData[0];
+
     //Altera os dados
+    usuario.dataNascimento = data;
     usuario.enderecos[0].cep = cep;
     usuario.enderecos[0].rua = rua;
     usuario.enderecos[0].complemento = complemento;

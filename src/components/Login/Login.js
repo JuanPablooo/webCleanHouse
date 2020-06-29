@@ -41,8 +41,8 @@ export default function Login(props) {
       }
 
       if (response.ok) {
-        if (usuario.tipo === "cliente") props.history.push("/home/cliente");
-        else props.history.push("/home/profissional");
+        if (usuario.tipo === "cliente") props.history.push("/cliente");
+        else props.history.push("/profissional");
       }
     } catch (error) {
       console.log(error);
