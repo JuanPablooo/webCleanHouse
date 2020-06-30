@@ -1,6 +1,5 @@
 //IMPORTES
 import React, { useState, useCallback } from "react";
-import { buscarCliente, atualizarCliente } from "../../../services/clientes";
 import {
   buscarProfissional,
   atualizarProfissional,
@@ -25,82 +24,52 @@ export default function MeuServiço(props) {
   const user = props.user;
 
   //State usuário
-  const [nomeCompleto, setNomeCompleto] = useState(user.nomeCompleto);
-  const [email, setEmail] = useState(user.email);
-  const [telefoneFixo, setTelefoneFixo] = useState(user.telefoneFixo);
-  const [celular, setCelular] = useState(user.celular);
-  const [cpf, setCpf] = useState(user.cpf);
-  const [dataNascimento, setDataNascimento] = useState(user.dataNascimento);
+  const [faxina, setFaxina] = useState(user.servicos.faxina);
+  const [cozinhar, setCozinhar] = useState(user.servicos.cozinhar);
+  const [roupa, setRoupa] = useState(user.servicos.passar_lavar_roupa);
 
-  //Chamada no evento da input, atualizando o estado do usuário
+  //Chamada no clique do botão cancelar
+  const initialState = () => {
+    setFaxina(user.servicos.faxina);
+    setCozinhar(user.servicos.cozinhar);
+    setRoupa(user.servicos.passar_lavar_roupa);
+  };
+
   const inputHandler = useCallback((e) => {
-    const { name, value } = e.target;
+    const { name } = e.target;
 
-    //Verifica o name da input para atualizar o state certo
     switch (name) {
-      case "nomeCompleto":
-        setNomeCompleto(value);
+      case "faxina":
+        faxina ? setFaxina(false) : setFaxina(true);
         break;
-      case "email":
-        setEmail(value);
+      case "roupa":
+        roupa ? setRoupa(false) : setRoupa(true);
         break;
-      case "cpf":
-        setCpf(value);
-        break;
-      case "dataNascimento":
-        setDataNascimento(value);
-        break;
-      case "telefoneFixo":
-        setTelefoneFixo(value);
-        break;
-      case "celular":
-        setCelular(value);
+      case "cozinhar":
+        cozinhar ? setCozinhar(false) : setCozinhar(true);
         break;
     }
   });
 
-  //Chamada no clique do botão cancelar
-  const initialState = () => {
-    setNomeCompleto(user.nomeCompleto);
-    setEmail(user.email);
-    setCpf(user.cpf);
-    setDataNascimento(user.dataNascimento);
-    setTelefoneFixo(user.telefoneFixo);
-    setCelular(user.celular);
-  };
-
-  toast.configure();
-
   //Chamada no submit do botão
-  const handleSubmit = async () => {
-    //Definindo variáveis
-    var retorno = "";
-    var response = "";
-    var tipo = user.tipo;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    //Busca cliente ou profissional
-    if (tipo === "cliente") {
-      retorno = await buscarCliente(user.id);
-    } else if (tipo === "profissional") {
-      retorno = await buscarProfissional(user.id);
-    }
+    const retorno = await buscarProfissional(user.id);
 
     const usuario = await retorno.json();
 
+    var rsData = usuario.dataNascimento.split("/");
+    const data = rsData[2] + "-" + rsData[1] + "-" + rsData[0];
+    usuario.dataNascimento = data;
+
     //Altera os dados
-    usuario.nomeCompleto = nomeCompleto;
-    usuario.usuario.email = email;
-    usuario.cpf = cpf;
-    usuario.dataNascimento = dataNascimento;
-    usuario.telefoneFixo = telefoneFixo;
-    usuario.celular = celular;
+    usuario.servicos.passar_lavar_roupa = roupa;
+    usuario.servicos.cozinhar = cozinhar;
+    usuario.servicos.faxina = faxina;
 
     //Atualiza cliente ou profissional
-    if (tipo === "cliente") {
-      response = await atualizarCliente(usuario);
-    } else if (tipo === "profissional") {
-      response = await atualizarProfissional(usuario);
-    }
+    const response = await atualizarProfissional(usuario);
 
     //Alterações necessárias para salvar no localstorage
     usuario.email = usuario.usuario.email;
@@ -121,61 +90,148 @@ export default function MeuServiço(props) {
   else {
     return (
       <section className="w-50 bg-white h-75 form-container">
-        <h1>Ignorem esse formulário, estou aguardando o back</h1>
-        <Form
-          schema={schema}
-          onSubmit={handleSubmit}
-          className="d-flex justify-content-center align-items-center
-              flex-column mt-5"
-        >
-          <Input
-            className="form-control w-75"
-            type="text"
-            name="nomeCompleto"
-            value={nomeCompleto}
-            placeholder="nome completo"
-            onChange={inputHandler}
-          />
-          <Input
-            className="form-control mt-3 w-75"
-            type="email"
-            value={email}
-            name="email"
-            placeholder="email"
-            onChange={inputHandler}
-          />
-          <Input
-            className="form-control mt-3 w-75"
-            type="text"
-            value={cpf}
-            name="cpf"
-            placeholder="cpf"
-            onChange={inputHandler}
-          />
-          <Input
-            className="form-control mt-3 w-75"
-            type="text"
-            value={dataNascimento}
-            name="dataNascimento"
-            placeholder="data de nascimento"
-            onChange={inputHandler}
-          />
-          <Input
-            className="form-control mt-3 w-75"
-            type="text"
-            value={telefoneFixo !== null ? telefoneFixo : ""}
-            name="telefoneFixo"
-            placeholder="telefone"
-            onChange={inputHandler}
-          />
-          <Input
-            className="form-control mt-3 w-75"
-            type="text"
-            value={celular}
-            name="celular"
-            placeholder="celular"
-            onChange={inputHandler}
-          />
+        <form onSubmit={handleSubmit}>
+          <div className="row">
+            <div className="col-md-6 text-uppercase pl-5">
+              <h1 className="mt-5 titulo-medio">SERVIÇOS</h1>
+              <div className="form-check">
+                {faxina ? (
+                  <input
+                    name="faxina"
+                    className="form-check-input"
+                    type="checkbox"
+                    defaultChecked
+                    onChange={inputHandler}
+                    value="true"
+                    id="Check1"
+                  />
+                ) : (
+                  <input
+                    name="faxina"
+                    className="form-check-input"
+                    type="checkbox"
+                    onChange={inputHandler}
+                    value="true"
+                    id="Check1"
+                  />
+                )}
+                <label className="form-check-label" htmlFor="Check1">
+                  faxina
+                </label>
+              </div>
+              <div className="form-check">
+                {roupa ? (
+                  <input
+                    name="roupa"
+                    className="form-check-input"
+                    type="checkbox"
+                    onChange={inputHandler}
+                    defaultChecked
+                    value="true"
+                    id="Check2"
+                  />
+                ) : (
+                  <input
+                    name="roupa"
+                    className="form-check-input"
+                    type="checkbox"
+                    onChange={inputHandler}
+                    value="true"
+                    id="Check2"
+                  />
+                )}
+
+                <label className="form-check-label" htmlFor="Check2">
+                  lavar e passar roupa
+                </label>
+              </div>
+              <div className="form-check">
+                {cozinhar ? (
+                  <input
+                    name="cozinhar"
+                    className="form-check-input"
+                    type="checkbox"
+                    onChange={inputHandler}
+                    defaultChecked
+                    value="true"
+                    id="Check3"
+                  />
+                ) : (
+                  <input
+                    name="cozinhar"
+                    className="form-check-input"
+                    type="checkbox"
+                    onChange={inputHandler}
+                    value="true"
+                    id="Check3"
+                  />
+                )}
+
+                <label className="form-check-label" htmlFor="Check3">
+                  cozinhar
+                </label>
+              </div>
+
+              <h1 className="mt-4 titulo-medio">SUB-REGIÕES </h1>
+              {/* <div className="form-check">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  value="NORTE"
+                  id="defaultCheck1"
+                />
+                <label className="form-check-label" htmlFor="defaultCheck1">
+                  Norte
+                </label>
+              </div>
+              <div className="form-check">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  value="LESTE"
+                  id="defaultCheck1"
+                />
+                <label className="form-check-label" htmlFor="defaultCheck1">
+                  Leste
+                </label>
+              </div>
+              <div className="form-check">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  value="SUDESTE"
+                  id="defaultCheck1"
+                />
+                <label className="form-check-label" htmlFor="defaultCheck1">
+                  Sudeste
+                </label>
+              </div>
+              <div className="form-check">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  value="SUDOESTE"
+                  id="defaultCheck1"
+                />
+                <label className="form-check-label" htmlFor="defaultCheck1">
+                  Sudoeste
+                </label>
+              </div>
+              <div className="form-check">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  value="OESTE"
+                  id="defaultCheck1"
+                />
+                <label className="form-check-label" htmlFor="defaultCheck1">
+                  Oeste
+                </label>
+              </div> */}
+            </div>
+            <div className="col-md-6"></div>
+          </div>
+
           <div className="d-flex justify-content-center w-100 mt-4 pb-5">
             <button
               type="button"
@@ -193,7 +249,7 @@ export default function MeuServiço(props) {
               Atualizar
             </button>
           </div>
-        </Form>
+        </form>
       </section>
     );
   }
