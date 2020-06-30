@@ -14,7 +14,7 @@ export default function Home(props) {
                 <div className="">
                   <h1 className="display-4">Descomplique a sua vida</h1>
                   <p className="mt-4 lead ml-3">
-                    Economize seu tempo! A clean house é a plataforma mais
+                    Economize seu tempo! A Clean House é a plataforma mais
                     prática de encontrar profissionais de confiança para cuidar
                     da sua casa.
                   </p>
@@ -48,7 +48,7 @@ export default function Home(props) {
                 <div className="text-gray mt-4">
                   <p>
                     Criada no ano de 2020 por um time de sócios desenvolvedores,
-                    a CleanHouse é o caminho certo para aqueles que buscam
+                    a Clean House é o caminho certo para aqueles que buscam
                     facilidade e confiabilidade.
                   </p>
                   <p>
