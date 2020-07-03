@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ToastSuccess from "../toastSuccess";
 import ToastError from "../toastError";
+import Endereco from "./endereco";
 import FormEnderecos from "../FormulariosGenericos/endereços";
 
 //VALIDAÇÕES (TERMINAR DPS)
@@ -17,19 +18,40 @@ export default function Endereços(props) {
   const controller = props.controller;
   const user = props.user;
 
+  var userLocalhost = localStorage.getItem("user");
+  userLocalhost = JSON.parse(userLocalhost);
+
+  //ETAPA
+  const [etapa, setEtapa] = useState(0);
+  //ETAPA
+
   //State usuário
-  const [cep, setCep] = useState(user.residencias[0].endereco.cep);
-  const [rua, setRua] = useState(user.residencias[0].endereco.rua);
-  const [numero, setNumero] = useState(user.residencias[0].endereco.numero);
-  const [bairro, setBairro] = useState(user.residencias[0].endereco.bairro);
-  const [complemento, setComplemento] = useState(
-    user.residencias[0].endereco.complemento
-  );
-  const [estado, setEstado] = useState(user.residencias[0].endereco.estado);
-  const [pontoReferencia, setPontoReferencia] = useState(
-    user.residencias[0].endereco.pontoReferencia
-  );
-  const [json, setJson] = useState("teste");
+  const [cep, setCep] = useState("");
+  const [rua, setRua] = useState("");
+  const [numero, setNumero] = useState("");
+  const [bairro, setBairro] = useState("");
+  const [complemento, setComplemento] = useState("");
+  const [estado, setEstado] = useState("");
+  const [pontoReferencia, setPontoReferencia] = useState("");
+  const [id, setId] = useState("");
+
+  const etapaHandler = (residencia, id) => {
+    //Muda etapa
+    setEtapa(1);
+
+    setId(id);
+    setCep(residencia.endereco.cep);
+    setRua(residencia.endereco.rua);
+    setNumero(residencia.endereco.numero);
+    setBairro(residencia.endereco.bairro);
+    setComplemento(residencia.endereco.complemento);
+    setEstado(residencia.endereco.estado);
+    setPontoReferencia(residencia.endereco.pontoReferencia);
+  };
+
+  const zeraEtapa = () => {
+    setEtapa(0);
+  };
 
   toast.configure();
 
@@ -63,25 +85,13 @@ export default function Endereços(props) {
     }
   });
 
-  //Chamada no clique do botão cancelar
-  const initialState = () => {
-    setCep(user.residencias[0].endereco.cep);
-    setRua(user.residencias[0].endereco.rua);
-    setComplemento(user.residencias[0].endereco.complemento);
-    setEstado(user.residencias[0].endereco.estado);
-    setNumero(user.residencias[0].endereco.numero);
-    setBairro(user.residencias[0].endereco.bairro);
-    setPontoReferencia(user.residencias[0].endereco.pontoReferencia);
-  };
-
   //Chamada no submit do botão
-  const handleSubmit = async () => {
+  const handleSubmit = async (id) => {
     //Definindo variáveis
     var retorno = "";
     var response = "";
-    var tipo = user.tipo;
 
-    //Busca cliente ou profissional
+    //Busca cliente
     retorno = await buscarCliente(user.id);
 
     const usuario = await retorno.json();
@@ -89,14 +99,22 @@ export default function Endereços(props) {
     var rsData = usuario.dataNascimento.split("/");
     const data = rsData[2] + "-" + rsData[1] + "-" + rsData[0];
 
-    //Altera os dados
+    // //Altera os dados
     usuario.dataNascimento = data;
-    usuario.residencias[0].endereco.cep = cep;
-    usuario.residencias[0].endereco.rua = rua;
-    usuario.residencias[0].endereco.complemento = complemento;
-    usuario.residencias[0].endereco.estado = estado;
-    usuario.residencias[0].endereco.numero = numero;
-    usuario.residencias[0].endereco.bairro = bairro;
+
+    const residencias = usuario.residencias;
+
+    //Laço para veririficar qual indice de residencias deve ser atualizado
+    for (var i = 0; i < residencias.length; i++) {
+      if (usuario.residencias[i].id === id) {
+        usuario.residencias[i].endereco.cep = cep;
+        usuario.residencias[i].endereco.rua = rua;
+        usuario.residencias[i].endereco.complemento = complemento;
+        usuario.residencias[i].endereco.estado = estado;
+        usuario.residencias[i].endereco.numero = numero;
+        usuario.residencias[i].endereco.bairro = bairro;
+      }
+    }
 
     // //Atualiza cliente ou profissional
     response = await atualizarCliente(usuario);
@@ -110,6 +128,7 @@ export default function Endereços(props) {
     if (response.ok) {
       ToastSuccess();
       localStorage.setItem("user", JSON.stringify(usuario));
+      zeraEtapa();
     } else {
       ToastError();
     }
@@ -120,19 +139,32 @@ export default function Endereços(props) {
   else {
     return (
       <section className="w-50 bg-white h-75 form-container">
-        <p>{json}</p>
-        <FormEnderecos
-          handleSubmit={handleSubmit}
-          inputHandler={inputHandler}
-          initialState={initialState}
-          cep={cep}
-          rua={rua}
-          bairro={bairro}
-          numero={numero}
-          estado={estado}
-          pontoReferencia={pontoReferencia}
-          complemento={complemento}
-        />
+        <h1 className="text-center"> Meus Endereços </h1>
+        {etapa === 0 ? (
+          userLocalhost.residencias.map((residencia) => {
+            return (
+              <Endereco
+                key={residencia.id}
+                residencia={residencia}
+                etapaHandler={etapaHandler}
+              />
+            );
+          })
+        ) : (
+          <FormEnderecos
+            handleSubmit={handleSubmit}
+            inputHandler={inputHandler}
+            zeraEtapa={zeraEtapa}
+            cep={cep}
+            rua={rua}
+            id={id}
+            bairro={bairro}
+            numero={numero}
+            estado={estado}
+            pontoReferencia={pontoReferencia}
+            complemento={complemento}
+          />
+        )}
       </section>
     );
   }

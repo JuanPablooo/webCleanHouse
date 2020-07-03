@@ -4,7 +4,7 @@ import { Form, Input } from "@rocketseat/unform";
 function FormEnderecos(props) {
   const handleSubmit = props.handleSubmit;
   const inputHandler = props.inputHandler;
-  const initialState = props.initialState;
+  const zeraEtapa = props.zeraEtapa;
   const cep = props.cep;
   const rua = props.rua;
   const bairro = props.bairro;
@@ -13,12 +13,15 @@ function FormEnderecos(props) {
   const complemento = props.complemento;
   const pontoReferencia = props.pontoReferencia;
 
+  const id = props.id;
+
   return (
     <Form
-      onSubmit={handleSubmit}
+      onSubmit={() => handleSubmit(id)}
       className="d-flex justify-content-center align-items-center
               flex-column mt-5"
     >
+      <p className="text-center"> Os campos com * são obrigatórios </p>
       <Input
         className="form-control w-75"
         type="text"
@@ -85,7 +88,7 @@ function FormEnderecos(props) {
           type="button"
           className="btn btn-blue-dark text-white w-35 text-uppercase mr-3"
           onClick={() => {
-            initialState();
+            zeraEtapa();
           }}
         >
           Cancelar
