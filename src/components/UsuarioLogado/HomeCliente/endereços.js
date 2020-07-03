@@ -33,7 +33,8 @@ export default function Endereços(props) {
   const [complemento, setComplemento] = useState("");
   const [estado, setEstado] = useState("");
   const [pontoReferencia, setPontoReferencia] = useState("");
-  const [id, setId] = useState("");
+  const [cidade, setCidade] = useState("");
+  const [id, setId] = useState(0);
 
   const etapaHandler = (residencia, id) => {
     //Muda etapa
@@ -47,6 +48,7 @@ export default function Endereços(props) {
     setComplemento(residencia.endereco.complemento);
     setEstado(residencia.endereco.estado);
     setPontoReferencia(residencia.endereco.pontoReferencia);
+    setCidade(residencia.endereco.cidade);
   };
 
   const zeraEtapa = () => {
@@ -82,6 +84,9 @@ export default function Endereços(props) {
       case "pontoReferencia":
         setPontoReferencia(value);
         break;
+      case "cidade":
+        setCidade(value);
+        break;
     }
   });
 
@@ -102,17 +107,37 @@ export default function Endereços(props) {
     // //Altera os dados
     usuario.dataNascimento = data;
 
-    const residencias = usuario.residencias;
+    if (id === 0) {
+      const novoEndereco = {
+        quantidadeQuartos: 0,
+        endereco: {
+          cep: cep,
+          rua: rua,
+          bairro: bairro,
+          estado: estado,
+          cidade: cidade,
+          pais: "Brasil",
+          complemento: complemento,
+          pontoReferencia: pontoReferencia,
+          numero: numero,
+        },
+      };
 
-    //Laço para veririficar qual indice de residencias deve ser atualizado
-    for (var i = 0; i < residencias.length; i++) {
-      if (usuario.residencias[i].id === id) {
-        usuario.residencias[i].endereco.cep = cep;
-        usuario.residencias[i].endereco.rua = rua;
-        usuario.residencias[i].endereco.complemento = complemento;
-        usuario.residencias[i].endereco.estado = estado;
-        usuario.residencias[i].endereco.numero = numero;
-        usuario.residencias[i].endereco.bairro = bairro;
+      usuario.residencias = [...usuario.residencias, novoEndereco];
+    } else {
+      const residencias = usuario.residencias;
+
+      //Laço para veririficar qual indice de residencias deve ser atualizado
+      for (var i = 0; i < residencias.length; i++) {
+        if (usuario.residencias[i].id === id) {
+          usuario.residencias[i].endereco.cep = cep;
+          usuario.residencias[i].endereco.rua = rua;
+          usuario.residencias[i].endereco.complemento = complemento;
+          usuario.residencias[i].endereco.estado = estado;
+          usuario.residencias[i].endereco.numero = numero;
+          usuario.residencias[i].endereco.bairro = bairro;
+          usuario.residencias[i].endereco.cidade = cidade;
+        }
       }
     }
 
@@ -139,7 +164,7 @@ export default function Endereços(props) {
   else {
     return (
       <section className="w-50 bg-white h-75 form-container">
-        <h1 className="text-center"> Meus Endereços </h1>
+        <h1 className="text-center mt-4"> Meus Endereços </h1>
         {etapa === 0 ? (
           userLocalhost.residencias.map((residencia) => {
             return (
@@ -150,6 +175,22 @@ export default function Endereços(props) {
               />
             );
           })
+        ) : etapa === 1 ? (
+          <FormEnderecos
+            handleSubmit={handleSubmit}
+            inputHandler={inputHandler}
+            zeraEtapa={zeraEtapa}
+            cep={cep}
+            rua={rua}
+            id={id}
+            cidade={cidade}
+            bairro={bairro}
+            numero={numero}
+            estado={estado}
+            pontoReferencia={pontoReferencia}
+            complemento={complemento}
+            botao={"ATUALIZAR"}
+          />
         ) : (
           <FormEnderecos
             handleSubmit={handleSubmit}
@@ -158,12 +199,26 @@ export default function Endereços(props) {
             cep={cep}
             rua={rua}
             id={id}
+            cidade={cidade}
             bairro={bairro}
             numero={numero}
             estado={estado}
             pontoReferencia={pontoReferencia}
             complemento={complemento}
+            botao={"SALVAR"}
           />
+        )}
+
+        {etapa === 0 ? (
+          <button
+            type="button"
+            onClick={() => setEtapa(2)}
+            className="btn btn-blue-dark text-white w-35 text-uppercase ml-5 mb-4"
+          >
+            Adicionar
+          </button>
+        ) : (
+          <span></span>
         )}
       </section>
     );

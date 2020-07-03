@@ -12,22 +12,24 @@ function FormEnderecos(props) {
   const estado = props.estado;
   const complemento = props.complemento;
   const pontoReferencia = props.pontoReferencia;
+  const cidade = props.cidade;
 
   const id = props.id;
+  const botao = props.botao;
 
   return (
     <Form
       onSubmit={() => handleSubmit(id)}
       className="d-flex justify-content-center align-items-center
-              flex-column mt-5"
+              flex-column "
     >
-      <p className="text-center"> Os campos com * são obrigatórios </p>
       <Input
         className="form-control w-75"
         type="text"
         name="cep"
         value={cep}
         placeholder="CEP"
+        required
         onChange={inputHandler}
       />
       <Input
@@ -36,6 +38,7 @@ function FormEnderecos(props) {
         value={rua}
         name="rua"
         placeholder="Rua"
+        required
         onChange={inputHandler}
       />
       <Input
@@ -44,6 +47,16 @@ function FormEnderecos(props) {
         value={bairro}
         name="bairro"
         placeholder="Bairro"
+        required
+        onChange={inputHandler}
+      />
+      <Input
+        className="form-control mt-3 w-75"
+        type="text"
+        value={cidade}
+        name="cidade"
+        placeholder="Cidade"
+        required
         onChange={inputHandler}
       />
 
@@ -54,6 +67,7 @@ function FormEnderecos(props) {
           value={numero}
           name="numero"
           placeholder="Numero"
+          required
           onChange={inputHandler}
         />
 
@@ -63,6 +77,7 @@ function FormEnderecos(props) {
           value={estado}
           name="estado"
           placeholder="Estado"
+          required
           onChange={inputHandler}
         />
       </div>
@@ -97,7 +112,7 @@ function FormEnderecos(props) {
           type="submit"
           className="btn btn-green text-white w-35 text-uppercase ml-3"
         >
-          Atualizar
+          {botao}
         </button>
       </div>
     </Form>
