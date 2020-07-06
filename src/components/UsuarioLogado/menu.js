@@ -11,6 +11,7 @@ export default function Menu(props) {
   //Botões que mudam de acordo com o tipo do usuário
   const button1 = props.button1;
   const button2 = props.button2;
+  const button3 = props.button3;
 
   return (
     <div id="container-controller">
@@ -75,7 +76,7 @@ export default function Menu(props) {
           className="btn btn-controller text-uppercase 
                 bg-blue-dark text-white mt-3 mr-3 ml-3"
         >
-          Histórico
+          {button3}
         </button>
       </div>
     </div>

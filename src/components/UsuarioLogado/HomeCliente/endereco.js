@@ -4,6 +4,8 @@ function Endereco(props) {
   const cep = props.residencia.endereco.cep;
   const numero = props.residencia.endereco.numero;
   const mudaEtapa = props.etapaHandler;
+  const deletaEndereco = props.deletaEndereco;
+  const localStorageHandler = props.localStorageHandler;
 
   const residencia = props.residencia;
 
@@ -17,6 +19,14 @@ function Endereco(props) {
         onClick={() => mudaEtapa(residencia, residencia.id)}
       >
         EDITAR
+      </button>
+      <button
+        className="btn btn-green text-white"
+        onClick={() =>
+          deletaEndereco(residencia.id, props.user, localStorageHandler)
+        }
+      >
+        EXCLUIR
       </button>
     </div>
   );

@@ -29,6 +29,16 @@
   border-radius: 45px;
 }
 
+.foto-xgrande,
+.foto-xgrande img {
+  width: 230px;
+  height: 230px;
+}
+
+.foto-xgrande {
+  border-radius: 90px;
+}
+
 #container-controller {
   width: 250px;
   height: 100vh;

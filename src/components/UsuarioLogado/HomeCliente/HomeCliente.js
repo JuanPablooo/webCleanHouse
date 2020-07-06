@@ -67,11 +67,12 @@ export default function HomeCliente() {
               foto={foto}
               button1={"Pagamento"}
               button2={"minhas residências"}
+              button3={"meus pedidos"}
             />
 
             {/* Componentes do meio */}
             <Inicio controller={controller} />
-            <Foto controller={controller} />
+            <Foto controller={controller} user={usuario} foto={foto} />
             <Perfil controller={controller} user={usuario} />
             <Senha controller={controller} user={usuario} />
             <Endereços controller={controller} user={usuario} />
@@ -86,7 +87,7 @@ export default function HomeCliente() {
                   className="btn btn-controller text-uppercase 
                 bg-blue-dark text-white mt-4 mr-3 ml-3"
                 >
-                  CHAT
+                  BAIXAR O APP
                 </button>
                 <button
                   className="btn text-uppercase 

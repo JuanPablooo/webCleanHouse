@@ -8,6 +8,7 @@ import Endereço from "./endereço";
 import Perfil from "../FormulariosGenericos/perfil";
 import Senha from "../FormulariosGenericos/senha";
 import MeuServiço from "./meuServiço";
+import FotoVideo from "./fotoVideo";
 
 //Cabeçalho e menu lateral
 import Header from "../header";
@@ -67,10 +68,12 @@ export default function HomeProfissional() {
               foto={foto}
               button1={"Meu serviço"}
               button2={"Agenda"}
+              button3={"Meus serviços"}
             />
 
             {/* Componentes do meio */}
             <Inicio controller={controller} />
+            <FotoVideo controller={controller} user={usuario} foto={foto} />
             <Perfil controller={controller} user={usuario} />
             <Senha controller={controller} user={usuario} />
             <Endereço controller={controller} user={usuario} />
@@ -86,7 +89,7 @@ export default function HomeProfissional() {
                   className="btn btn-controller text-uppercase 
                 bg-blue-dark text-white mt-4 mr-3 ml-3"
                 >
-                  CHAT
+                  BAIXAR O APP
                 </button>
                 <div
                   id="notificaçao"

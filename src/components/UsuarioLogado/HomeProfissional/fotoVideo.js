@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function Foto(props) {
+export default function FotoVideo(props) {
   const controller = props.controller;
   const user = props.user;
 

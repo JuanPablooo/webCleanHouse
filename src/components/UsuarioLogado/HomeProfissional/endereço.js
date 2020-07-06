@@ -127,6 +127,7 @@ export default function Endereços(props) {
           bairro={bairro}
           numero={numero}
           estado={estado}
+          botap={"ATUALIZAR"}
           pontoReferencia={pontoReferencia}
           complemento={complemento}
         />

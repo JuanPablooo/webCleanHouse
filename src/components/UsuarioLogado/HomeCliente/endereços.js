@@ -9,6 +9,7 @@ import ToastSuccess from "../toastSuccess";
 import ToastError from "../toastError";
 import Endereco from "./endereco";
 import FormEnderecos from "../FormulariosGenericos/endereços";
+import deletaEndereco from "./deletaEndereco";
 
 //VALIDAÇÕES (TERMINAR DPS)
 
@@ -17,6 +18,14 @@ export default function Endereços(props) {
   //Resgate das props
   const controller = props.controller;
   const user = props.user;
+
+  const [userLocalstorage, setUserLocalstorage] = useState(
+    JSON.parse(localStorage.getItem("user"))
+  );
+
+  const localStorageHandler = (usuario) => {
+    setUserLocalstorage(usuario);
+  };
 
   var userLocalhost = localStorage.getItem("user");
   userLocalhost = JSON.parse(userLocalhost);
@@ -35,6 +44,18 @@ export default function Endereços(props) {
   const [pontoReferencia, setPontoReferencia] = useState("");
   const [cidade, setCidade] = useState("");
   const [id, setId] = useState(0);
+
+  const initialState = () => {
+    setCep("");
+    setRua("");
+    setNumero("");
+    setBairro("");
+    setComplemento("");
+    setEstado("");
+    setPontoReferencia("");
+    setCidade("");
+    setId(0);
+  };
 
   const etapaHandler = (residencia, id) => {
     //Muda etapa
@@ -101,12 +122,14 @@ export default function Endereços(props) {
 
     const usuario = await retorno.json();
 
+    //Muda a data para formato americano
     var rsData = usuario.dataNascimento.split("/");
     const data = rsData[2] + "-" + rsData[1] + "-" + rsData[0];
 
     // //Altera os dados
     usuario.dataNascimento = data;
 
+    //Caso id seja 0,cria um novo endereço
     if (id === 0) {
       const novoEndereco = {
         quantidadeQuartos: 0,
@@ -122,9 +145,11 @@ export default function Endereços(props) {
           numero: numero,
         },
       };
-
+      //Salva em residências o que já tinha + novo endereço
       usuario.residencias = [...usuario.residencias, novoEndereco];
-    } else {
+    }
+    //Caso o id seja diferente de zero, edita um endereço
+    else {
       const residencias = usuario.residencias;
 
       //Laço para veririficar qual indice de residencias deve ser atualizado
@@ -141,7 +166,7 @@ export default function Endereços(props) {
       }
     }
 
-    // //Atualiza cliente ou profissional
+    //Atualiza cliente
     response = await atualizarCliente(usuario);
 
     //Alterações necessárias para salvar no localstorage
@@ -154,6 +179,7 @@ export default function Endereços(props) {
       ToastSuccess();
       localStorage.setItem("user", JSON.stringify(usuario));
       zeraEtapa();
+      initialState();
     } else {
       ToastError();
     }
@@ -166,12 +192,15 @@ export default function Endereços(props) {
       <section className="w-50 bg-white h-75 form-container">
         <h1 className="text-center mt-4"> Meus Endereços </h1>
         {etapa === 0 ? (
-          userLocalhost.residencias.map((residencia) => {
+          userLocalstorage.residencias.map((residencia) => {
             return (
               <Endereco
                 key={residencia.id}
                 residencia={residencia}
                 etapaHandler={etapaHandler}
+                deletaEndereco={deletaEndereco}
+                user={user}
+                localStorageHandler={localStorageHandler}
               />
             );
           })
