@@ -27,6 +27,10 @@ export default function HomeCliente() {
   const nomeUsuario = JSON.stringify(usuario.nomeCompleto).split(" ");
   const primeiroNome = nomeUsuario[0].replace('"', "");
 
+  const initialController = () => {
+    setController(0);
+  };
+
   //Executado assim que o componente é renderizado
   useEffect(() => {
     //Verifca se a foto está nula
@@ -68,7 +72,11 @@ export default function HomeCliente() {
                 className="d-flex align-items-center"
               >
                 <div id="logo" className="ml-auto mr-auto">
-                  <img src={logo} alt="logotipo da empresa" />
+                  <img
+                    src={logo}
+                    alt="logotipo da empresa"
+                    onClick={() => initialController()}
+                  />
                 </div>
                 <button
                   className="btn btn-controller text-uppercase 
@@ -96,7 +104,11 @@ export default function HomeCliente() {
             <div id="container-notification" className="d-none d-lg-block">
               <div className="d-flex   flex-column">
                 <div id="logo" className="ml-auto mr-auto">
-                  <img src={logo} alt="logotipo da empresa" />
+                  <img
+                    src={logo}
+                    alt="logotipo da empresa"
+                    onClick={() => initialController()}
+                  />
                 </div>
                 <button
                   className="btn btn-controller text-uppercase 
