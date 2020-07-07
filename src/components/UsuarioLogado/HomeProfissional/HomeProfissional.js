@@ -16,7 +16,6 @@ import Header from "../header";
 //Imagens
 import fotoPerfilPadrao from "../../images/perfil.png";
 import logo from "../../images/logo.png";
-import vetorNotificaçao from "../../images/Vector.png";
 
 export default function HomeProfissional() {
   const [foto, setFoto] = useState("");

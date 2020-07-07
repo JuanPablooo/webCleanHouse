@@ -24,6 +24,7 @@ export default function Endereços(props) {
   const [rua, setRua] = useState(user.enderecos[0].rua);
   const [numero, setNumero] = useState(user.enderecos[0].numero);
   const [bairro, setBairro] = useState(user.enderecos[0].bairro);
+  const [cidade, setCidade] = useState(user.enderecos[0].cidade);
   const [complemento, setComplemento] = useState(user.enderecos[0].complemento);
   const [estado, setEstado] = useState(user.enderecos[0].estado);
   const [pontoReferencia, setPontoReferencia] = useState(
@@ -59,6 +60,9 @@ export default function Endereços(props) {
       case "pontoReferencia":
         setPontoReferencia(value);
         break;
+      case "cidade":
+        setCidade(value);
+        break;
     }
   });
 
@@ -71,6 +75,7 @@ export default function Endereços(props) {
     setNumero(user.enderecos[0].numero);
     setBairro(user.enderecos[0].bairro);
     setPontoReferencia(user.enderecos[0].pontoReferencia);
+    setCidade(user.enderecos[0].cidade);
   };
 
   //Chamada no submit do botão
@@ -94,6 +99,7 @@ export default function Endereços(props) {
     usuario.enderecos[0].estado = estado;
     usuario.enderecos[0].numero = numero;
     usuario.enderecos[0].bairro = bairro;
+    usuario.enderecos[0].cidade = cidade;
     usuario.enderecos[0].pontoReferencia = pontoReferencia;
 
     // //Atualiza cliente ou profissional
@@ -124,10 +130,11 @@ export default function Endereços(props) {
           initialState={initialState}
           cep={cep}
           rua={rua}
+          cidade={cidade}
           bairro={bairro}
           numero={numero}
           estado={estado}
-          botap={"ATUALIZAR"}
+          botao={"ATUALIZAR"}
           pontoReferencia={pontoReferencia}
           complemento={complemento}
         />

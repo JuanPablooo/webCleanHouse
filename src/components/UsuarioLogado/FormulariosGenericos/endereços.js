@@ -21,7 +21,7 @@ function FormEnderecos(props) {
     <Form
       onSubmit={() => handleSubmit(id)}
       className="d-flex justify-content-center align-items-center
-              flex-column "
+              flex-column mt-5"
     >
       <Input
         className="form-control w-75"

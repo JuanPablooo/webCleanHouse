@@ -23,12 +23,11 @@ export default function Endereços(props) {
     JSON.parse(localStorage.getItem("user"))
   );
 
+  console.log(userLocalstorage.residencias);
+
   const localStorageHandler = (usuario) => {
     setUserLocalstorage(usuario);
   };
-
-  var userLocalhost = localStorage.getItem("user");
-  userLocalhost = JSON.parse(userLocalhost);
 
   //ETAPA
   const [etapa, setEtapa] = useState(0);
@@ -74,6 +73,7 @@ export default function Endereços(props) {
 
   const zeraEtapa = () => {
     setEtapa(0);
+    initialState();
   };
 
   toast.configure();
@@ -178,8 +178,9 @@ export default function Endereços(props) {
     if (response.ok) {
       ToastSuccess();
       localStorage.setItem("user", JSON.stringify(usuario));
+      var usuarioAtt = JSON.parse(localStorage.getItem("user"));
+      localStorageHandler(usuarioAtt);
       zeraEtapa();
-      initialState();
     } else {
       ToastError();
     }
