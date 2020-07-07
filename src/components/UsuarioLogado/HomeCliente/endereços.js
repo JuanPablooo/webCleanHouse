@@ -189,7 +189,7 @@ export default function Endereços(props) {
   if (controller !== 4) return null;
   else {
     return (
-      <section className="w-50 bg-white h-75 form-container">
+      <section className="bg-white">
         <h1 className="text-center mt-4"> Meus Endereços </h1>
         {etapa === 0 ? (
           userLocalstorage.residencias.map((residencia) => {

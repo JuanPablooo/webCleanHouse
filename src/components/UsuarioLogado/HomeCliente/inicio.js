@@ -12,7 +12,7 @@ export default function Inicio(props) {
   if (controller !== 0) return null;
   else {
     return (
-      <section className="w-50 bg-white h-75 form-container">
+      <section className="bg-white">
         <div className="d-flex justify-content-around pt-3">
           <h1 className="display-4 text-center mb-1 mt-1 text-uppercase">
             Serviços

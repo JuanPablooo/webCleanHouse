@@ -12,7 +12,6 @@ import FotoVideo from "./fotoVideo";
 
 //Cabeçalho e menu lateral
 import Header from "../header";
-import Menu from "../menu";
 
 //Imagens
 import fotoPerfilPadrao from "../../images/perfil.png";
@@ -52,35 +51,45 @@ export default function HomeProfissional() {
   return (
     <>
       {/* Cabeçalho passando como props o nome e a foto do usuário */}
-      <Header primeiroNome={primeiroNome} foto={foto} />
+      <Header
+        primeiroNome={primeiroNome}
+        foto={foto}
+        handleButtonChange={handleButtonChange}
+        button1={"Meu serviço"}
+        button2={"Agenda"}
+        button3={"Meus serviços"}
+      />
 
       <div className="container-home">
         <div className="container">
           <div className="d-flex flex-row justify-content-between">
-            {/* Menu
-                passando a função que altera o estado controller
-                a foto do usuário
-                e as strings dos botões que mudam dependendo do 
-                tipo de usuário
-            */}
-            <Menu
-              handleButtonChange={handleButtonChange}
-              foto={foto}
-              button1={"Meu serviço"}
-              button2={"Agenda"}
-              button3={"Meus serviços"}
-            />
+            <div className="d-flex flex-column container-perfil ml-auto mr-auto">
+              <div
+                id="container-notification-md"
+                className="d-flex align-items-center"
+              >
+                <div id="logo" className="ml-auto mr-auto">
+                  <img src={logo} alt="logotipo da empresa" />
+                </div>
+                <button
+                  className="btn btn-controller text-uppercase 
+                bg-blue-dark text-white mr-5"
+                >
+                  BAIXAR O APP
+                </button>
+              </div>
 
-            {/* Componentes do meio */}
-            <Inicio controller={controller} />
-            <FotoVideo controller={controller} user={usuario} foto={foto} />
-            <Perfil controller={controller} user={usuario} />
-            <Senha controller={controller} user={usuario} />
-            <Endereço controller={controller} user={usuario} />
-            <MeuServiço controller={controller} user={usuario} />
+              {/* Componentes do meio */}
+              <Inicio controller={controller} />
+              <FotoVideo controller={controller} user={usuario} foto={foto} />
+              <Perfil controller={controller} user={usuario} />
+              <Senha controller={controller} user={usuario} />
+              <Endereço controller={controller} user={usuario} />
+              <MeuServiço controller={controller} user={usuario} />
+            </div>
 
             {/* Notificações */}
-            <div id="container-notification">
+            <div id="container-notification" className="d-none d-lg-block">
               <div className="d-flex   flex-column">
                 <div id="logo" className="ml-auto mr-auto">
                   <img src={logo} alt="logotipo da empresa" />
@@ -91,18 +100,6 @@ export default function HomeProfissional() {
                 >
                   BAIXAR O APP
                 </button>
-                <div
-                  id="notificaçao"
-                  className="d-flex flex-row bg-white w-75 ml-auto mr-auto 
-                  mt-4 justify-content-around align-items-center"
-                >
-                  <div id="vetor-notificaçao">
-                    <img alt="icone notificação" src={vetorNotificaçao} />
-                  </div>
-                  <p className="text-uppercase text-gray">
-                    Seu pedido foi aceito!
-                  </p>
-                </div>
               </div>
             </div>
           </div>

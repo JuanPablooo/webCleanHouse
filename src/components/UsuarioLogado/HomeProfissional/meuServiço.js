@@ -89,7 +89,7 @@ export default function MeuServiço(props) {
   if (controller !== 5) return null;
   else {
     return (
-      <section className="w-50 bg-white h-75 form-container">
+      <section className="bg-white">
         <form onSubmit={handleSubmit}>
           <div className="row">
             <div className="col-md-6 text-uppercase pl-5">

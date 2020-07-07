@@ -129,7 +129,7 @@ export default function Senha(props) {
   if (controller !== 3) return null;
   else {
     return (
-      <section className="w-50 bg-white h-75 form-container">
+      <section className="bg-white">
         <Form
           onSubmit={handleSubmit}
           className="d-flex justify-content-center align-items-center

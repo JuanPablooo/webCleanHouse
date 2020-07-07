@@ -10,7 +10,7 @@ export default function Inicio(props) {
   if (controller !== 0) return null;
   else {
     return (
-      <section className="w-50 bg-white h-75 form-container">
+      <section className="bg-white">
         <h1 className="display-4 text-center mb-4 mt-5">SEJA BEM VINDO(A)</h1>
         <p className="text-center mb-4 w-75 ml-auto mr-auto">
           PARA VIZUALIZAR OFERTAS DE SERVIÇO BAIXE O NOSSO APLICATIVO{" "}

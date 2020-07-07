@@ -8,7 +8,7 @@ export default function FotoVideo(props) {
   else {
     return (
       <>
-        <section className="w-50 bg-white h-75 form-container">
+        <section className="bg-white">
           <div className="d-flex flex-column justify-content-center align-items-center">
             <div className="foto-xgrande ml-auto mr-auto mt-4">
               <img src={props.foto} alt="foto-perfil" />

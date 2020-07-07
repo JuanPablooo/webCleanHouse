@@ -117,7 +117,7 @@ export default function Endereços(props) {
   if (controller !== 4) return null;
   else {
     return (
-      <section className="w-50 bg-white h-75 form-container">
+      <section className="bg-white">
         <FormEnderecos
           handleSubmit={handleSubmit}
           inputHandler={inputHandler}

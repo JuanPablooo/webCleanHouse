@@ -11,7 +11,6 @@ import Foto from "./foto";
 
 //Cabeçalho e menu lateral
 import Header from "../header";
-import Menu from "../menu";
 
 //Imagens
 import fotoPerfilPadrao from "../../images/perfil.png";
@@ -51,34 +50,50 @@ export default function HomeCliente() {
   return (
     <>
       {/* Cabeçalho passando como props o nome e a foto do usuário */}
-      <Header primeiroNome={primeiroNome} foto={foto} />
+      <Header
+        primeiroNome={primeiroNome}
+        handleButtonChange={handleButtonChange}
+        foto={foto}
+        button1={"Pagamento"}
+        button2={"minhas residências"}
+        button3={"meus pedidos"}
+      />
 
       <div className="container-home">
         <div className="container">
           <div className="d-flex flex-row justify-content-between">
-            {/* Menu
-                passando a função que altera o estado controller
-                a foto do usuário
-                e as strings dos botões que mudam dependendo do 
-                tipo de usuário
-            */}
-            <Menu
-              handleButtonChange={handleButtonChange}
-              foto={foto}
-              button1={"Pagamento"}
-              button2={"minhas residências"}
-              button3={"meus pedidos"}
-            />
+            <div className="d-flex flex-column container-perfil ml-auto mr-auto">
+              <div
+                id="container-notification-md"
+                className="d-flex align-items-center"
+              >
+                <div id="logo" className="ml-auto mr-auto">
+                  <img src={logo} alt="logotipo da empresa" />
+                </div>
+                <button
+                  className="btn btn-controller text-uppercase 
+                bg-blue-dark text-white mt-4 mr-3 ml-3"
+                >
+                  BAIXAR O APP
+                </button>
+                <button
+                  className="btn text-uppercase 
+                btn-green text-white mt-4 mr-3 ml-3"
+                >
+                  NOVO SERVIÇO
+                </button>
+              </div>
 
-            {/* Componentes do meio */}
-            <Inicio controller={controller} />
-            <Foto controller={controller} user={usuario} foto={foto} />
-            <Perfil controller={controller} user={usuario} />
-            <Senha controller={controller} user={usuario} />
-            <Endereços controller={controller} user={usuario} />
+              {/* Componentes do meio */}
+              <Inicio controller={controller} />
+              <Foto controller={controller} user={usuario} foto={foto} />
+              <Perfil controller={controller} user={usuario} />
+              <Senha controller={controller} user={usuario} />
+              <Endereços controller={controller} user={usuario} />
+            </div>
 
             {/* Notificações */}
-            <div id="container-notification">
+            <div id="container-notification" className="d-none d-lg-block">
               <div className="d-flex   flex-column">
                 <div id="logo" className="ml-auto mr-auto">
                   <img src={logo} alt="logotipo da empresa" />
