@@ -25,15 +25,13 @@ export default function Endereços(props) {
   const [mensagem, setMensagem] = useState("");
 
   //State usuário
-  const [cep, setCep] = useState(user.enderecos[0].cep);
-  const [rua, setRua] = useState(user.enderecos[0].rua);
-  const [numero, setNumero] = useState(user.enderecos[0].numero);
-  const [bairro, setBairro] = useState(user.enderecos[0].bairro);
-  const [complemento, setComplemento] = useState(user.enderecos[0].complemento);
-  const [estado, setEstado] = useState(user.enderecos[0].estado);
-  const [pontoReferencia, setPontoReferencia] = useState(
-    user.enderecos[0].pontoReferencia
-  );
+  const [cep, setCep] = useState(typeof user.enderecos === 'undefined' ? "" : user.enderecos[0].cep);
+  const [rua, setRua] = useState(typeof user.rua === 'undefined' ? "" : user.enderecos[0].rua);
+  const [numero, setNumero] = useState(typeof user.numero === 'undefined' ? "" : user.enderecos[0].numero);
+  const [bairro, setBairro] = useState(typeof user.bairro === 'undefined' ? "" : user.enderecos[0].bairro);
+  const [complemento, setComplemento] = useState(typeof user.complemento === 'undefined' ? "" : user.enderecos[0].complemento);
+  const [estado, setEstado] = useState(typeof user.estado === 'undefined' ? "" : user.enderecos[0].estado);
+  const [pontoReferencia, setPontoReferencia] = useState(typeof user.pontoReferencia === 'undefined' ? "" : user.enderecos[0].pontoReferencia);
 
   //Chamada no evento da input, atualizando o estado do usuário
   const inputHandler = useCallback((e) => {

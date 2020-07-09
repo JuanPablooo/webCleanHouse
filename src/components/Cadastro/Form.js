@@ -27,7 +27,7 @@ const validations = yup.object().shape({
 });
 
 export function FormGroup(props) {
-  const { id, titulo, type, require, placeholder } = props;
+  const { id, titulo, type, require, placeholder, onChange, value } = props;
 
   return (
     <div className="col-md-5 col-sm-12 ">
@@ -43,6 +43,8 @@ export function FormGroup(props) {
           placeholder={placeholder}
           name={id}
           id={id}
+          onChange={onChange}
+          value={value}
         />
         <ErrorMessage className="text-danger" name={id} component="span" />
       </div>

@@ -1,6 +1,6 @@
-import Passo1Cliente from '../components/Cadastro/Clientes/Passo1Cliente';
-import Passo2Cliente from '../components/Cadastro/Clientes/Passo2Cliente';
-import Passo3Cliente from '../components/Cadastro/Clientes/Passo3Cliente';
+import Passo1Cliente from '../components/Cadastro/Cliente/Passo1Cliente';
+import Passo2Cliente from '../components/Cadastro/Cliente/Passo2Cliente';
+import Passo3Cliente from '../components/Cadastro/Cliente/Passo3Cliente';
 
 const actionsTypes = {
     MUDA_PASSO: 'MUDA_PASSO'

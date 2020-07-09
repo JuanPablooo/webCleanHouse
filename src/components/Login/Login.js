@@ -62,7 +62,7 @@ export default function Login(props) {
               <div className="d-flex flex-column justify-content-center">
                 <h1 className="display-4">Descomplique a sua vida</h1>
                 <p className="mt-2 lead">
-                  Economize seu tempo! A clean house é a plataforma mais prática
+                  Economize seu tempo! A Clean House é a plataforma mais prática
                   de encontrar profissionais de confiança para cuidar da sua
                   casa.
                 </p>
@@ -71,7 +71,7 @@ export default function Login(props) {
                   ml-auto mr-auto text-capitalize"
                   to="/"
                 >
-                  Volte para a home
+                  Voltar para Home
                 </Link>
               </div>
             </div>

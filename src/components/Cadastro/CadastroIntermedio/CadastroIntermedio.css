@@ -1,0 +1,38 @@
+.bg-blue2 {
+    background-color: #1677c7;
+}
+
+.h-header2{
+    height: 55.5vh;
+}
+
+.pr-half{
+    font-size: 25px; 
+    padding-top: 5px; 
+    padding-left: 490px;
+}
+
+.pl-half{
+    font-size: 25px; 
+    padding-top: 5px; 
+    padding-left: 60px;
+  }
+
+#imagem_cliente{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+    margin-left: 320px;
+}
+
+#imagem_profissional{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+    margin-left: 58px;
+}
+
+#para_direita{
+    padding-left: 150px;
+}
+

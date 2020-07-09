@@ -43,7 +43,7 @@ export default function Home(props) {
               <div className="col-md-7"></div>
               <div className="col-md-5">
                 <h1 className="text-blue-dark lead text-title text-capitalize mt-5">
-                  Quem somos ?
+                  Quem somos?
                 </h1>
                 <div className="text-gray mt-4">
                   <p>
@@ -58,7 +58,7 @@ export default function Home(props) {
                   <p>
                     Atualmente a nossa plataforma conta com centenas de
                     profissionais cadastrados e um time de gestores competentes,
-                    que fazem da CleanHouse a escolha certa para manter o
+                    que fazem da Clean House a escolha certa para manter o
                     equilíbrio e a limpeza do seu lar.
                   </p>
                 </div>
