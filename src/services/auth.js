@@ -13,6 +13,7 @@ export const signIn = async (usuario) => {
       usuario = await response.json();
       //salva o token no localStorage
       //localStorage.setItem(TOKEN, JSON.stringify(usuario));
+      delete usuario.usuario.senha;
       localStorage.setItem("user", JSON.stringify(usuario));
     }
     console.log("requisição feita - status:");

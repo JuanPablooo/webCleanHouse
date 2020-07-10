@@ -1,5 +1,5 @@
 //IMPORTES
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { buscarCliente, atualizarCliente } from "../../../services/clientes";
 import {
   buscarProfissional,
@@ -23,6 +23,7 @@ export default function Senha(props) {
   //Resgate das props
   const controller = props.controller;
   const user = props.user;
+  const tipo = user.usuario.tipo;
 
   const [mensagemSenha, setMensagemSenha] = useState("");
   const [mensagemSenhaAtual, setMensagemSenhaAtual] = useState("");
@@ -31,6 +32,27 @@ export default function Senha(props) {
   const [senha, setSenha] = useState("");
   const [newSenha, setNewSenha] = useState("");
   const [confirmNewSenha, setConfirmNewSenha] = useState("");
+  const [senhaUsuario, setSenhaUsuario] = useState("");
+
+  const resgataSenha = async () => {
+    var retorno = "";
+
+    //Busca cliente ou profissional
+    if (tipo === "cliente") {
+      retorno = await buscarCliente(user.id);
+    } else if (tipo === "profissional") {
+      retorno = await buscarProfissional(user.id);
+    }
+
+    var senha = await retorno.json();
+    senha = senha.usuario.senha;
+    setSenhaUsuario(senha);
+  };
+
+  //Executado assim que o componente é renderizado
+  useEffect(() => {
+    resgataSenha();
+  }, []);
 
   //Chamada no evento da input, atualizando o estado do usuário
   const inputHandler = useCallback((e) => {
@@ -66,19 +88,11 @@ export default function Senha(props) {
     setMensagemSenhaAtual("");
 
     //Definindo variáveis
-    var retorno = "";
     var response = "";
     var status = true;
-    var tipo = user.tipo;
 
-    //Busca cliente ou profissional
-    if (tipo === "cliente") {
-      retorno = await buscarCliente(user.id);
-    } else if (tipo === "profissional") {
-      retorno = await buscarProfissional(user.id);
-    }
-
-    const usuario = await retorno.json();
+    var usuario = JSON.parse(localStorage.getItem("user"));
+    usuario.usuario.senha = senha;
 
     //Verifica se a nova senha não é igual a confirmar nova senha
     if (newSenha !== confirmNewSenha) {

@@ -1,5 +1,5 @@
 //IMPORTES
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import {
   buscarProfissional,
   atualizarProfissional,
@@ -30,6 +30,20 @@ export default function Endereços(props) {
   const [pontoReferencia, setPontoReferencia] = useState(
     user.enderecos[0].pontoReferencia
   );
+  const [senha, setSenha] = useState("");
+
+  const resgataSenha = async () => {
+    var retorno = await buscarProfissional(user.id);
+
+    var senha = await retorno.json();
+
+    setSenha(senha.usuario.senha);
+  };
+
+  //Executado assim que o componente é renderizado
+  useEffect(() => {
+    resgataSenha();
+  }, []);
 
   toast.configure();
 
@@ -81,13 +95,11 @@ export default function Endereços(props) {
   //Chamada no submit do botão
   const handleSubmit = async () => {
     //Definindo variáveis
-    var retorno = "";
     var response = "";
 
-    retorno = await buscarProfissional(user.id);
+    var usuario = JSON.parse(localStorage.getItem("user"));
 
-    const usuario = await retorno.json();
-
+    const dataNascimento = usuario.dataNascimento;
     var rsData = usuario.dataNascimento.split("/");
     const data = rsData[2] + "-" + rsData[1] + "-" + rsData[0];
 
@@ -101,14 +113,14 @@ export default function Endereços(props) {
     usuario.enderecos[0].bairro = bairro;
     usuario.enderecos[0].cidade = cidade;
     usuario.enderecos[0].pontoReferencia = pontoReferencia;
+    usuario.usuario.senha = senha;
 
     // //Atualiza cliente ou profissional
     response = await atualizarProfissional(usuario);
 
     //Alterações necessárias para salvar no localstorage
-    usuario.email = usuario.usuario.email;
-    usuario.tipo = usuario.usuario.tipo;
-    delete usuario.usuario;
+    delete usuario.usuario.senha;
+    usuario.dataNascimento = dataNascimento;
 
     //Verifica se atualizou
     if (response.ok) {

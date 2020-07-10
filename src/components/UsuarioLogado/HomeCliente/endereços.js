@@ -1,5 +1,5 @@
 //IMPORTES
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { buscarCliente, atualizarCliente } from "../../../services/clientes";
 
 import { Form, Input } from "@rocketseat/unform";
@@ -43,6 +43,20 @@ export default function Endereços(props) {
   const [pontoReferencia, setPontoReferencia] = useState("");
   const [cidade, setCidade] = useState("");
   const [id, setId] = useState(0);
+  const [senha, setSenha] = useState("");
+
+  const resgataSenha = async () => {
+    var retorno = await buscarCliente(user.id);
+
+    var senha = await retorno.json();
+
+    setSenha(senha.usuario.senha);
+  };
+
+  //Executado assim que o componente é renderizado
+  useEffect(() => {
+    resgataSenha();
+  }, []);
 
   const initialState = () => {
     setCep("");
@@ -114,20 +128,18 @@ export default function Endereços(props) {
   //Chamada no submit do botão
   const handleSubmit = async (id) => {
     //Definindo variáveis
-    var retorno = "";
     var response = "";
 
-    //Busca cliente
-    retorno = await buscarCliente(user.id);
-
-    const usuario = await retorno.json();
+    var usuario = JSON.parse(localStorage.getItem("user"));
 
     //Muda a data para formato americano
     var rsData = usuario.dataNascimento.split("/");
     const data = rsData[2] + "-" + rsData[1] + "-" + rsData[0];
 
     // //Altera os dados
+    var dataNascimento = usuario.dataNascimento;
     usuario.dataNascimento = data;
+    usuario.usuario.senha = senha;
 
     //Caso id seja 0,cria um novo endereço
     if (id === 0) {
@@ -169,10 +181,8 @@ export default function Endereços(props) {
     //Atualiza cliente
     response = await atualizarCliente(usuario);
 
-    //Alterações necessárias para salvar no localstorage
-    usuario.email = usuario.usuario.email;
-    usuario.tipo = usuario.usuario.tipo;
-    delete usuario.usuario;
+    delete usuario.usuario.senha;
+    usuario.dataNascimento = dataNascimento;
 
     //Verifica se atualizou
     if (response.ok) {

@@ -1,5 +1,5 @@
 //IMPORTES
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { buscarCliente, atualizarCliente } from "../../../services/clientes";
 import {
   buscarProfissional,
@@ -38,13 +38,36 @@ export default function Perfil(props) {
   const controller = props.controller;
   const user = props.user;
 
+  const tipo = user.usuario.tipo;
+
   //State usuário
   const [nomeCompleto, setNomeCompleto] = useState(user.nomeCompleto);
-  const [email, setEmail] = useState(user.email);
+  const [email, setEmail] = useState(user.usuario.email);
   const [telefoneFixo, setTelefoneFixo] = useState(user.telefoneFixo);
   const [celular, setCelular] = useState(user.celular);
   const [cpf, setCpf] = useState(user.cpf);
   const [dataNascimento, setDataNascimento] = useState(user.dataNascimento);
+  const [senha, setSenha] = useState("");
+
+  const resgataSenha = async () => {
+    var retorno = "";
+
+    //Busca cliente ou profissional
+    if (tipo === "cliente") {
+      retorno = await buscarCliente(user.id);
+    } else if (tipo === "profissional") {
+      retorno = await buscarProfissional(user.id);
+    }
+
+    var senha = await retorno.json();
+    senha = senha.usuario.senha;
+    setSenha(senha);
+  };
+
+  //Executado assim que o componente é renderizado
+  useEffect(() => {
+    resgataSenha();
+  }, []);
 
   //Chamada no evento da input, atualizando o estado do usuário
   const inputHandler = useCallback((e) => {
@@ -88,21 +111,13 @@ export default function Perfil(props) {
   //Chamada no submit do botão
   const handleSubmit = async () => {
     //Definindo variáveis
-    var retorno = "";
+
     var response = "";
-    var tipo = user.tipo;
-
-    //Busca cliente ou profissional
-    if (tipo === "cliente") {
-      retorno = await buscarCliente(user.id);
-    } else if (tipo === "profissional") {
-      retorno = await buscarProfissional(user.id);
-    }
-
-    const usuario = await retorno.json();
 
     var rsData = dataNascimento.split("/");
     const data = rsData[2] + "-" + rsData[1] + "-" + rsData[0];
+
+    var usuario = JSON.parse(localStorage.getItem("user"));
 
     //Altera os dados
     usuario.nomeCompleto = nomeCompleto;
@@ -111,6 +126,7 @@ export default function Perfil(props) {
     usuario.dataNascimento = data;
     usuario.telefoneFixo = telefoneFixo;
     usuario.celular = celular;
+    usuario.usuario.senha = senha;
 
     //Atualiza cliente ou profissional
     if (tipo === "cliente") {
@@ -119,10 +135,10 @@ export default function Perfil(props) {
       response = await atualizarProfissional(usuario);
     }
 
-    //Alterações necessárias para salvar no localstorage
-    usuario.email = usuario.usuario.email;
-    usuario.tipo = usuario.usuario.tipo;
-    delete usuario.usuario;
+    console.log(usuario);
+
+    delete usuario.usuario.senha;
+    usuario.dataNascimento = dataNascimento;
 
     //Verifica se atualizou
     if (response.ok) {
