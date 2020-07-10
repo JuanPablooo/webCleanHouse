@@ -1,38 +1,62 @@
 .bg-blue2 {
-    background-color: #1677c7;
+  background-color: #1677c7;
 }
 
-.h-header2{
-    height: 55.5vh;
+.btn-blue {
+  background: #19b8d4 !important;
+  color: white;
 }
 
-.pr-half{
-    font-size: 25px; 
-    padding-top: 5px; 
-    padding-left: 490px;
+.btn-blue {
+  background: #19a4bd !important;
 }
 
-.pl-half{
-    font-size: 25px; 
-    padding-top: 5px; 
-    padding-left: 60px;
+.h-header2 {
+  height: 55.5vh;
+}
+
+.p-size {
+  font-size: 25px;
+}
+
+#imagem_cliente {
+  width: 200px;
+  height: 200px;
+  background-image: url("../../images/i-cli.png");
+  background-size: cover;
+}
+
+#imagem_profissional {
+  width: 200px;
+  height: 200px;
+  background-image: url("../../images/i-pro.png");
+  background-size: cover;
+}
+
+@media (min-width: 768px) {
+  .w-md-50 {
+    width: 50%;
   }
-
-#imagem_cliente{
-    width: 300px;
-    height: 200px;
-    background-color: black;
-    margin-left: 320px;
+  .end {
+    justify-content: flex-end;
+  }
+  .start {
+    justify-content: flex-start;
+  }
+}
+@media (max-width: 767px) {
+  .w-md-50 {
+    width: 100%;
+  }
+  .flex-md-row {
+    flex-direction: column;
+  }
+  .center {
+    justify-content: center;
+  }
 }
 
-#imagem_profissional{
-    width: 300px;
-    height: 200px;
-    background-color: black;
-    margin-left: 58px;
+.profile-type-container {
+  width: 80%;
+  min-height: 30px;
 }
-
-#para_direita{
-    padding-left: 150px;
-}
-
