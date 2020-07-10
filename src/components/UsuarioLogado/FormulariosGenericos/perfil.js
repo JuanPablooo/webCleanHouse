@@ -1,10 +1,6 @@
 //IMPORTES
 import React, { useState, useCallback, useEffect } from "react";
-import { buscarCliente, atualizarCliente } from "../../../services/clientes";
-import {
-  buscarProfissional,
-  atualizarProfissional,
-} from "../../../services/profissionais";
+import api from "../../../services/apiAxios";
 import { Form, Input } from "@rocketseat/unform";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -39,6 +35,8 @@ export default function Perfil(props) {
   const user = props.user;
 
   const tipo = user.usuario.tipo;
+  var url = "";
+  tipo === "cliente" ? (url = "/clientes/") : (url = "/profissionais/");
 
   //State usuário
   const [nomeCompleto, setNomeCompleto] = useState(user.nomeCompleto);
@@ -50,18 +48,12 @@ export default function Perfil(props) {
   const [senha, setSenha] = useState("");
 
   const resgataSenha = async () => {
-    var retorno = "";
-
-    //Busca cliente ou profissional
-    if (tipo === "cliente") {
-      retorno = await buscarCliente(user.id);
-    } else if (tipo === "profissional") {
-      retorno = await buscarProfissional(user.id);
+    try {
+      const retorno = await api.get(url + user.id);
+      setSenha(retorno.data.usuario.senha);
+    } catch (error) {
+      return console.log(error.response);
     }
-
-    var senha = await retorno.json();
-    senha = senha.usuario.senha;
-    setSenha(senha);
   };
 
   //Executado assim que o componente é renderizado
@@ -110,10 +102,6 @@ export default function Perfil(props) {
 
   //Chamada no submit do botão
   const handleSubmit = async () => {
-    //Definindo variáveis
-
-    var response = "";
-
     var rsData = dataNascimento.split("/");
     const data = rsData[2] + "-" + rsData[1] + "-" + rsData[0];
 
@@ -128,23 +116,16 @@ export default function Perfil(props) {
     usuario.celular = celular;
     usuario.usuario.senha = senha;
 
-    //Atualiza cliente ou profissional
-    if (tipo === "cliente") {
-      response = await atualizarCliente(usuario);
-    } else if (tipo === "profissional") {
-      response = await atualizarProfissional(usuario);
-    }
-
-    console.log(usuario);
-
-    delete usuario.usuario.senha;
-    usuario.dataNascimento = dataNascimento;
-
-    //Verifica se atualizou
-    if (response.ok) {
+    try {
+      const response = await api.put(url + usuario.id, usuario);
       ToastSuccess();
+
+      //------Alterações para salvar no localstorage------
+      delete usuario.usuario.senha;
+      usuario.dataNascimento = dataNascimento;
       localStorage.setItem("user", JSON.stringify(usuario));
-    } else {
+      //------Alterações para salvar no localstorage------
+    } catch (error) {
       ToastError();
     }
   };

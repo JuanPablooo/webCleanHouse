@@ -14,7 +14,7 @@ export default function Home(props) {
                 <div className="">
                   <h1 className="display-4">Descomplique a sua vida</h1>
                   <p className="mt-4 lead ml-3">
-                    Economize seu tempo! A clean house é a plataforma mais
+                    Economize seu tempo! A Clean House é a plataforma mais
                     prática de encontrar profissionais de confiança para cuidar
                     da sua casa.
                   </p>
@@ -43,12 +43,12 @@ export default function Home(props) {
               <div className="col-md-7"></div>
               <div className="col-md-5">
                 <h1 className="text-blue-dark lead text-title text-capitalize mt-5">
-                  Quem somos ?
+                  Quem somos?
                 </h1>
                 <div className="text-gray mt-4">
                   <p>
                     Criada no ano de 2020 por um time de sócios desenvolvedores,
-                    a CleanHouse é o caminho certo para aqueles que buscam
+                    a Clean House é o caminho certo para aqueles que buscam
                     facilidade e confiabilidade.
                   </p>
                   <p>
@@ -58,7 +58,7 @@ export default function Home(props) {
                   <p>
                     Atualmente a nossa plataforma conta com centenas de
                     profissionais cadastrados e um time de gestores competentes,
-                    que fazem da CleanHouse a escolha certa para manter o
+                    que fazem da Clean House a escolha certa para manter o
                     equilíbrio e a limpeza do seu lar.
                   </p>
                 </div>
@@ -133,14 +133,14 @@ export default function Home(props) {
                     SERVIÇOS
                   </h1>
                   <p className="ml-auto mr-auto col-9 text-center">
-                    Limpeza: Empregados (as) que limpam todos os cômodos da sua
+                    Limpeza: profissionais que limpam todos os cômodos da sua
                     casa
                   </p>
                   <p className="ml-auto mr-auto col-9 text-center">
-                    Cozinha: Empregados (as) que fazem o preparo da sua comida
+                    Cozinha: profissionais que fazem o preparo da sua comida
                   </p>
                   <p className="ml-auto mr-auto col-9 text-center mb-5">
-                    Roupas: Empregados (as) que lavam e passam suas roupas
+                    Roupas: profissionais que lavam e passam suas roupas
                   </p>
                 </div>
               </div>
@@ -308,7 +308,7 @@ export default function Home(props) {
               <div className="col-md-6 row">
                 <div className="col-md-8 pl-3 mt-4 pt-1">
                   <p>
-                    Atualmente os nossos serviços estão disponíveis apenas para
+                    Atualmente os nossjos serviços estão disponíveis apenas para
                     a região metropolitana de São Paulo.
                   </p>
                   <a

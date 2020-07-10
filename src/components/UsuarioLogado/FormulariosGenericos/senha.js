@@ -1,10 +1,6 @@
 //IMPORTES
 import React, { useState, useCallback, useEffect } from "react";
-import { buscarCliente, atualizarCliente } from "../../../services/clientes";
-import {
-  buscarProfissional,
-  atualizarProfissional,
-} from "../../../services/profissionais";
+import api from "../../../services/apiAxios";
 import { Form, Input } from "@rocketseat/unform";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -23,7 +19,10 @@ export default function Senha(props) {
   //Resgate das props
   const controller = props.controller;
   const user = props.user;
+
   const tipo = user.usuario.tipo;
+  var url = "";
+  tipo === "cliente" ? (url = "/clientes/") : (url = "/profissionais/");
 
   const [mensagemSenha, setMensagemSenha] = useState("");
   const [mensagemSenhaAtual, setMensagemSenhaAtual] = useState("");
@@ -35,18 +34,12 @@ export default function Senha(props) {
   const [senhaUsuario, setSenhaUsuario] = useState("");
 
   const resgataSenha = async () => {
-    var retorno = "";
-
-    //Busca cliente ou profissional
-    if (tipo === "cliente") {
-      retorno = await buscarCliente(user.id);
-    } else if (tipo === "profissional") {
-      retorno = await buscarProfissional(user.id);
+    try {
+      const retorno = await api.get(url + user.id);
+      setSenhaUsuario(retorno.data.usuario.senha);
+    } catch (error) {
+      return console.log(error.response);
     }
-
-    var senha = await retorno.json();
-    senha = senha.usuario.senha;
-    setSenhaUsuario(senha);
   };
 
   //Executado assim que o componente é renderizado
@@ -54,11 +47,11 @@ export default function Senha(props) {
     resgataSenha();
   }, []);
 
-  //Chamada no evento da input, atualizando o estado do usuário
+  //-----Chamada no evento da input
   const inputHandler = useCallback((e) => {
     const { name, value } = e.target;
 
-    //Verifica o name da input para atualizar o state certo
+    //-----Verifica o name da input para atualizar o state certo-----
     switch (name) {
       case "senha":
         setSenha(value);
@@ -70,6 +63,7 @@ export default function Senha(props) {
         setConfirmNewSenha(value);
         break;
     }
+    //-----Verifica o name da input para atualizar o state certo-----
   });
 
   //Chamada no clique do botão cancelar
@@ -92,7 +86,7 @@ export default function Senha(props) {
     var status = true;
 
     var usuario = JSON.parse(localStorage.getItem("user"));
-    usuario.usuario.senha = senha;
+    usuario.usuario.senha = senhaUsuario;
 
     //Verifica se a nova senha não é igual a confirmar nova senha
     if (newSenha !== confirmNewSenha) {
@@ -118,22 +112,13 @@ export default function Senha(props) {
       const data = rsData[2] + "-" + rsData[1] + "-" + rsData[0];
 
       usuario.dataNascimento = data;
-
-      //Altera os dados
       usuario.usuario.senha = newSenha;
 
-      // //Atualiza cliente ou profissional
-      if (tipo === "cliente") {
-        response = await atualizarCliente(usuario);
-      } else if (tipo === "profissional") {
-        response = await atualizarProfissional(usuario);
-      }
-
-      //Verifica se atualizou
-      if (response.ok) {
+      try {
+        const response = await api.put(url + usuario.id, usuario);
         initialState();
         ToastSuccess();
-      } else {
+      } catch (error) {
         ToastError();
       }
     }

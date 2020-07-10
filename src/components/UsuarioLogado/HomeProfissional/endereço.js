@@ -4,6 +4,7 @@ import {
   buscarProfissional,
   atualizarProfissional,
 } from "../../../services/profissionais";
+import api from "../../../services/apiAxios";
 import { Form, Input } from "@rocketseat/unform";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -33,11 +34,12 @@ export default function Endereços(props) {
   const [senha, setSenha] = useState("");
 
   const resgataSenha = async () => {
-    var retorno = await buscarProfissional(user.id);
-
-    var senha = await retorno.json();
-
-    setSenha(senha.usuario.senha);
+    try {
+      const retorno = await api.get("/profissionais/" + user.id);
+      setSenha(retorno.data.usuario.senha);
+    } catch (error) {
+      return console.log(error.response);
+    }
   };
 
   //Executado assim que o componente é renderizado
@@ -94,9 +96,6 @@ export default function Endereços(props) {
 
   //Chamada no submit do botão
   const handleSubmit = async () => {
-    //Definindo variáveis
-    var response = "";
-
     var usuario = JSON.parse(localStorage.getItem("user"));
 
     const dataNascimento = usuario.dataNascimento;
@@ -116,17 +115,16 @@ export default function Endereços(props) {
     usuario.usuario.senha = senha;
 
     // //Atualiza cliente ou profissional
-    response = await atualizarProfissional(usuario);
-
-    //Alterações necessárias para salvar no localstorage
-    delete usuario.usuario.senha;
-    usuario.dataNascimento = dataNascimento;
-
-    //Verifica se atualizou
-    if (response.ok) {
+    try {
+      const response = await api.put("/profissionais/" + usuario.id, usuario);
       ToastSuccess();
+
+      //------Alterações para salvar no localstorage------
+      delete usuario.usuario.senha;
+      usuario.dataNascimento = dataNascimento;
       localStorage.setItem("user", JSON.stringify(usuario));
-    } else {
+      //------Alterações para salvar no localstorage------
+    } catch (error) {
       ToastError();
     }
   };

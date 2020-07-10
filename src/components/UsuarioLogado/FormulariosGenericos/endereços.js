@@ -20,8 +20,7 @@ function FormEnderecos(props) {
   return (
     <Form
       onSubmit={() => handleSubmit(id)}
-      className="d-flex justify-content-center align-items-center
-              flex-column mt-5"
+      className="d-flex justify-content-center align-items-center flex-column mt-5"
     >
       <Input
         className="form-control w-75"

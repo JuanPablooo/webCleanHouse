@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from 'axios'
 
 export default function Passo2(props) {
   const FormGroup = props.formGroup;
   const proximoPasso = props.proximoPasso;
   const imgPasso = props.img;
   const infoSubtitulo = props.infoSubtitulo;
+
+  const [endereco, setEndereco] = useState({
+    bairro: "",
+    localidade: "",
+    logradouro: "",
+    uf: ""
+  })
 
   return (
     <>
@@ -29,6 +37,18 @@ export default function Passo2(props) {
             require
             titulo="Cep"
             placeholder="Digite seu cep"
+            onChange={async (e) => {
+              const cep = e.target.value
+
+              if (cep.length === 9) {
+                try {
+                  const { data } = await axios.get(`https://viacep.com.br/ws/${cep.replace("-", "")}/json/`)
+                  setEndereco(data)
+                } catch (error) {
+                  return console.log(error)
+                }
+              }
+            }}
           />
           <FormGroup
             id="estado"
@@ -36,6 +56,10 @@ export default function Passo2(props) {
             require
             titulo="Estado"
             placeholder="Digite seu estado"
+            value={endereco.uf}
+            // onChange={e => {
+            //   setEndereco({ ...endereco, uf: e.target.value })
+            // }}
           />
         </div>
 
@@ -46,6 +70,7 @@ export default function Passo2(props) {
             require
             titulo="Cidade"
             placeholder="Digite sua cidade"
+            value={endereco.localidade}
           />
           <FormGroup
             id="bairro"
@@ -53,6 +78,7 @@ export default function Passo2(props) {
             require
             titulo="Bairo"
             placeholder="Digite seu bairro"
+            value={endereco.bairro}
           />
         </div>
 
@@ -63,6 +89,7 @@ export default function Passo2(props) {
             require
             titulo="Rua"
             placeholder="Digite sua Rua"
+            value={endereco.logradouro}
           />
           <FormGroup
             id="numero"

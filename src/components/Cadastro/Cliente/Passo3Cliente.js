@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import { Redirect } from "react-router-dom"
+
 //import { useSelector, useDispatch } from 'react-redux';
 import ImgPasso3 from "../../images/c3.png";
 
 export default function Passo3Cliente() {
+  const [redirect, setRedirect] = useState(false)
+
   return (
     <>
+      {redirect ? <Redirect to={{ pathname: "/login" }} /> : null}
+
       <section className="passo-a-passo  d-flex flex-column row my-3">
         <div className="align-self-center">
           <h2 className="text-primary">Foto de perfil</h2>
@@ -31,7 +37,7 @@ export default function Passo3Cliente() {
                   id="inputGroupFile01"
                 />
                 <label className="custom-file-label" for="inputGroupFile01">
-                  Choose file
+                  Escolher arquivo
                 </label>
               </div>
             </div>
@@ -53,6 +59,9 @@ export default function Passo3Cliente() {
               <button
                 type="submit"
                 className="btn btn-blue-dark text-white col-md-5 col-sm-12"
+                onClick={() => {
+                  setRedirect(true)
+                }}
               >
                 CONTINUAR
               </button>

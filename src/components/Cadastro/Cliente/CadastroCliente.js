@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./cadastro.css";
-import MyForm from "./Form";
-import api from "../../services/api";
+import "./CadastroCliente.css";
+import MyForm from "../Form";
+import api from "../../../services/apiAxios";
 import { Link } from "react-router-dom";
 
 const handleSubmit = async (values) => {
@@ -30,25 +30,13 @@ const handleSubmit = async (values) => {
       },
     ],
   };
-  const options = {
-    method: "POST",
-    mode: "cors",
-    headers: new Headers({
-      "Content-type": "application/json",
-    }),
-    body: JSON.stringify(jsonBody),
-  };
 
-  const url = api.URL_BASE + api.clientes;
-
-  const req = await fetch(url, options);
-  console.log(url);
-  console.log("-=-=-=-=");
-  console.log(req);
-  const resposta = await req.json();
-  console.log("-=-=Resposta-=-=");
-  console.log(resposta);
-  console.log("-=-=-=-=");
+  try {
+    const response = await api.post("/clientes", jsonBody);
+    console.log(response.data);
+  } catch (error) {
+    return console.log(error.response);
+  }
 };
 
 const initialValues = {};
@@ -64,10 +52,10 @@ export default function Cadastro(props) {
             </div>
             <div className="col-4 col-md-8 col-sm-6">
               <h2
-                className="d-none d-md-block text-center text-capitalize
+                className="d-none d-md-block text-center 
                  display-4 text-welcome mt-5"
               >
-                A Clean House lhe deseja boas vindas!
+                Bem-vindo à nossa plataforma!
               </h2>
             </div>
             <div className="col-4 col-md-2 col-sm-3">

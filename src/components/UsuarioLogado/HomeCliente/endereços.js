@@ -1,8 +1,8 @@
 //IMPORTES
 import React, { useState, useCallback, useEffect } from "react";
-import { buscarCliente, atualizarCliente } from "../../../services/clientes";
 
 import { Form, Input } from "@rocketseat/unform";
+import api from "../../../services/apiAxios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ToastSuccess from "../toastSuccess";
@@ -22,8 +22,6 @@ export default function Endereços(props) {
   const [userLocalstorage, setUserLocalstorage] = useState(
     JSON.parse(localStorage.getItem("user"))
   );
-
-  console.log(userLocalstorage.residencias);
 
   const localStorageHandler = (usuario) => {
     setUserLocalstorage(usuario);
@@ -46,11 +44,12 @@ export default function Endereços(props) {
   const [senha, setSenha] = useState("");
 
   const resgataSenha = async () => {
-    var retorno = await buscarCliente(user.id);
-
-    var senha = await retorno.json();
-
-    setSenha(senha.usuario.senha);
+    try {
+      const retorno = await api.get("/clientes/" + user.id);
+      setSenha(retorno.data.usuario.senha);
+    } catch (error) {
+      return console.log(error.response);
+    }
   };
 
   //Executado assim que o componente é renderizado
@@ -71,9 +70,7 @@ export default function Endereços(props) {
   };
 
   const etapaHandler = (residencia, id) => {
-    //Muda etapa
     setEtapa(1);
-
     setId(id);
     setCep(residencia.endereco.cep);
     setRua(residencia.endereco.rua);
@@ -92,11 +89,11 @@ export default function Endereços(props) {
 
   toast.configure();
 
-  //Chamada no evento da input, atualizando o estado do usuário
+  //-----Chamada no evento da input
   const inputHandler = useCallback((e) => {
     const { name, value } = e.target;
 
-    //Verifica o name da input para atualizar o state certo
+    //-----Verifica o name da input para atualizar o state certo-----
     switch (name) {
       case "cep":
         setCep(value);
@@ -127,9 +124,6 @@ export default function Endereços(props) {
 
   //Chamada no submit do botão
   const handleSubmit = async (id) => {
-    //Definindo variáveis
-    var response = "";
-
     var usuario = JSON.parse(localStorage.getItem("user"));
 
     //Muda a data para formato americano
@@ -178,20 +172,21 @@ export default function Endereços(props) {
       }
     }
 
-    //Atualiza cliente
-    response = await atualizarCliente(usuario);
-
-    delete usuario.usuario.senha;
-    usuario.dataNascimento = dataNascimento;
-
-    //Verifica se atualizou
-    if (response.ok) {
+    //-----Atualiza cliente-----
+    try {
+      const response = await api.put("/clientes/" + usuario.id, usuario);
       ToastSuccess();
+
+      //------Alterações para salvar no localstorage------
+      delete usuario.usuario.senha;
+      usuario.dataNascimento = dataNascimento;
       localStorage.setItem("user", JSON.stringify(usuario));
+      //------Alterações para salvar no localstorage------
+
       var usuarioAtt = JSON.parse(localStorage.getItem("user"));
       localStorageHandler(usuarioAtt);
       zeraEtapa();
-    } else {
+    } catch (error) {
       ToastError();
     }
   };

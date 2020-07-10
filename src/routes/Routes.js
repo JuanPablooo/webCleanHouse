@@ -7,7 +7,9 @@ import Route from "./Route";
 import { store } from "../store/store";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
-import Cadastro from "../components/Cadastro/Cadastro";
+import Cadastro from "../components/Cadastro/CadastroIntermedio/Cadastro";
+import CadastroCliente from "../components/Cadastro/Cliente/CadastroCliente";
+import CadastroProfissional from "../components/Cadastro/Profissional/CadastroProfissional";
 import HomeCliente from "../components/UsuarioLogado/HomeCliente/HomeCliente";
 import HomeProfissional from "../components/UsuarioLogado/HomeProfissional/HomeProfissional";
 
@@ -26,7 +28,14 @@ const Routes = () => (
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
-          <Route path="/cadastro" component={Cadastro} />
+
+          <Route exact path="/cadastro" component={Cadastro} />
+          <Route path="/cadastro/cliente" component={CadastroCliente} />
+          <Route
+            path="/cadastro/profissional"
+            component={CadastroProfissional}
+          />
+
           <Route path="/cliente" component={HomeCliente} isPrivate />
           <Route path="/profissional" component={HomeProfissional} isPrivate />
           <Route component={NotFound} />
