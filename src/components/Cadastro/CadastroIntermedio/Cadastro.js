@@ -50,7 +50,7 @@ export default function CadastroIntermedio(props) {
               Clique no botão se deseja contratar serviços domésticos
             </p>
             <button
-              className="btn btn-blue btn-radius mb-1"
+              className="btn btn-lg btn-blue btn-radius mb-1"
               onClick={() => {
                 props.history.push("/cadastro/cliente");
               }}
@@ -70,7 +70,7 @@ export default function CadastroIntermedio(props) {
               Clique no botão se deseja realizar serviços domésticos
             </p>
             <button
-              className="btn btn-blue-dark btn-radius mb-1"
+              className="btn btn-lg btn-blue-dark btn-radius mb-1"
               onClick={() => {
                 props.history.push("/cadastro/profissional");
               }}
