@@ -6,24 +6,24 @@ import * as yup from "yup";
 
 //Validações
 const validations = yup.object().shape({
-  nome: yup
+  'nome': yup
     .string()
-    .min(3, "Seu nome deve ter no minimo 3 letras")
-    .required("Preencha o campo do nome"),
+    .required("Preencha o campo do nome")
+    .min(3, "Seu nome deve ter no minimo 3 letras"),
 
-  email: yup
+  'email': yup
     .string()
     .email("Digite um email valido")
     .required("Preencha o campo E-mail"),
 
-  senha: yup
+  'senha': yup
     .string()
     .min(8, "A senha deve ter no minimo 8 caracteres")
     .required("Preencha o campo de senha"),
 
-  telefone: yup.string(),
+  'telefone': yup.string(),
 
-  celular: yup.string(),
+  'celular': yup.string(),
 });
 
 export function FormGroup(props) {
