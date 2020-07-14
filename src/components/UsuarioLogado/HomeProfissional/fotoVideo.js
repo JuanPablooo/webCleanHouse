@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 export default function FotoVideo(props) {
   const controller = props.controller;
-  const user = props.user;
+  // const user = props.user;
 
   if (controller !== 1) return null;
   else {

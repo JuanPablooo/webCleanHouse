@@ -26,19 +26,19 @@ export default function Inicio(props) {
         </div>
         <div className="pl-5 pr-5">
           <div className="d-flex justify-content-around align-items-center">
-            <img src={IconClean} />
+            <img src={IconClean} alt="icone limpeza" />
             <p className="w-65">
               Limpeza: Profissionais que limpam todos os cômodos da sua casa.
             </p>
           </div>
           <div className="d-flex mt-4 justify-content-around align-items-center">
-            <img src={IconCozinha} />
+            <img src={IconCozinha} alt="icone preparo de comida" />
             <p className="w-65">
               Cozinha: Profissionais que fazem o preparo da sua comida.
             </p>
           </div>
           <div className="d-flex mt-4 mb-3 justify-content-around align-items-center">
-            <img src={IconRoupa} />
+            <img src={IconRoupa}  alt="icone limpeza roupas"/>
             <p className="w-65">
               Roupas: Empregados (as) que lavam e passam suas roupas.
             </p>

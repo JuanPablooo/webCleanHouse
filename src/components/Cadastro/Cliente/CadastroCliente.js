@@ -6,37 +6,38 @@ import api from "../../../services/apiAxios";
 import { Link } from "react-router-dom";
 
 const handleSubmit = async (values) => {
-  const jsonBody = {
-    usuario: {
-      email: values.email,
-      senha: values.senha,
-    },
-    nomeCompleto: values.nome,
-    dataNascimento: "1998-10-03",
-    cpf: values.cpf,
-    telefoneFixo: values.telefone,
-    celular: values.celular,
-    residencias: [
-      {
-        endereco: {
-          cep: values.cep,
-          rua: values.rua,
-          bairro: values.bairro,
-          estado: values.estado,
-          pais: "Brasil",
-          complemento: values.complemento,
-          numero: values.numero,
-        },
-      },
-    ],
-  };
+  console.log(values)
+  // const jsonBody = {
+  //   usuario: {
+  //     email: values.email,
+  //     senha: values.senha,
+  //   },
+  //   nomeCompleto: values.nome,
+  //   dataNascimento: "1998-10-03",
+  //   cpf: values.cpf,
+  //   telefoneFixo: values.telefone,
+  //   celular: values.celular,
+  //   residencias: [
+  //     {
+  //       endereco: {
+  //         cep: values.cep,
+  //         rua: values.rua,
+  //         bairro: values.bairro,
+  //         estado: values.estado,
+  //         pais: "Brasil",
+  //         complemento: values.complemento,
+  //         numero: values.numero,
+  //       },
+  //     },
+  //   ],
+  // };
 
-  try {
-    const response = await api.post("/clientes", jsonBody);
-    console.log(response.data);
-  } catch (error) {
-    return console.log(error.response);
-  }
+  // try {
+  //   const response = await api.post("/clientes", jsonBody);
+  //   console.log(response.data);
+  // } catch (error) {
+  //   return console.log(error.response);
+  // }
 };
 
 const initialValues = {};
@@ -44,6 +45,9 @@ const initialValues = {};
 export default function Cadastro(props) {
   return (
     <>
+    {
+      console.log('salve')
+    }
       <header className="bg-header h-header pt-2 text-white">
         <div className="container">
           <div className="row">

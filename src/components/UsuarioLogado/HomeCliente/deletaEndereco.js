@@ -1,4 +1,3 @@
-import React from "react";
 import { buscarCliente, atualizarCliente } from "../../../services/clientes";
 
 const deletaEndereco = async (id, user, setGetLocalStorage) => {

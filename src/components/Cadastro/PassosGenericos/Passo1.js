@@ -38,6 +38,7 @@ export default function Passo1(props) {
             placeholder="Digite seu telefone"
             type="text"
             titulo="Telefone"
+            
           />
         </div>
 
