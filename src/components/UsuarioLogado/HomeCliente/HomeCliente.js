@@ -7,6 +7,7 @@ import Inicio from "./inicio";
 import Endereços from "./endereços";
 import Perfil from "../FormulariosGenericos/perfil";
 import Senha from "../FormulariosGenericos/senha";
+import NovoServico from "./novoServico";
 import Foto from "./foto";
 
 //Cabeçalho e menu lateral
@@ -87,17 +88,24 @@ export default function HomeCliente() {
                 <button
                   className="btn text-uppercase 
                 btn-green text-white mt-4 mr-3 ml-3"
+                  onClick={() => {
+                    handleButtonChange(10);
+                  }}
                 >
                   NOVO SERVIÇO
                 </button>
               </div>
 
               {/* Componentes do meio */}
-              <Inicio controller={controller} />
+              <Inicio
+                controller={controller}
+                handleButtonChange={handleButtonChange}
+              />
               <Foto controller={controller} user={usuario} foto={foto} />
               <Perfil controller={controller} user={usuario} />
               <Senha controller={controller} user={usuario} />
               <Endereços controller={controller} user={usuario} />
+              <NovoServico controller={controller} user={usuario} />
             </div>
 
             {/* Notificações */}
@@ -119,6 +127,9 @@ export default function HomeCliente() {
                 <button
                   className="btn text-uppercase 
                 btn-green text-white mt-4 mr-3 ml-3"
+                  onClick={() => {
+                    handleButtonChange(10);
+                  }}
                 >
                   NOVO SERVIÇO
                 </button>

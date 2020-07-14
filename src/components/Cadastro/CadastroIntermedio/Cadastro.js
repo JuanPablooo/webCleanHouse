@@ -80,49 +80,6 @@ export default function CadastroIntermedio(props) {
           </div>
         </div>
       </section>
-
-      {/* <section>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6">
-              <div className="bg-blue2 text-white h-header2 float-left">
-                <p className="font-weight-bold pr-half">Sou Cliente</p>
-                <div id="imagem_cliente"></div>
-                <p className="font-weight-bold mt-2 ml-5 " id="para_direita">
-                  Clique no botão se deseja contratar serviços domésticos
-                </p>
-                <button
-                  className="btn btn-blue-dark btn-radius btn-primary btn-lg float-right mr-5 mb-1"
-                  onClick={() => {
-                    props.history.push("/cadastro/cliente");
-                  }}
-                >
-                  Registre-se
-                </button>
-              </div>
-            </div>
-            <div className="col-md-6 text-center">
-              <div className="d-flex justify-content-center align-items-center flex-column">
-                <div className="bg-white text-black h-header2 float-right">
-                  <p className="font-weight-bold pl-half">Sou Profissional</p>
-                  <div id="imagem_profissional"></div>
-                  <p className="font-weight-bold mt-2">
-                    Clique no botão se deseja realizar serviços domésticos
-                  </p>
-                  <button
-                    className="btn btn-blue-dark btn-radius btn-primary btn-lg mb-1"
-                    onClick={() => {
-                      props.history.push("/cadastro/profissional");
-                    }}
-                  >
-                    Registre-se
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
     </>
   );
 }
