@@ -30,14 +30,19 @@ export default function NovoServico(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(faxina);
-    console.log(roupa);
-    console.log(cozinhar);
-    console.log(residencia);
+
+    const passo1 = {
+      faxina: faxina,
+      roupa: roupa,
+      cozinhar: cozinhar,
+      residencia: residencia,
+    };
+
+    props.setandoPasso1(passo1);
+    props.handleButtonChange(9);
   };
 
-  if (controller !== 10) return null;
-  else {
+  if (controller === 10) {
     return (
       <>
         <section className="bg-white text-gray">
@@ -130,5 +135,5 @@ export default function NovoServico(props) {
         </section>
       </>
     );
-  }
+  } else return null;
 }
