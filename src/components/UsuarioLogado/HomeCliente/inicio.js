@@ -7,6 +7,7 @@ import IconRoupa from "../../images/icon-roupa.png";
 //-------------------INICIO-------------------------------
 export default function Inicio(props) {
   const controller = props.controller;
+  const handleButtonChange = props.handleButtonChange;
 
   // Caso o valor do estado de controller não for 0, não retorna nada
   if (controller !== 0) return null;
@@ -20,6 +21,9 @@ export default function Inicio(props) {
           <button
             type="button"
             className="btn btn-green h-50 text-white w-35 mt-4 mb-5 text-uppercase"
+            onClick={() => {
+              handleButtonChange(10);
+            }}
           >
             Novo serviço
           </button>

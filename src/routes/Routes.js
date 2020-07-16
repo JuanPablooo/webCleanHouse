@@ -36,8 +36,14 @@ const Routes = () => (
             component={CadastroProfissional}
           />
 
-          <Route path="/cliente" component={HomeCliente} isPrivate />
-          <Route path="/profissional" component={HomeProfissional} isPrivate />
+          <Route exact path="/cliente" component={HomeCliente} isPrivate />
+          <Route
+            exact
+            path="/profissional"
+            component={HomeProfissional}
+            isPrivate
+          />
+
           <Route component={NotFound} />
         </Switch>
       </Provider>

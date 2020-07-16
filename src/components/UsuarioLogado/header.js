@@ -15,7 +15,6 @@ export default function Header(props) {
   //Botões que mudam de acordo com o tipo do usuário
   const button1 = props.button1;
   const button2 = props.button2;
-  const button3 = props.button3;
 
   return (
     <div className="bg-blue-dark">
@@ -79,12 +78,6 @@ export default function Header(props) {
                 bg-blue-dark text-white mt-3 mr-3 ml-3"
                 >
                   {button2}
-                </button>
-                <button
-                  className="btn btn-controller text-uppercase 
-                bg-blue-dark text-white mt-3 mr-3 ml-3"
-                >
-                  {button3}
                 </button>
               </div>
             </div>

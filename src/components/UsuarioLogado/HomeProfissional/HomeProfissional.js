@@ -60,7 +60,6 @@ export default function HomeProfissional() {
         handleButtonChange={handleButtonChange}
         button1={"Meu serviço"}
         button2={"Agenda"}
-        button3={"Meus serviços"}
       />
 
       <div className="container-home">
