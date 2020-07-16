@@ -1,10 +1,12 @@
 import React, { useState, useMemo } from "react";
 import { Redirect } from "react-router-dom"
+import { useDispatch } from "react-redux";
 
 import { Field } from 'formik'
 
 //import { useSelector, useDispatch } from 'react-redux';
 import ImgPasso3 from "../../images/c3.png";
+import { actions } from "../../../actions/passosActions";
 
 export default function Passo3Cliente() {
   const [redirect, setRedirect] = useState(false)
@@ -14,6 +16,11 @@ export default function Passo3Cliente() {
   const preview = useMemo(() => {
     return imagem ? URL.createObjectURL(imagem) : null
   }, [imagem])
+
+  const dispatch = useDispatch();
+  function anterior() {
+    dispatch(actions.mudaPasso(1));
+  }
 
   return (
     <>
@@ -79,6 +86,7 @@ export default function Passo3Cliente() {
               <button
                 type="button"
                 className="btn mt-3 btn-blue-dark text-white col-md-5 col-sm-12"
+                onClick={anterior}
               >
                 VOLTAR
               </button>

@@ -16,7 +16,7 @@ export default function Inicio(props) {
           PARA VIZUALIZAR OFERTAS DE SERVIÇO BAIXE O NOSSO APLICATIVO{" "}
         </p>
         <div className="d-flex align-items-center flex-column">
-          <img src={Arrow} className="ml-auto mr-auto" />
+          <img src={Arrow} className="ml-auto mr-auto"  alt="imagen ilustrativa"/>
           <button
             type="button"
             className="btn btn-green text-white w-35 mt-4 mb-5 text-uppercase"

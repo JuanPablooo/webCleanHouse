@@ -15,7 +15,7 @@ import Header from "../header";
 //Imagens
 import fotoPerfilPadrao from "../../images/perfil.png";
 import logo from "../../images/logo.png";
-import vetorNotificaçao from "../../images/Vector.png";
+// import vetorNotificaçao from "../../images/Vector.png";
 
 export default function HomeCliente() {
   const [foto, setFoto] = useState("");

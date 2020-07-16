@@ -4,6 +4,7 @@ import axios from 'axios'
 export default function Passo2(props) {
   const FormGroup = props.formGroup;
   const proximoPasso = props.proximoPasso;
+  const anterior = props.passoAnterior;
   const imgPasso = props.img;
   const infoSubtitulo = props.infoSubtitulo;
 
@@ -110,6 +111,7 @@ export default function Passo2(props) {
               <button
                 type="button"
                 className="btn btn-blue-dark text-white col-md-5 col-sm-12"
+                onClick={anterior}
               >
                 VOLTAR
               </button>

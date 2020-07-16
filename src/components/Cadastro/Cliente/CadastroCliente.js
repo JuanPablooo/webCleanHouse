@@ -54,6 +54,9 @@ const initialValues = {};
 export default function Cadastro(props) {
   return (
     <>
+    {
+      console.log('salve')
+    }
       <header className="bg-header h-header pt-2 text-white">
         <div className="container">
           <div className="row">

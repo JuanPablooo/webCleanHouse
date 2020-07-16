@@ -13,6 +13,9 @@ export default function Passo2Cliente(props) {
   function proximoPasso() {
     dispatch(actions.mudaPasso(2));
   }
+  function passoAnterior() {
+    dispatch(actions.mudaPasso(0));
+  }
   return (
     <>
       <Passo2
@@ -20,6 +23,7 @@ export default function Passo2Cliente(props) {
         proximoPasso={proximoPasso}
         img={ImgPasso2}
         infoSubtitulo={subitutulo}
+        passoAnterior = {passoAnterior}
       />
     </>
   );
