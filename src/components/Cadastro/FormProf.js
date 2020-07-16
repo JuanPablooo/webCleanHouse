@@ -50,23 +50,47 @@ export function FormGroup(props) {
   );
 }
 
-const Form = ({ handleSubmit, initialValues }) => {
-  const passo = useSelector((state) => <state.passoCliente.passo formGroup={FormGroup} />);
+export function FormGroupCheckbox(props) {
+  const { id, titulo, type, require, placeholder, checked, onChange } = props;
+
+  return (
+    <div className="col-md-5 col-sm-12 ">
+      <div className="">
+        <Field
+          type={type}
+          className="form-control"
+          placeholder={placeholder}
+          name={id}
+          id={id}
+          checked={checked}
+          onChange={onChange}
+        />
+        <label className="input-group" htmlFor={id}>
+          {titulo}
+        </label>
+        <ErrorMessage className="text-danger" name={id} component="span" />
+      </div>
+    </div>
+  );
+}
+
+const FormProf = ({ handleSubmit, initialValues }) => {
+  const passo = useSelector((state) => <state.passoProf.passo formGroup={FormGroup} formGroupCheckbox={FormGroupCheckbox} />);
 
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={handleSubmit}
-      validationSchema={validations}
+      // validationSchema={validations}
     >
       <FormikForm>{passo}</FormikForm>
     </Formik>
   );
 };
 
-Form.propTypes = {
+FormProf.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   initialValues: PropTypes.object.isRequired,
 };
 
-export default Form;
+export default FormProf;

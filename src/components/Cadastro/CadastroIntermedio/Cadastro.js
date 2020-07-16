@@ -21,7 +21,7 @@ export default function CadastroIntermedio(props) {
                 </p>
                 <Link
                   className="btn btn-blue-dark btn-radius
-                  ml-auto mr-auto text-capitalize"
+                  ml-auto mr-auto"
                   to="/"
                 >
                   Voltar para Home
@@ -30,7 +30,7 @@ export default function CadastroIntermedio(props) {
             </div>
 
             <div className="col-md-2 d-flex justify-content-end align-items-start">
-              <Link to="/login" className="btn btn-blue-dark btn-radius mt-2">
+              <Link to="/login" className="btn btn-blue-dark btn-radius text-capitalize mt-2">
                 entrar
               </Link>
             </div>
@@ -44,7 +44,7 @@ export default function CadastroIntermedio(props) {
             className="profile-type-container d-flex flex-column 
             align-items-center pt-5 pb-5"
           >
-            <p className="p-size">Sou Cliente</p>
+            <p className="p-size text-capitalize">sou cliente</p>
             <div id="imagem_cliente"></div>
             <p className="mt-2 lead">
               Clique no botão se deseja contratar serviços domésticos
@@ -64,7 +64,7 @@ export default function CadastroIntermedio(props) {
             className="profile-type-container d-flex flex-column 
             align-items-center pt-5 pb-5"
           >
-            <p className="p-size">Sou Profissional</p>
+            <p className="p-size text-capitalize">sou profissional</p>
             <div id="imagem_profissional"></div>
             <p className="mt-2 lead">
               Clique no botão se deseja realizar serviços domésticos

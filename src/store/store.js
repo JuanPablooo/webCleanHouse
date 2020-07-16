@@ -1,6 +1,11 @@
-import { createStore } from "redux";
-import { reducers } from "../reducers/passosReducer";
+import { createStore, combineReducers } from "redux";
 
-const store = createStore(reducers);
+import { reducers as passo } from "../reducers/passosReducer";
+import { reducers as passoProf } from "../reducers/passosProfReducer" 
+
+const store = createStore(combineReducers({
+    passoCliente: passo,
+    passoProf: passoProf
+}));
 
 export { store };

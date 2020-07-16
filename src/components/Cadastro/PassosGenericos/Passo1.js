@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Passo1(props) {
   const FormGroup = props.formGroup;
   const proximoPasso = props.proximoPasso;
   const imgPasso = props.img;
   const infoSubtitulo = props.infoSubtitulo;
+
+  const [nome, setNome] = useState('')
+  const [telefone, setTelefone] = useState('')
+  const [celular, setCelular] = useState('')
+  const [cpf, setCpf] = useState('')
+  const [dataNasc, setDataNasc] = useState('')
+  const [email, setEmail] = useState('')
+  const [senha, setSenha] = useState('')
 
   return (
     <>
@@ -65,6 +73,8 @@ export default function Passo1(props) {
             require
             titulo="CPF"
             placeholder="Digite seu cpf"
+            value={cpf}
+            onChange={e => setCpf(e.target.value)}
           />
           <FormGroup
             id="senha"
@@ -77,7 +87,7 @@ export default function Passo1(props) {
 
         <div className="row justify-content-around">
           <FormGroup
-            id="data-nascimento"
+            id="dataNascimento"
             placeholder="Digite sua data de nascimento"
             require
             type="text"

@@ -9,17 +9,19 @@ export const signIn = async (usuario) => {
     //Chamada da function que faz a requisição
     const response = await doPublicRequest(ROTA + "usuario/", "POST", usuario);
 
-    if (response.ok) {
+    if (response.status === 200) {
       usuario = await response.json();
       //salva o token no localStorage
       //localStorage.setItem(TOKEN, JSON.stringify(usuario));
-      delete usuario.usuario.senha;
+      delete usuario.senha;
       localStorage.setItem("user", JSON.stringify(usuario));
     }
     console.log("requisição feita - status:");
     console.log(response.status);
 
     const retorno = { response: response, usuario: usuario };
+
+    console.log(retorno)
 
     return retorno;
   } catch (erro) {

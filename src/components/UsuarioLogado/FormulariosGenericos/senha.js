@@ -20,7 +20,7 @@ export default function Senha(props) {
   const controller = props.controller;
   const user = props.user;
 
-  const tipo = user.usuario.tipo;
+  const tipo = user.tipo;
   var url = "";
   tipo === "cliente" ? (url = "/clientes/") : (url = "/profissionais/");
 

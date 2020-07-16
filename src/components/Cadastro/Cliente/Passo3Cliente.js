@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Redirect } from "react-router-dom"
+
+import { Field } from 'formik'
 
 //import { useSelector, useDispatch } from 'react-redux';
 import ImgPasso3 from "../../images/c3.png";
@@ -7,10 +9,14 @@ import ImgPasso3 from "../../images/c3.png";
 export default function Passo3Cliente() {
   const [redirect, setRedirect] = useState(false)
 
+  const [imagem, setImagem] = useState("")
+
+  const preview = useMemo(() => {
+    return imagem ? URL.createObjectURL(imagem) : null
+  }, [imagem])
+
   return (
     <>
-      {redirect ? <Redirect to={{ pathname: "/login" }} /> : null}
-
       <section className="passo-a-passo  d-flex flex-column row my-3">
         <div className="align-self-center">
           <h2 className="text-primary">Foto de perfil</h2>
@@ -31,14 +37,20 @@ export default function Passo3Cliente() {
           <div className="col-md-5 col-sm-12 ">
             <div className="input-group mb-3">
               <div className="custom-file">
-                <input
-                  type="file"
-                  className="custom-file-input"
-                  id="inputGroupFile01"
-                />
-                <label className="custom-file-label" for="inputGroupFile01">
-                  Escolher arquivo
-                </label>
+                <Field name="image" component={({ field, form }) => {
+                  return (
+                    <input
+                      name="imagem"
+                      accept="image/png, image/jpeg" 
+                      type="file"
+                      className="form-control"
+                      onChange={e => {
+                        setImagem(e.target.files[0])
+                        form.setFieldValue('imagem', e.target.files[0])
+                      }}
+                    />
+                  )
+                }} />
               </div>
             </div>
           </div>
@@ -46,10 +58,12 @@ export default function Passo3Cliente() {
 
         <div className="row justify-content-around  ">
           <div className="col-md-5 col-sm-12 ">
-            <div className="preview cor-teste" id="preview"></div>
+            <div className="preview cor-teste" id="preview">
+              <img src={preview} style={{ width: 'inherit', height: 'auto' }} />
+            </div>
           </div>
           <div className="col-md-5 col-sm-12 d-flex  align-items-end">
-            <div className="form-group row w-100 justify-content-around">
+            <div className="row w-100 justify-content-around">
               <button
                 type="button"
                 className="btn btn-blue-dark text-white col-md-5 col-sm-12"
@@ -59,9 +73,6 @@ export default function Passo3Cliente() {
               <button
                 type="submit"
                 className="btn btn-blue-dark text-white col-md-5 col-sm-12"
-                onClick={() => {
-                  setRedirect(true)
-                }}
               >
                 CONTINUAR
               </button>

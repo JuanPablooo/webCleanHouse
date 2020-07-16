@@ -34,13 +34,14 @@ export default function Perfil(props) {
   const controller = props.controller;
   const user = props.user;
 
-  const tipo = user.usuario.tipo;
+  console.log(user)
+  const tipo = user.tipo;
   var url = "";
   tipo === "cliente" ? (url = "/clientes/") : (url = "/profissionais/");
 
   //State usuário
   const [nomeCompleto, setNomeCompleto] = useState(user.nomeCompleto);
-  const [email, setEmail] = useState(user.usuario.email);
+  const [email, setEmail] = useState(user.email);
   const [telefoneFixo, setTelefoneFixo] = useState(user.telefoneFixo);
   const [celular, setCelular] = useState(user.celular);
   const [cpf, setCpf] = useState(user.cpf);
@@ -109,12 +110,12 @@ export default function Perfil(props) {
 
     //Altera os dados
     usuario.nomeCompleto = nomeCompleto;
-    usuario.usuario.email = email;
+    usuario.email = email;
     usuario.cpf = cpf;
     usuario.dataNascimento = data;
     usuario.telefoneFixo = telefoneFixo;
     usuario.celular = celular;
-    usuario.usuario.senha = senha;
+    usuario.senha = senha;
 
     try {
       const response = await api.put(url + usuario.id, usuario);

@@ -7,12 +7,13 @@ export default function Passo2(props) {
   const imgPasso = props.img;
   const infoSubtitulo = props.infoSubtitulo;
 
-  const [endereco, setEndereco] = useState({
-    bairro: "",
-    localidade: "",
-    logradouro: "",
-    uf: ""
-  })
+  const [cep, setCep] = useState("")
+  const [logradouro, setLogradouro] = useState("")
+  const [bairro, setBairro] = useState("")
+  const [localidade, setLocalidade] = useState("")
+  const [uf, setUf] = useState("")
+  const [numero, setNumero] = useState("")
+  const [complemento, setComplemento] = useState("")
 
   return (
     <>
@@ -37,18 +38,22 @@ export default function Passo2(props) {
             require
             titulo="Cep"
             placeholder="Digite seu cep"
-            onChange={async (e) => {
-              const cep = e.target.value
-
-              if (cep.length === 9) {
-                try {
-                  const { data } = await axios.get(`https://viacep.com.br/ws/${cep.replace("-", "")}/json/`)
-                  setEndereco(data)
-                } catch (error) {
-                  return console.log(error)
-                }
-              }
-            }}
+            // onChange={async (e) => {
+            //   const cep = e.target.value
+              
+            //   if (e.target.value.length === 9) {
+            //     try {
+            //       const { data } = await axios.get(`https://viacep.com.br/ws/${cep.replace("-", "")}/json/`)
+                  
+            //       setLogradouro(data.logradouro)
+            //       setUf(data.uf)
+            //       setBairro(data.bairro)
+            //       setLocalidade(data.localidade)
+            //     } catch (error) {
+            //       return console.log(error)
+            //     }
+            //   }
+            // }}
           />
           <FormGroup
             id="estado"
@@ -56,10 +61,6 @@ export default function Passo2(props) {
             require
             titulo="Estado"
             placeholder="Digite seu estado"
-            value={endereco.uf}
-            // onChange={e => {
-            //   setEndereco({ ...endereco, uf: e.target.value })
-            // }}
           />
         </div>
 
@@ -70,7 +71,6 @@ export default function Passo2(props) {
             require
             titulo="Cidade"
             placeholder="Digite sua cidade"
-            value={endereco.localidade}
           />
           <FormGroup
             id="bairro"
@@ -78,7 +78,6 @@ export default function Passo2(props) {
             require
             titulo="Bairo"
             placeholder="Digite seu bairro"
-            value={endereco.bairro}
           />
         </div>
 
@@ -89,7 +88,6 @@ export default function Passo2(props) {
             require
             titulo="Rua"
             placeholder="Digite sua Rua"
-            value={endereco.logradouro}
           />
           <FormGroup
             id="numero"

@@ -41,7 +41,7 @@ export default function Login(props) {
       }
 
       if (response.ok) {
-        if (usuario.usuario.tipo === "cliente") props.history.push("/cliente");
+        if (usuario.tipo === "cliente") props.history.push("/cliente");
         else props.history.push("/profissional");
       }
     } catch (error) {

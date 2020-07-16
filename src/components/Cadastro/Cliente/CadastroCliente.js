@@ -3,6 +3,7 @@ import React from "react";
 import "./CadastroCliente.css";
 import MyForm from "../Form";
 import api from "../../../services/apiAxios";
+import axios from 'axios'
 import { Link } from "react-router-dom";
 
 const handleSubmit = async (values) => {
@@ -18,6 +19,8 @@ const handleSubmit = async (values) => {
     celular: values.celular,
     residencias: [
       {
+        quantidadeQuartos: 0,
+        quantidadeBanheiros: 0,
         endereco: {
           cep: values.cep,
           rua: values.rua,
@@ -26,16 +29,23 @@ const handleSubmit = async (values) => {
           pais: "Brasil",
           complemento: values.complemento,
           numero: values.numero,
+          cidade: values.cidade
         },
       },
     ],
   };
 
   try {
-    const response = await api.post("/clientes", jsonBody);
-    console.log(response.data);
-  } catch (error) {
-    return console.log(error.response);
+    const { data } = await api.post('/clientes', jsonBody)
+    console.log(data)
+
+    const formData = new FormData()
+    formData.append("foto", values.imagem)
+
+    const responseImagem = await axios.post(`http://localhost:8080/upload/foto/${data.id}`, formData)
+    console.log(responseImagem)
+  } catch(e) {
+    return console.log(e)
   }
 };
 

@@ -1,4 +1,4 @@
-import { actionsTypes, todosPassos, passoInicial } from '../constants/passosConstants';
+import { actionsTypes, todosPassos, passoInicial } from '../constants/passosProfConstants';
 
 const reducers = (state = passoInicial, action) => {
     switch (action.type) {
