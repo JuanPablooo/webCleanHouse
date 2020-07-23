@@ -24,9 +24,9 @@ export default function MeuServiço(props) {
   const user = props.user;
 
   //State usuário
-  const [faxina, setFaxina] = useState(user.servicos.faxina);
-  const [cozinhar, setCozinhar] = useState(user.servicos.cozinhar);
-  const [roupa, setRoupa] = useState(user.servicos.passar_lavar_roupa);
+  const [faxina, setFaxina] = useState(typeof user.servicos !== 'undefined' ? user.servicos.faxina : "");
+  const [cozinhar, setCozinhar] = useState(typeof user.servicos !== 'undefined' ? user.servicos.cozinhar : "");
+  const [roupa, setRoupa] = useState(typeof user.servicos !== 'undefined' ? user.servicos.passar_lavar_roupa : "");
 
   //Chamada no clique do botão cancelar
   const initialState = () => {

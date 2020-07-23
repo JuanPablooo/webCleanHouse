@@ -19,7 +19,7 @@ const handleSubmit = async (values) => {
       "email": values.email,
       "senha": values.senha,
       "tipo": "profissional"
-  },
+  }, 
   "nomeCompleto": values.nome,
   "cpf": values.cpf,
   "dataNascimento": formatData(values.dataNascimento),
@@ -45,82 +45,67 @@ const handleSubmit = async (values) => {
         "pontoReferencia": ""
     }
   ],
-    "regioes": []
+    "cidades": []
   }
 
   if (typeof values.oeste !== 'undefined') {
-    const regioes = jsonBody.regioes
+    const cidades = jsonBody.cidades
 
-    let cidades = []
     for (const cidade in values.oeste) {
       cidades.push({ nome: cidade })
     }
 
-    jsonBody = { ...jsonBody, regioes: [ ...regioes, {
-      nome: "Oeste",
-      estado: "SP",
-      cidades
-    }]} 
-  }
-
-  if (typeof values.leste !== 'undefined') {
-    const regioes = jsonBody.regioes
-
-    let cidades = []
-    for (const cidade in values.leste) {
-      cidades.push({ nome: cidade })
-    }
-
-    jsonBody = { ...jsonBody, regioes: [ ...regioes, {
-      nome: "Leste",
-      estado: "SP",
-      cidades
-    }]} 
-  }
-
-  if (typeof values.norte !== 'undefined') {
-    const regioes = jsonBody.regioes
-
-    let cidades = []
-    for (const cidade in values.norte) {
-      cidades.push({ nome: cidade })
-    }
-
-    jsonBody = { ...jsonBody, regioes: [ ...regioes, {
-      nome: "Norte",
-      estado: "SP",
-      cidades
-    }]} 
+    jsonBody = { ...jsonBody, 
+      cidades: [ ...cidades ] 
+    } 
   }
 
   if (typeof values.sudoeste !== 'undefined') {
-    const regioes = jsonBody.regioes
+    const cidades = jsonBody.cidades
 
-    let cidades = []
     for (const cidade in values.sudoeste) {
       cidades.push({ nome: cidade })
     }
 
-    jsonBody = { ...jsonBody, regioes: [ ...regioes, {
-      nome: "Sudoeste",
-      estado: "SP",
-      cidades
-    }]} 
+    jsonBody = { ...jsonBody, 
+      cidades: [ ...cidades ] 
+    } 
+  }
+
+  if (typeof values.norte !== 'undefined') {
+    const cidades = jsonBody.cidades
+
+    for (const cidade in values.norte) {
+      cidades.push({ nome: cidade })
+    }
+
+    jsonBody = { ...jsonBody, 
+      cidades: [ ...cidades ] 
+    } 
   }
 
   if (typeof values.sudeste !== 'undefined') {
-    const regioes = jsonBody.regioes
+    const cidades = jsonBody.cidades
 
-    let cidades = []
     for (const cidade in values.sudeste) {
       cidades.push({ nome: cidade })
     }
 
-    jsonBody = { ...jsonBody, regioes: [ ...regioes, {
-      nome: "Sudeste",
-      estado: "SP",
-      cidades
-    }]} 
+    jsonBody = { ...jsonBody, 
+      cidades: [ ...cidades ] 
+    } 
+  }
+
+  if (typeof values.leste !== 'undefined') {
+    const cidades = jsonBody.cidades
+
+    for (const cidade in values.leste) {
+      cidades.push({ nome: cidade })
+    }
+
+    jsonBody = { ...jsonBody, 
+      cidades: [ ...cidades ] 
+    } 
   }
 
   try {

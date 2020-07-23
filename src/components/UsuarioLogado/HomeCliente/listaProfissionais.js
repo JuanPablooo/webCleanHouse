@@ -50,9 +50,16 @@ export default function ListaProfissionais(props) {
                               <p>R$ 100,00</p>
                             </div>
 
-                            <button className="btn btn-primary">
+                            <button 
+                              href="#"
+                              className="btn btn-primary"
+                              onClick={() => {
+                                props.setProfissional(profissional)
+                                props.handleButtonChange(11)
+                              }}>
                               Ver Perfil
                             </button>
+                            
                             <button
                               href="#"
                               className="btn mt-2 btn-green text-white"

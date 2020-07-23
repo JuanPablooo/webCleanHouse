@@ -10,6 +10,8 @@ import Senha from "../FormulariosGenericos/senha";
 import NovoServico from "./novoServico";
 import ListaProfissionais from "./listaProfissionais";
 import Foto from "./foto";
+import PerfilProfissional from './perfilProfissional'
+import Pagamento from './pagamento'
 
 //Cabeçalho e menu lateral
 import Header from "../header";
@@ -29,6 +31,8 @@ export default function HomeCliente() {
     cozinhar: "",
     residencia: 2,
   });
+
+  const [profissional, setProfissional] = useState({})
 
   //Resgata os dados do usuário, converte seu nome em array
   //e substitui as aspas por nada
@@ -78,7 +82,10 @@ export default function HomeCliente() {
 
       <div className="container-home">
         <div className="container">
-          <ListaProfissionais controller={controller} passo1={passo1} />
+          <ListaProfissionais controller={controller} handleButtonChange={handleButtonChange} passo1={passo1} setProfissional={setProfissional} />
+          <PerfilProfissional controller={controller} handleButtonChange={handleButtonChange} profissional={profissional} />
+          <Pagamento controller={controller} handleButtonChange={handleButtonChange} profissional={profissional} />
+
           <div className="d-flex flex-row justify-content-between">
             <div className="d-flex flex-column container-perfil ml-auto mr-auto">
               <div
