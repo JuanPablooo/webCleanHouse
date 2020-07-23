@@ -34,7 +34,6 @@ export default function Perfil(props) {
   const controller = props.controller;
   const user = props.user;
 
-  console.log(user)
   const tipo = user.tipo;
   var url = "";
   tipo === "cliente" ? (url = "/clientes/") : (url = "/profissionais/");

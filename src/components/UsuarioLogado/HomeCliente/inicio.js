@@ -22,7 +22,7 @@ export default function Inicio(props) {
             type="button"
             className="btn btn-green h-50 text-white w-35 mt-4 mb-5 text-uppercase"
             onClick={() => {
-              handleButtonChange(10);
+              handleButtonChange(7);
             }}
           >
             Novo serviço
@@ -42,7 +42,7 @@ export default function Inicio(props) {
             </p>
           </div>
           <div className="d-flex mt-4 mb-3 justify-content-around align-items-center">
-            <img src={IconRoupa}  alt="icone limpeza roupas"/>
+            <img src={IconRoupa} alt="icone limpeza roupas" />
             <p className="w-65">
               Roupas: Empregados (as) que lavam e passam suas roupas.
             </p>

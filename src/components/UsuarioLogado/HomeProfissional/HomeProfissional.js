@@ -25,7 +25,8 @@ export default function HomeProfissional() {
   //e substitui as aspas por nada
   const usuario = JSON.parse(localStorage.getItem("user"));
   const nomeUsuario = JSON.stringify(usuario.nomeCompleto).split(" ");
-  const primeiroNome = nomeUsuario[0].replace('"', "");
+  var primeiroNome = nomeUsuario[0].replace('"', "");
+  primeiroNome = primeiroNome.replace('"', "");
 
   const initialController = () => {
     setController(0);
@@ -33,17 +34,18 @@ export default function HomeProfissional() {
 
   //Executado assim que o componente é renderizado
   useEffect(() => {
+    //const foto = usuario.usuario.uploads.tipo == "Imagem";
     //Verifca se a foto está nula
-    usuario.fotoPerfil !== null
-      ? setFoto(usuario.fotoPerfil)
-      : setFoto(fotoPerfilPadrao);
+    if (usuario.usuario.uploads.length === 0) {
+      setFoto(fotoPerfilPadrao);
+    }
   }, []);
 
   //Executado caso o estado da foto seja alterado
   useEffect(() => {
-    usuario.fotoPerfil !== null
-      ? setFoto(usuario.fotoPerfil)
-      : setFoto(fotoPerfilPadrao);
+    if (usuario.usuario.uploads.length === 0) {
+      setFoto(fotoPerfilPadrao);
+    }
   }, [foto]);
 
   //Função para alterar o controller de acordo com o clique

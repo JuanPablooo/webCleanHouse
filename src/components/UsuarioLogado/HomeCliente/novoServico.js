@@ -31,18 +31,18 @@ export default function NovoServico(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const passo1 = {
+    const servicosSolicitados = {
       faxina: faxina,
       roupa: roupa,
       cozinhar: cozinhar,
       residencia: residencia,
     };
 
-    props.setandoPasso1(passo1);
-    props.handleButtonChange(9);
+    props.setandoServicos(servicosSolicitados);
+    props.handleButtonChange(8);
   };
 
-  if (controller === 10) {
+  if (controller === 7) {
     return (
       <>
         <section className="bg-white text-gray">

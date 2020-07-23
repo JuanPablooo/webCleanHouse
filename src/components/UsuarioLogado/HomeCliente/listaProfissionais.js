@@ -22,9 +22,7 @@ export default function ListaProfissionais(props) {
     buscaProfissionais();
   }, []);
 
-  console.log(profissionais);
-
-  if (controller === 9) {
+  if (controller === 8) {
     return (
       <div className="pt-5">
         <div className="w-100 bg-white pt-5 pb-5">
@@ -37,7 +35,7 @@ export default function ListaProfissionais(props) {
 
                   const idade = anoAtual - ano;
                   return (
-                    <div className="col-lg-4 col-md-6">
+                    <div className="col-lg-4 col-md-6" key={profissional.id}>
                       <div className="card mt-3 mb-3">
                         <div className="card-body">
                           <div className="d-flex flex-column">
@@ -50,19 +48,24 @@ export default function ListaProfissionais(props) {
                               <p>R$ 100,00</p>
                             </div>
 
-                            <button 
+                            <button
                               href="#"
                               className="btn btn-primary"
                               onClick={() => {
-                                props.setProfissional(profissional)
-                                props.handleButtonChange(11)
-                              }}>
+                                props.setandoIdProfissional(profissional.id);
+                                props.handleButtonChange(9);
+                              }}
+                            >
                               Ver Perfil
                             </button>
-                            
+
                             <button
                               href="#"
                               className="btn mt-2 btn-green text-white"
+                              onClick={() => {
+                                props.setandoIdProfissional(profissional.id);
+                                props.handleButtonChange(10);
+                              }}
                             >
                               Escolher
                             </button>

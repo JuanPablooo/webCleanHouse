@@ -10,8 +10,8 @@ import Senha from "../FormulariosGenericos/senha";
 import NovoServico from "./novoServico";
 import ListaProfissionais from "./listaProfissionais";
 import Foto from "./foto";
-import PerfilProfissional from './perfilProfissional'
-import Pagamento from './pagamento'
+import PerfilProfissional from "./perfilProfissional";
+import Pagamento from "./pagamento";
 
 //Cabeçalho e menu lateral
 import Header from "../header";
@@ -25,14 +25,13 @@ export default function HomeCliente() {
   const [foto, setFoto] = useState("");
   const [controller, setController] = useState(0);
 
-  const [passo1, setPasso1] = useState({
+  const [servicos, setServicos] = useState({
     faxina: "",
     roupa: "",
     cozinhar: "",
     residencia: 2,
   });
-
-  const [profissional, setProfissional] = useState({})
+  const [idProfissional, setIdProfissional] = useState();
 
   //Resgata os dados do usuário, converte seu nome em array
   //e substitui as aspas por nada
@@ -47,16 +46,16 @@ export default function HomeCliente() {
   //Executado assim que o componente é renderizado
   useEffect(() => {
     //Verifca se a foto está nula
-    usuario.fotoPerfil !== null
-      ? setFoto(usuario.fotoPerfil)
-      : setFoto(fotoPerfilPadrao);
+    if (usuario.usuario.uploads.length === 0) {
+      setFoto(fotoPerfilPadrao);
+    }
   }, []);
 
   //Executado caso o estado da foto seja alterado
   useEffect(() => {
-    usuario.fotoPerfil !== null
-      ? setFoto(usuario.fotoPerfil)
-      : setFoto(fotoPerfilPadrao);
+    if (usuario.usuario.uploads.length === 0) {
+      setFoto(fotoPerfilPadrao);
+    }
   }, [foto]);
 
   //Função para alterar o controller de acordo com o clique
@@ -64,8 +63,12 @@ export default function HomeCliente() {
     setController(estado);
   });
 
-  const setandoPasso1 = useCallback((estado) => {
-    setPasso1(estado);
+  const setandoServicos = useCallback((servicos) => {
+    setServicos(servicos);
+  });
+
+  const setandoIdProfissional = useCallback((id) => {
+    setIdProfissional(id);
   });
 
   return (
@@ -82,9 +85,22 @@ export default function HomeCliente() {
 
       <div className="container-home">
         <div className="container">
-          <ListaProfissionais controller={controller} handleButtonChange={handleButtonChange} passo1={passo1} setProfissional={setProfissional} />
-          <PerfilProfissional controller={controller} handleButtonChange={handleButtonChange} profissional={profissional} />
-          <Pagamento controller={controller} handleButtonChange={handleButtonChange} profissional={profissional} />
+          <ListaProfissionais
+            controller={controller}
+            handleButtonChange={handleButtonChange}
+            setandoIdProfissional={setandoIdProfissional}
+          />
+          <PerfilProfissional
+            controller={controller}
+            handleButtonChange={handleButtonChange}
+            idProfissional={idProfissional}
+          />
+          <Pagamento
+            controller={controller}
+            handleButtonChange={handleButtonChange}
+            idProfissional={idProfissional}
+            servicos={servicos}
+          />
 
           <div className="d-flex flex-row justify-content-between">
             <div className="d-flex flex-column container-perfil ml-auto mr-auto">
@@ -109,7 +125,7 @@ export default function HomeCliente() {
                   className="btn text-uppercase 
                 btn-green text-white mt-4 mr-3 ml-3"
                   onClick={() => {
-                    handleButtonChange(10);
+                    handleButtonChange(7);
                   }}
                 >
                   NOVO SERVIÇO
@@ -129,12 +145,12 @@ export default function HomeCliente() {
                 controller={controller}
                 user={usuario}
                 handleButtonChange={handleButtonChange}
-                setandoPasso1={setandoPasso1}
+                setandoServicos={setandoServicos}
               />
             </div>
 
             {/* Notificações */}
-            {controller !== 9 ? (
+            {controller <= 7 ? (
               <div id="container-notification" className="d-none d-lg-block">
                 <div className="d-flex   flex-column">
                   <div id="logo" className="ml-auto mr-auto">
@@ -154,7 +170,7 @@ export default function HomeCliente() {
                     className="btn text-uppercase 
                     btn-green text-white mt-4 mr-3 ml-3"
                     onClick={() => {
-                      handleButtonChange(10);
+                      handleButtonChange(7);
                     }}
                   >
                     NOVO SERVIÇO
