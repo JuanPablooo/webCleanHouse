@@ -7,6 +7,10 @@ export default function ListaProfissionais(props) {
 
   const [profissionais, setProfissionais] = useState([{}, {}]);
 
+  function getRandom() {
+    return Math.round(Math.random() * (5 - 0) + 0);
+  }
+
   var data = new Date();
   var anoAtual = data.getFullYear();
 
@@ -46,13 +50,14 @@ export default function ListaProfissionais(props) {
                               <p>{profissional.nomeCompleto}</p>
                               <p>{idade} anos</p>
                               <p>R$ 100,00</p>
+                              <p>{getRandom()}</p>
                             </div>
 
                             <button
                               href="#"
                               className="btn btn-primary"
                               onClick={() => {
-                                props.setandoIdProfissional(profissional.id);
+                                props.setandoPasso(profissional.id, "passo2");
                                 props.handleButtonChange(9);
                               }}
                             >
@@ -63,7 +68,7 @@ export default function ListaProfissionais(props) {
                               href="#"
                               className="btn mt-2 btn-green text-white"
                               onClick={() => {
-                                props.setandoIdProfissional(profissional.id);
+                                props.setandoPasso(profissional.id, "passo2");
                                 props.handleButtonChange(10);
                               }}
                             >

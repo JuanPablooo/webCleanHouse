@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import api from "../../../services/apiAxios";
 
 export default function Pagamento(props) {
-  const { controller, handleButtonChange, idProfissional, servicos } = props;
+  const { controller, handleButtonChange, passo1, passo2, user } = props;
 
   const [numeroCartao, setNumeroCartao] = useState("");
   const [nomeCompleto, setNomeCompleto] = useState("");
@@ -31,6 +32,51 @@ export default function Pagamento(props) {
     }
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    function diasNoMesSearch(mes, ano) {
+      let data = new Date(ano, mes, 0);
+      return data.getDate();
+    }
+
+    let mesAtual = new Date().getMonth() + 1;
+    let anoAtual = new Date().getFullYear();
+    let diasNoMes = diasNoMesSearch(mesAtual, anoAtual);
+    let diaAtual = new Date().getDate();
+    if (diaAtual === diasNoMes) {
+      diaAtual = 1; //se tivermos no ultimo dia do mês. vamos setar 1 como dia seguinte!
+    } else {
+      diaAtual += +1; //caso não estejamos no ultimo dia do mês, vamos fazer um incremento de +1.
+    }
+
+    const data = anoAtual + "-0" + mesAtual + "-" + diaAtual;
+
+    const solicitaco = {
+      idCliente: user.id,
+      idProfissional: passo2,
+      residencia: {
+        id: passo1.residencia,
+      },
+      servicos: {
+        passar_lavar_roupa: passo1.roupa,
+        cozinhar: passo1.cozinhar,
+        faxina: passo1.faxina,
+      },
+      data: data,
+      preco: 100.0,
+      observacao: passo1.observacao,
+      status: "Aguardando confirmação",
+    };
+
+    try {
+      const { data } = await api.post("/solicitacao/servico", solicitaco);
+      console.log(data);
+    } catch (e) {
+      return console.log(e);
+    }
+  };
+
   if (controller === 10) {
     return (
       <div>
@@ -40,7 +86,7 @@ export default function Pagamento(props) {
         <div className="row">
           <div className="col-md-3"></div>
           <div className="col-md-6">
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="input1"></label>
                 <input
@@ -50,6 +96,7 @@ export default function Pagamento(props) {
                   name="numeroCartao"
                   value={numeroCartao}
                   onChange={inputHandler}
+                  required
                   placeholder="Número do Cartão"
                 />
               </div>
@@ -61,6 +108,7 @@ export default function Pagamento(props) {
                   name="nomeCompleto"
                   value={nomeCompleto}
                   onChange={inputHandler}
+                  required
                   placeholder="Nome Completo do Titular"
                 />
               </div>
@@ -73,6 +121,7 @@ export default function Pagamento(props) {
                       name="dataVencimento"
                       value={dataVencimento}
                       onChange={inputHandler}
+                      required
                       placeholder="Data de Vencimento"
                     />
                   </div>
@@ -83,6 +132,7 @@ export default function Pagamento(props) {
                       name="codigoSeguranca"
                       value={codigoSeguranca}
                       onChange={inputHandler}
+                      required
                       placeholder="Código de Segurança"
                     />
                   </div>
@@ -96,6 +146,7 @@ export default function Pagamento(props) {
                   name="cpfTitular"
                   value={cpfTitular}
                   onChange={inputHandler}
+                  required
                   placeholder="CPF do Titular"
                 />
               </div>

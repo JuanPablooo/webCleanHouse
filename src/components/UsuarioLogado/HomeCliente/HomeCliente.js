@@ -25,13 +25,12 @@ export default function HomeCliente() {
   const [foto, setFoto] = useState("");
   const [controller, setController] = useState(0);
 
-  const [servicos, setServicos] = useState({
-    faxina: "",
-    roupa: "",
-    cozinhar: "",
-    residencia: 2,
-  });
-  const [idProfissional, setIdProfissional] = useState();
+  //Residência, serviços e observação
+  const [passo1, setPasso1] = useState({});
+  //Id do profissional
+  const [passo2, setPasso2] = useState(0);
+  //pagamento
+  const [passo3, setPasso3] = useState({});
 
   //Resgata os dados do usuário, converte seu nome em array
   //e substitui as aspas por nada
@@ -63,12 +62,15 @@ export default function HomeCliente() {
     setController(estado);
   });
 
-  const setandoServicos = useCallback((servicos) => {
-    setServicos(servicos);
-  });
-
-  const setandoIdProfissional = useCallback((id) => {
-    setIdProfissional(id);
+  const setandoPasso = useCallback((passo, nomePasso) => {
+    switch (nomePasso) {
+      case "passo1":
+        setPasso1(passo);
+        break;
+      case "passo2":
+        setPasso2(passo);
+        break;
+    }
   });
 
   return (
@@ -88,18 +90,19 @@ export default function HomeCliente() {
           <ListaProfissionais
             controller={controller}
             handleButtonChange={handleButtonChange}
-            setandoIdProfissional={setandoIdProfissional}
+            setandoPasso={setandoPasso}
           />
           <PerfilProfissional
             controller={controller}
             handleButtonChange={handleButtonChange}
-            idProfissional={idProfissional}
+            idProfissional={passo2}
           />
           <Pagamento
             controller={controller}
             handleButtonChange={handleButtonChange}
-            idProfissional={idProfissional}
-            servicos={servicos}
+            passo2={passo2}
+            passo1={passo1}
+            user={usuario}
           />
 
           <div className="d-flex flex-row justify-content-between">
@@ -145,7 +148,7 @@ export default function HomeCliente() {
                 controller={controller}
                 user={usuario}
                 handleButtonChange={handleButtonChange}
-                setandoServicos={setandoServicos}
+                setandoPasso={setandoPasso}
               />
             </div>
 

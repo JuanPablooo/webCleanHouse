@@ -8,9 +8,10 @@ export default function NovoServico(props) {
   const [roupa, setRoupa] = useState(false);
   const [cozinhar, setCozinhar] = useState(false);
   const [residencia, setResidencia] = useState(user.residencias[0].id);
+  const [observacao, setObservacao] = useState("");
 
   const inputHandler = useCallback((e) => {
-    const { name } = e.target;
+    const { name, value } = e.target;
 
     switch (name) {
       case "faxina":
@@ -23,7 +24,10 @@ export default function NovoServico(props) {
         cozinhar ? setCozinhar(false) : setCozinhar(true);
         break;
       case "sltResidencias":
-        setResidencia(e.target.value);
+        setResidencia(value);
+        break;
+      case "observacao":
+        setObservacao(value);
         break;
     }
   });
@@ -31,14 +35,15 @@ export default function NovoServico(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const servicosSolicitados = {
+    const passo1 = {
       faxina: faxina,
       roupa: roupa,
       cozinhar: cozinhar,
       residencia: residencia,
+      observacao: observacao,
     };
 
-    props.setandoServicos(servicosSolicitados);
+    props.setandoPasso(passo1, "passo1");
     props.handleButtonChange(8);
   };
 
@@ -108,6 +113,17 @@ export default function NovoServico(props) {
                 );
               })}
             </select>
+            <div className="form-group w-50 ml-5 mt-4">
+              <label htmlFor="exampleFormControlTextarea1">Observação</label>
+              <textarea
+                className="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+                name="observacao"
+                onChange={inputHandler}
+                value={observacao}
+              ></textarea>
+            </div>
             <div className="form-check ml-5 mt-4">
               <input
                 name="termos"
