@@ -38,16 +38,13 @@ const handleSubmit = async (values) => {
     const { data } = await api.post("/clientes", jsonBody);
     console.log(data);
 
-    const formData = new FormData();
-    formData.append("foto", values.imagem);
+    const image = values.imagem;
 
-    console.log(values.imagem);
-
-    // const responseImagem = await axios.post(
-    //   `http://localhost:8080/upload/foto/${data.id}`,
-    //   formData
-    // );
-    // console.log(responseImagem);
+    const responseImagem = await api.post(
+      `/upload/foto/${data.usuario.id}`,
+      image
+    );
+    console.log(responseImagem);
   } catch (e) {
     return console.log(e);
   }

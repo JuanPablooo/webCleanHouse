@@ -6,113 +6,115 @@ import api from "../../../services/apiAxios";
 import { Link } from "react-router-dom";
 
 function formatData(data) {
-  const dia  = data.split("/")[0]
-  const mes  = data.split("/")[1]
-  const ano  = data.split("/")[2]
+  const dia = data.split("/")[0];
+  const mes = data.split("/")[1];
+  const ano = data.split("/")[2];
 
-  return ano + '-' + ("0"+mes).slice(-2) + '-' + ("0"+dia).slice(-2)
+  return ano + "-" + ("0" + mes).slice(-2) + "-" + ("0" + dia).slice(-2);
 }
 
 const handleSubmit = async (values) => {
   let jsonBody = {
-    "usuario": {
-      "email": values.email,
-      "senha": values.senha,
-      "tipo": "profissional"
-  }, 
-  "nomeCompleto": values.nome,
-  "cpf": values.cpf,
-  "dataNascimento": formatData(values.dataNascimento),
-  "fotoPerfil": null,
-  "videoPerfil": null,
-  "telefoneFixo": values.telefone,
-  "celular": values.celular,
-  "servicos": {
-      "passar_lavar_roupa": values.passar ? values.passar : false,
-      "cozinhar": values.cozinhar ? values.cozinhar : false,
-      "faxina": values.lavar ? values.lavar : false
-  },
-  "enderecos": [
-    {
-        "numero": values.numero,
-        "cep": values.cep,
-        "cidade": values.cidade,
-        "rua": values.rua,
-        "bairro": values.bairro,
-        "estado": "SP",
-        "pais": "Brasil",
-        "complemento": values.complemento,
-        "pontoReferencia": ""
-    }
-  ],
-    "cidades": []
-  }
+    usuario: {
+      email: values.email,
+      senha: values.senha,
+      tipo: "profissional",
+    },
+    nomeCompleto: values.nome,
+    cpf: values.cpf,
+    dataNascimento: formatData(values.dataNascimento),
+    fotoPerfil: null,
+    videoPerfil: null,
+    telefoneFixo: values.telefone,
+    celular: values.celular,
+    servicos: {
+      passar_lavar_roupa: values.passar ? values.passar : false,
+      cozinhar: values.cozinhar ? values.cozinhar : false,
+      faxina: values.lavar ? values.lavar : false,
+    },
+    enderecos: [
+      {
+        numero: values.numero,
+        cep: values.cep,
+        cidade: values.cidade,
+        rua: values.rua,
+        bairro: values.bairro,
+        estado: "SP",
+        pais: "Brasil",
+        complemento: values.complemento,
+        pontoReferencia: "",
+      },
+    ],
+    cidades: [],
+  };
 
-  if (typeof values.oeste !== 'undefined') {
-    const cidades = jsonBody.cidades
+  if (typeof values.oeste !== "undefined") {
+    const cidades = jsonBody.cidades;
 
     for (const cidade in values.oeste) {
-      cidades.push({ nome: cidade })
+      cidades.push({ nome: cidade });
     }
 
-    jsonBody = { ...jsonBody, 
-      cidades: [ ...cidades ] 
-    } 
+    jsonBody = { ...jsonBody, cidades: [...cidades] };
   }
 
-  if (typeof values.sudoeste !== 'undefined') {
-    const cidades = jsonBody.cidades
+  if (typeof values.sudoeste !== "undefined") {
+    const cidades = jsonBody.cidades;
 
     for (const cidade in values.sudoeste) {
-      cidades.push({ nome: cidade })
+      cidades.push({ nome: cidade });
     }
 
-    jsonBody = { ...jsonBody, 
-      cidades: [ ...cidades ] 
-    } 
+    jsonBody = { ...jsonBody, cidades: [...cidades] };
   }
 
-  if (typeof values.norte !== 'undefined') {
-    const cidades = jsonBody.cidades
+  if (typeof values.norte !== "undefined") {
+    const cidades = jsonBody.cidades;
 
     for (const cidade in values.norte) {
-      cidades.push({ nome: cidade })
+      cidades.push({ nome: cidade });
     }
 
-    jsonBody = { ...jsonBody, 
-      cidades: [ ...cidades ] 
-    } 
+    jsonBody = { ...jsonBody, cidades: [...cidades] };
   }
 
-  if (typeof values.sudeste !== 'undefined') {
-    const cidades = jsonBody.cidades
+  if (typeof values.sudeste !== "undefined") {
+    const cidades = jsonBody.cidades;
 
     for (const cidade in values.sudeste) {
-      cidades.push({ nome: cidade })
+      cidades.push({ nome: cidade });
     }
 
-    jsonBody = { ...jsonBody, 
-      cidades: [ ...cidades ] 
-    } 
+    jsonBody = { ...jsonBody, cidades: [...cidades] };
   }
 
-  if (typeof values.leste !== 'undefined') {
-    const cidades = jsonBody.cidades
+  if (typeof values.leste !== "undefined") {
+    const cidades = jsonBody.cidades;
 
     for (const cidade in values.leste) {
-      cidades.push({ nome: cidade })
+      cidades.push({ nome: cidade });
     }
 
-    jsonBody = { ...jsonBody, 
-      cidades: [ ...cidades ] 
-    } 
+    jsonBody = { ...jsonBody, cidades: [...cidades] };
   }
 
   try {
-    const { data } = await api.post('/profissionais', jsonBody)
-    console.log(data)
-  } catch(e){
-    return console.log(e)
+    const { data } = await api.post("/profissionais", jsonBody);
+
+    const { imagem } = values;
+    const { video } = values;
+
+    const responseImagem = await api.post(
+      `/upload/foto/${data.usuario.id}`,
+      imagem
+    );
+
+    const responseVideo = await api.post(
+      `/upload/video/${data.usuario.id}`,
+      video
+    );
+  } catch (e) {
+    return console.log(e);
   }
 };
 

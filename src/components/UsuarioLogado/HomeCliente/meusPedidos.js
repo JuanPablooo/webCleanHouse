@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import api from "../../../services/apiAxios";
 
 export default function MeusPedidos(props) {
-  const { controller, handleButtonChange } = props;
+  const { controller, handleButtonChange, user } = props;
+  console.log(user);
 
   if (controller === 12) {
     return (

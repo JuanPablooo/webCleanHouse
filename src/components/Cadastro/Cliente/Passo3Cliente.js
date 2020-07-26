@@ -1,26 +1,52 @@
 import React, { useState, useMemo } from "react";
-import { Redirect } from "react-router-dom"
+import { Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { Field } from 'formik'
+import { Field } from "formik";
 
 //import { useSelector, useDispatch } from 'react-redux';
 import ImgPasso3 from "../../images/c3.png";
 import { actions } from "../../../actions/passosActions";
+import { element } from "prop-types";
 
 export default function Passo3Cliente() {
-  const [redirect, setRedirect] = useState(false)
+  const [redirect, setRedirect] = useState(false);
 
-  const [imagem, setImagem] = useState("")
+  const [imagem, setImagem] = useState("");
 
   const preview = useMemo(() => {
-    return imagem ? URL.createObjectURL(imagem) : null
-  }, [imagem])
+    return imagem ? URL.createObjectURL(imagem) : null;
+  }, [imagem]);
 
   const dispatch = useDispatch();
   function anterior() {
     dispatch(actions.mudaPasso(1));
   }
+
+  const encodeImageFileAsURL = (form) => {
+    //
+    var element = document.getElementById("fle-image");
+    var file = element.files[0];
+    var reader = new FileReader();
+    //
+    reader.onloadend = function () {
+      const result = reader.result;
+
+      var array = result.split(";", 2);
+      array = array[0].split(":");
+      console.log(array[1]);
+
+      let IndeceDeinformacoesDesnecessarias = result.indexOf("base64,") + 7; // pega o idice da informaca desnecessaria
+      let base64Limpo = result.substring(
+        IndeceDeinformacoesDesnecessarias,
+        result.length
+      ); //substring parte uma string a partir de um indice
+      console.log(base64Limpo);
+
+      form.setFieldValue("imagem", { mimeType: array[1], base64: base64Limpo });
+    };
+    reader.readAsDataURL(file);
+  };
 
   return (
     <>
@@ -44,20 +70,24 @@ export default function Passo3Cliente() {
           <div className="col-md-5 col-sm-12 ">
             <div className="input-group mb-3">
               <div className="custom-file">
-                <Field name="image" component={({ field, form }) => {
-                  return (
-                    <input
-                      name="imagem"
-                      accept="image/png, image/jpeg" 
-                      type="file"
-                      className="form-control"
-                      onChange={e => {
-                        setImagem(e.target.files[0])
-                        form.setFieldValue('imagem', e.target.files[0])
-                      }}
-                    />
-                  )
-                }} />
+                <Field
+                  name="image"
+                  component={({ field, form }) => {
+                    return (
+                      <input
+                        id="fle-image"
+                        name="imagem"
+                        accept="image/png, image/jpeg"
+                        type="file"
+                        className="form-control"
+                        onChange={(e) => {
+                          setImagem(e.target.files[0]);
+                          encodeImageFileAsURL(form);
+                        }}
+                      />
+                    );
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -66,7 +96,7 @@ export default function Passo3Cliente() {
         <div className="row justify-content-around  ">
           <div className="col-md-5 col-sm-12 ">
             <div className="preview cor-teste" id="preview">
-              <img src={preview} style={{ width: 'inherit', height: 'auto' }} />
+              <img src={preview} style={{ width: "inherit", height: "auto" }} />
             </div>
           </div>
           <div className="col-md-5 col-sm-12 d-flex  align-items-end">
