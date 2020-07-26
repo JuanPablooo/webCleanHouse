@@ -57,7 +57,10 @@ export default function Pagamento(props) {
 
     try {
       const { data } = await api.post("/solicitacao/servico", solicitacao);
-      localStorage.setItem("user", JSON.stringify(data));
+      const cliente = await api.get("/clientes/" + data.idCliente);
+      const clienteData = cliente.data;
+
+      localStorage.setItem("user", JSON.stringify(clienteData));
       handleButtonChange(11);
     } catch (e) {
       return console.log(e);

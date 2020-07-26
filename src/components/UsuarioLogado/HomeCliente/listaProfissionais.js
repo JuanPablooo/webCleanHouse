@@ -69,15 +69,15 @@ export default function ListaProfissionais(props) {
                             <div className="foto-pequena ml-auto mr-auto">
                               <img src={fotoPerfilPadrao} alt="foto-perfil" />
                             </div>
-                            <div className="card-text mt-3 mb-3">
-                              <p>{profissional.nomeCompleto}</p>
-                              <p>{idade} anos</p>
-                              <p>R$ 144,00</p>
+                            <div className="card-text mt-1 mb-3">
                               <img
                                 src={estrelas[profissional.avaliacao].img}
                                 alt="foto"
-                                className="w-50"
+                                className="w-50 mb-3"
                               />
+                              <p>{profissional.nomeCompleto}</p>
+                              <p>{idade} anos</p>
+                              <p>R$ 144,00</p>
                             </div>
 
                             <button

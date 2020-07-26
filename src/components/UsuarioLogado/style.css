@@ -25,8 +25,8 @@
   height: 150px;
 }
 
-.foto-grande {
-  border-radius: 45px;
+.foto-grande img {
+  border-radius: 80px;
 }
 
 .foto-xgrande,
@@ -184,4 +184,22 @@ p {
   padding-left: 5px;
   color: #34b8ff;
   cursor: pointer;
+}
+.container-card-solicitacao {
+  min-height: 400px;
+  width: 90%;
+  box-shadow: 5px 5px 6px #8a9596;
+}
+
+.bg-pendentes {
+  background-color: #3cb7c7;
+}
+
+.card-solicitacao {
+  height: 380px;
+  width: 90%;
+  margin-top: 15px;
+  background-color: white;
+  border: solid 1px white;
+  border-radius: 20px;
 }

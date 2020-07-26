@@ -76,6 +76,9 @@ export default function Header(props) {
                 <button
                   className="btn btn-controller text-uppercase 
                 bg-blue-dark text-white mt-3 mr-3 ml-3"
+                  onClick={() => {
+                    handleButtonChange(12);
+                  }}
                 >
                   {button2}
                 </button>

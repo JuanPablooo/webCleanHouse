@@ -83,8 +83,7 @@ export default function HomeCliente() {
         handleButtonChange={handleButtonChange}
         foto={foto}
         button1={"Pagamento"}
-        button2={"minhas residências"}
-        button3={"meus pedidos"}
+        button2={"meus pedidos"}
       />
 
       <div className="container-home">
