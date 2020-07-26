@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import api from "../../services/apiAxios";
 import { Form, Input } from "@rocketseat/unform";
 import * as Yup from "yup";
 
@@ -28,20 +29,21 @@ export default function Login(props) {
         email: data.email,
         senha: data.password,
       };
-      console.log(user);
 
-      const retorno = await signIn(user);
+      const retorno = await api.post("/login", user);
 
       //Separando o retorno
-      const response = retorno.response;
-      const usuario = retorno.usuario;
+      const usuario = retorno.data;
+      delete usuario.usuario.senha;
+      localStorage.setItem("user", JSON.stringify(usuario));
 
-      if (!response.ok) {
+      if (!retorno.status == 404) {
         setMsgErro("Usuário ou Senha incorretos!");
       }
 
-      if (response.ok) {
-        if (usuario.usuario.tipo === "cliente") props.history.push("/cliente");
+      if (retorno.status == 200) {
+        console.log(retorno.status);
+        if (usuario.usuario.tipo == "cliente") props.history.push("/cliente");
         else props.history.push("/profissional");
       }
     } catch (error) {

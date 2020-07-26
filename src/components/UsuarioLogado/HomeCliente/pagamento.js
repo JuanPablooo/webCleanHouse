@@ -35,24 +35,10 @@ export default function Pagamento(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    function diasNoMesSearch(mes, ano) {
-      let data = new Date(ano, mes, 0);
-      return data.getDate();
-    }
+    const rsData = passo1.data.split("/");
+    const data = rsData[2] + "-" + rsData[1] + "-" + rsData[0];
 
-    let mesAtual = new Date().getMonth() + 1;
-    let anoAtual = new Date().getFullYear();
-    let diasNoMes = diasNoMesSearch(mesAtual, anoAtual);
-    let diaAtual = new Date().getDate();
-    if (diaAtual === diasNoMes) {
-      diaAtual = 1; //se tivermos no ultimo dia do mês. vamos setar 1 como dia seguinte!
-    } else {
-      diaAtual += +1; //caso não estejamos no ultimo dia do mês, vamos fazer um incremento de +1.
-    }
-
-    const data = anoAtual + "-0" + mesAtual + "-" + diaAtual;
-
-    const solicitaco = {
+    const solicitacao = {
       idCliente: user.id,
       idProfissional: passo2,
       residencia: {
@@ -64,14 +50,14 @@ export default function Pagamento(props) {
         faxina: passo1.faxina,
       },
       data: data,
-      preco: 100.0,
+      preco: 144.0,
       observacao: passo1.observacao,
-      status: "Aguardando confirmação",
+      status: "aguardando",
     };
 
     try {
-      const { data } = await api.post("/solicitacao/servico", solicitaco);
-      console.log(data);
+      const { data } = await api.post("/solicitacao/servico", solicitacao);
+      handleButtonChange(11);
     } catch (e) {
       return console.log(e);
     }

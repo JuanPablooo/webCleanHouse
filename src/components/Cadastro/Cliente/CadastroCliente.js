@@ -3,7 +3,7 @@ import React from "react";
 import "./CadastroCliente.css";
 import MyForm from "../Form";
 import api from "../../../services/apiAxios";
-import axios from 'axios'
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 const handleSubmit = async (values) => {
@@ -20,7 +20,6 @@ const handleSubmit = async (values) => {
     residencias: [
       {
         quantidadeQuartos: 0,
-        quantidadeBanheiros: 0,
         endereco: {
           cep: values.cep,
           rua: values.rua,
@@ -29,23 +28,28 @@ const handleSubmit = async (values) => {
           pais: "Brasil",
           complemento: values.complemento,
           numero: values.numero,
-          cidade: values.cidade
+          cidade: values.cidade,
         },
       },
     ],
   };
 
   try {
-    const { data } = await api.post('/clientes', jsonBody)
-    console.log(data)
+    const { data } = await api.post("/clientes", jsonBody);
+    console.log(data);
 
-    const formData = new FormData()
-    formData.append("foto", values.imagem)
+    const formData = new FormData();
+    formData.append("foto", values.imagem);
 
-    const responseImagem = await axios.post(`http://localhost:8080/upload/foto/${data.id}`, formData)
-    console.log(responseImagem)
-  } catch(e) {
-    return console.log(e)
+    console.log(values.imagem);
+
+    // const responseImagem = await axios.post(
+    //   `http://localhost:8080/upload/foto/${data.id}`,
+    //   formData
+    // );
+    // console.log(responseImagem);
+  } catch (e) {
+    return console.log(e);
   }
 };
 
@@ -54,9 +58,7 @@ const initialValues = {};
 export default function Cadastro(props) {
   return (
     <>
-    {
-      console.log('salve')
-    }
+      {console.log("salve")}
       <header className="bg-header h-header pt-2 text-white">
         <div className="container">
           <div className="row">

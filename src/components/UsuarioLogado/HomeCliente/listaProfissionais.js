@@ -1,24 +1,47 @@
 import React, { useEffect, useState } from "react";
 import api from "../../../services/apiAxios";
 import fotoPerfilPadrao from "../../images/perfil.png";
+import av1 from "../../images/av1.png";
+import av2 from "../../images/av2.png";
+import av3 from "../../images/av3.png";
+import av4 from "../../images/av4.png";
+import av5 from "../../images/av5.png";
 
 export default function ListaProfissionais(props) {
   const controller = props.controller;
 
   const [profissionais, setProfissionais] = useState([{}, {}]);
-
-  function getRandom() {
-    return Math.round(Math.random() * (5 - 0) + 0);
-  }
+  const [estrelas, setEstrelas] = useState([
+    {
+      img: 1,
+    },
+    {
+      img: av1,
+    },
+    {
+      img: av2,
+    },
+    {
+      img: av3,
+    },
+    {
+      img: av4,
+    },
+    {
+      img: av5,
+    },
+  ]);
 
   var data = new Date();
   var anoAtual = data.getFullYear();
 
-  //console.log(props.passo1);
-
   const buscaProfissionais = async () => {
     const response = await api.get("/profissionais");
     const { data } = response;
+
+    // const cincoEstrelas = data.filter(data.avaliacao == 5);
+    // console.log(cincoEstrelas);
+
     setProfissionais(data);
   };
 
@@ -49,8 +72,12 @@ export default function ListaProfissionais(props) {
                             <div className="card-text mt-3 mb-3">
                               <p>{profissional.nomeCompleto}</p>
                               <p>{idade} anos</p>
-                              <p>R$ 100,00</p>
-                              <p>{getRandom()}</p>
+                              <p>R$ 144,00</p>
+                              <img
+                                src={estrelas[profissional.avaliacao].img}
+                                alt="foto"
+                                className="w-50"
+                              />
                             </div>
 
                             <button

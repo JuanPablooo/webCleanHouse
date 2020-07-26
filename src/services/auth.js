@@ -21,7 +21,7 @@ export const signIn = async (usuario) => {
 
     const retorno = { response: response, usuario: usuario };
 
-    console.log(retorno)
+    console.log(retorno);
 
     return retorno;
   } catch (erro) {

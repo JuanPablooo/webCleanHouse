@@ -9,6 +9,7 @@ export default function NovoServico(props) {
   const [cozinhar, setCozinhar] = useState(false);
   const [residencia, setResidencia] = useState(user.residencias[0].id);
   const [observacao, setObservacao] = useState("");
+  const [data, setData] = useState("");
 
   const inputHandler = useCallback((e) => {
     const { name, value } = e.target;
@@ -29,6 +30,9 @@ export default function NovoServico(props) {
       case "observacao":
         setObservacao(value);
         break;
+      case "data":
+        setData(value);
+        break;
     }
   });
 
@@ -41,6 +45,7 @@ export default function NovoServico(props) {
       cozinhar: cozinhar,
       residencia: residencia,
       observacao: observacao,
+      data: data,
     };
 
     props.setandoPasso(passo1, "passo1");
@@ -113,6 +118,21 @@ export default function NovoServico(props) {
                 );
               })}
             </select>
+            <div className="form-group">
+              <label htmlFor="input1" className="mt-2 w-50 ml-5">
+                Data do serviço
+              </label>
+              <input
+                type="text"
+                className="form-control w-50 ml-5"
+                id="input1"
+                name="data"
+                value={data}
+                onChange={inputHandler}
+                required
+                placeholder="dd/mm/aaaa"
+              />
+            </div>
             <div className="form-group w-50 ml-5 mt-4">
               <label htmlFor="exampleFormControlTextarea1">Observação</label>
               <textarea

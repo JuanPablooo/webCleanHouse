@@ -12,6 +12,8 @@ import ListaProfissionais from "./listaProfissionais";
 import Foto from "./foto";
 import PerfilProfissional from "./perfilProfissional";
 import Pagamento from "./pagamento";
+import StatusPagamento from "./statusPagamento";
+import MeusPedidos from "./meusPedidos";
 
 //Cabeçalho e menu lateral
 import Header from "../header";
@@ -102,6 +104,15 @@ export default function HomeCliente() {
             handleButtonChange={handleButtonChange}
             passo2={passo2}
             passo1={passo1}
+            user={usuario}
+          />
+          <StatusPagamento
+            controller={controller}
+            handleButtonChange={handleButtonChange}
+          />
+          <MeusPedidos
+            controller={controller}
+            handleButtonChange={handleButtonChange}
             user={usuario}
           />
 

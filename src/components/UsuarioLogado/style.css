@@ -78,6 +78,10 @@
   background-color: #16c772;
 }
 
+.text-green {
+  color: #16c772;
+}
+
 .btn-green:hover {
   background-color: #07ab5c;
 }
@@ -174,4 +178,10 @@ p {
 
 .w-85 {
   width: 85%;
+}
+
+.link {
+  padding-left: 5px;
+  color: #34b8ff;
+  cursor: pointer;
 }
