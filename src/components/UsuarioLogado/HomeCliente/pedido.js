@@ -3,7 +3,7 @@ import api from "../../../services/apiAxios";
 import fotoPerfilPadrao from "../../images/perfil.png";
 
 export default function Pedido(props) {
-  const { solicitacao } = props;
+  const { solicitacao, aba } = props;
 
   var status = "";
 
@@ -61,14 +61,40 @@ export default function Pedido(props) {
         <p>Agendado para: {solicitacao.data}</p>
         <p>R${solicitacao.preco}</p>
         <p className="text-capitalize">{status}</p>
+
+        {aba == "pendentes" ? (
+          <button
+            href="#"
+            className="btn btn-primary mt-2 text-white"
+            onClick={() => {
+              mudaStatus("cancelarPedido");
+            }}
+          >
+            Cancelar
+          </button>
+        ) : (
+          <> </>
+        )}
+        {aba == "finalizados" ? (
+          <button
+            href="#"
+            className="btn btn-primary mt-2 text-white"
+            onClick={() => {
+              mudaStatus("cancelarPedido");
+            }}
+          >
+            Avaliar
+          </button>
+        ) : (
+          <> </>
+        )}
+        <br></br>
         <button
           href="#"
-          className="btn btn-primary mt-2 text-white"
-          onClick={() => {
-            mudaStatus("cancelarPedido");
-          }}
+          className="btn mt-2 mb-4 btn-green text-white"
+          onClick={() => {}}
         >
-          Cancelar
+          Detalhes
         </button>
       </div>
     </div>

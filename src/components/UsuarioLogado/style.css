@@ -194,12 +194,24 @@ p {
 .bg-pendentes {
   background-color: #3cb7c7;
 }
+.bg-finalizados {
+  background-color: #2bc47a;
+}
+.bg-cancelados {
+  background-color: #4d5251;
+}
 
 .card-solicitacao {
-  height: 380px;
+  min-height: 350px;
   width: 90%;
   margin-top: 15px;
   background-color: white;
   border: solid 1px white;
   border-radius: 20px;
+}
+
+.aba {
+  height: 55px;
+  width: 33.33%;
+  cursor: pointer;
 }

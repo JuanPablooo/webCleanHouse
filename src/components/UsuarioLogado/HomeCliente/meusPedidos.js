@@ -10,6 +10,7 @@ export default function MeusPedidos(props) {
   const [aba1, setAba1] = useState(true);
   const [aba2, setAba2] = useState(false);
   const [aba3, setAba3] = useState(false);
+  const [check, setCheck] = useState(false);
 
   const buscaCliente = async () => {
     const response = await api.get("/clientes/" + user.id);
@@ -47,20 +48,136 @@ export default function MeusPedidos(props) {
     return (
       <div className="text-gray">
         {aba1 ? (
-          <div className="container-card-solicitacao ml-auto mr-auto mt-3 mb-3 pb-3 bg-pendentes text-center">
-            <h1 className="text-uppercase mt-4  text-white">pendentes</h1>
-            <div className="row">
-              {solicitacoes.map((solicitacao) => {
-                if (solicitacao.status == "aguardando") {
-                  return (
-                    <Pedido solicitacao={solicitacao} key={solicitacao.id} />
-                  );
-                } else {
-                  return null;
-                }
-              })}
+          <>
+            <div className="container-card-solicitacao ml-auto mr-auto mb-3 bg-pendentes mt-3 pb-3  text-center">
+              <div className="d-flex text-white text-center mb-3">
+                <div
+                  className="aba bg-pendentes pt-2"
+                  onClick={() => mudaAba("pendentes")}
+                >
+                  <h2>PENDENTES</h2>
+                </div>
+                <div
+                  className="aba bg-finalizados pt-2"
+                  onClick={() => mudaAba("finalizados")}
+                >
+                  <h2>FINALIZADOS</h2>
+                </div>
+                <div
+                  className="aba bg-cancelados pt-2"
+                  onClick={() => mudaAba("cancelados")}
+                >
+                  <h2>CANCELADOS</h2>
+                </div>
+              </div>
+              <div className="row ">
+                {solicitacoes.map((solicitacao) => {
+                  if (
+                    solicitacao.status == "aguardando" ||
+                    solicitacao.status == "confirmado"
+                  ) {
+                    return (
+                      <Pedido
+                        solicitacao={solicitacao}
+                        key={solicitacao.id}
+                        aba="pendentes"
+                      />
+                    );
+                  } else {
+                    return null;
+                  }
+                })}
+              </div>
             </div>
-          </div>
+          </>
+        ) : (
+          <></>
+        )}
+
+        {aba2 ? (
+          <>
+            <div className="container-card-solicitacao ml-auto mr-auto mb-3 bg-finalizados mt-3 pb-3  text-center">
+              <div className="d-flex text-white text-center mb-3">
+                <div
+                  className="aba bg-pendentes pt-2"
+                  onClick={() => mudaAba("pendentes")}
+                >
+                  <h2>PENDENTES</h2>
+                </div>
+                <div
+                  className="aba bg-finalizados pt-2"
+                  onClick={() => mudaAba("finalizados")}
+                >
+                  <h2>FINALIZADOS</h2>
+                </div>
+                <div
+                  className="aba bg-cancelados pt-2"
+                  onClick={() => mudaAba("cancelados")}
+                >
+                  <h2>CANCELADOS</h2>
+                </div>
+              </div>
+              <div className="row ">
+                {solicitacoes.map((solicitacao) => {
+                  if (solicitacao.status == "finalizado") {
+                    return (
+                      <Pedido
+                        solicitacao={solicitacao}
+                        key={solicitacao.id}
+                        aba="finalizados"
+                      />
+                    );
+                  } else {
+                    return null;
+                  }
+                })}
+              </div>
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
+
+        {aba3 ? (
+          <>
+            <div className="container-card-solicitacao ml-auto mr-auto mb-3 bg-cancelados mt-3 pb-3  text-center">
+              <div className="d-flex text-white text-center mb-3">
+                <div
+                  className="aba bg-pendentes pt-2"
+                  onClick={() => mudaAba("pendentes")}
+                >
+                  <h2>PENDENTES</h2>
+                </div>
+                <div
+                  className="aba bg-finalizados pt-2"
+                  onClick={() => mudaAba("finalizados")}
+                >
+                  <h2>FINALIZADOS</h2>
+                </div>
+                <div
+                  className="aba bg-cancelados pt-2"
+                  onClick={() => mudaAba("cancelados")}
+                >
+                  <h2>CANCELADOS</h2>
+                </div>
+              </div>
+              <div className="row ">
+                {solicitacoes.map((solicitacao) => {
+                  if (solicitacao.status == "cancelado") {
+                    return (
+                      <Pedido
+                        solicitacao={solicitacao}
+                        key={solicitacao.id}
+                        aba="cancelados"
+                      />
+                    );
+                  } else {
+                    return null;
+                  }
+                })}
+              </div>
+            </div>
+          </>
         ) : (
           <></>
         )}
