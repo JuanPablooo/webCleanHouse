@@ -15,8 +15,8 @@
   height: 87px;
 }
 
-.foto-pequena {
-  border-radius: 20px;
+.foto-pequena img {
+  border-radius: 45px;
 }
 
 .foto-grande,

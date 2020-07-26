@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import api from "../../../services/apiAxios";
 import fotoPerfilPadrao from "../../images/perfil.png";
+import av0 from "../../images/av0.png";
 import av1 from "../../images/av1.png";
 import av2 from "../../images/av2.png";
 import av3 from "../../images/av3.png";
@@ -8,12 +9,12 @@ import av4 from "../../images/av4.png";
 import av5 from "../../images/av5.png";
 
 export default function ListaProfissionais(props) {
-  const controller = props.controller;
+  const { controller, passo1, user, handleButtonChange } = props;
 
   const [profissionais, setProfissionais] = useState([{}, {}]);
   const [estrelas, setEstrelas] = useState([
     {
-      img: 1,
+      img: av0,
     },
     {
       img: av1,
@@ -49,13 +50,49 @@ export default function ListaProfissionais(props) {
     buscaProfissionais();
   }, []);
 
+  const handleSubmit = async (idProfissional) => {
+    const rsData = passo1.data.split("/");
+    const data = rsData[2] + "-" + rsData[1] + "-" + rsData[0];
+
+    const solicitacao = {
+      idCliente: user.id,
+      idProfissional: idProfissional,
+      residencia: {
+        id: passo1.residencia,
+      },
+      servicos: {
+        passar_lavar_roupa: passo1.roupa,
+        cozinhar: passo1.cozinhar,
+        faxina: passo1.faxina,
+      },
+      data: data,
+      preco: 144.0,
+      observacao: passo1.observacao,
+      status: "aguardando",
+    };
+
+    try {
+      const { data } = await api.post("/solicitacao/servico", solicitacao);
+      const cliente = await api.get("/clientes/" + data.idCliente);
+      const clienteData = cliente.data;
+
+      localStorage.setItem("user", JSON.stringify(clienteData));
+      handleButtonChange(13);
+    } catch (e) {
+      return console.log(e);
+    }
+  };
+
   if (controller === 8) {
     return (
       <div className="pt-5">
         <div className="w-100 bg-white pt-5 pb-5">
           <div className="d-flex flex-row flex-wrap justify-content-around">
             <div className="w-75">
-              <div className="row text-center">
+              <div className="row text-center text-gray">
+                <h1 className="text-capitalize">
+                  Alguns Profissionais que pode lhe interessar
+                </h1>
                 {profissionais.map((profissional) => {
                   var ano = profissional.dataNascimento;
                   ano = ano.substr(6, 4);
@@ -67,7 +104,14 @@ export default function ListaProfissionais(props) {
                         <div className="card-body">
                           <div className="d-flex flex-column">
                             <div className="foto-pequena ml-auto mr-auto">
-                              <img src={fotoPerfilPadrao} alt="foto-perfil" />
+                              {profissional.usuario.urlPerfil !== null ? (
+                                <img
+                                  src={profissional.usuario.urlPerfil}
+                                  alt="foto-perfil"
+                                />
+                              ) : (
+                                <img src={fotoPerfilPadrao} alt="foto-perfil" />
+                              )}
                             </div>
                             <div className="card-text mt-1 mb-3">
                               <img
@@ -95,8 +139,7 @@ export default function ListaProfissionais(props) {
                               href="#"
                               className="btn mt-2 btn-green text-white"
                               onClick={() => {
-                                props.setandoPasso(profissional.id, "passo2");
-                                props.handleButtonChange(10);
+                                handleSubmit(profissional.id);
                               }}
                             >
                               Escolher

@@ -13,6 +13,7 @@ import Foto from "./foto";
 import PerfilProfissional from "./perfilProfissional";
 import Pagamento from "./pagamento";
 import StatusPagamento from "./statusPagamento";
+import StatusPedido from "./statusPedido";
 import MeusPedidos from "./meusPedidos";
 
 //Cabeçalho e menu lateral
@@ -92,6 +93,8 @@ export default function HomeCliente() {
             controller={controller}
             handleButtonChange={handleButtonChange}
             setandoPasso={setandoPasso}
+            passo1={passo1}
+            user={usuario}
           />
           <PerfilProfissional
             controller={controller}
@@ -106,6 +109,10 @@ export default function HomeCliente() {
             user={usuario}
           />
           <StatusPagamento
+            controller={controller}
+            handleButtonChange={handleButtonChange}
+          />
+          <StatusPedido
             controller={controller}
             handleButtonChange={handleButtonChange}
           />

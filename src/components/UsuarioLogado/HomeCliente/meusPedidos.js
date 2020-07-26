@@ -44,6 +44,10 @@ export default function MeusPedidos(props) {
     buscaCliente();
   }, []);
 
+  useEffect(() => {
+    buscaCliente();
+  }, [localStorage.getItem("user")]);
+
   if (controller === 12) {
     return (
       <div className="text-gray">
