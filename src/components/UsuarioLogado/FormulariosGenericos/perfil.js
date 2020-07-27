@@ -40,7 +40,7 @@ export default function Perfil(props) {
 
   //State usuário
   const [nomeCompleto, setNomeCompleto] = useState(user.nomeCompleto);
-  const [email, setEmail] = useState(user.email);
+  const [email, setEmail] = useState(user.usuario.email);
   const [telefoneFixo, setTelefoneFixo] = useState(user.telefoneFixo);
   const [celular, setCelular] = useState(user.celular);
   const [cpf, setCpf] = useState(user.cpf);
@@ -91,7 +91,7 @@ export default function Perfil(props) {
   //Chamada no clique do botão cancelar
   const initialState = () => {
     setNomeCompleto(user.nomeCompleto);
-    setEmail(user.email);
+    setEmail(user.usuario.email);
     setCpf(user.cpf);
     setDataNascimento(user.dataNascimento);
     setTelefoneFixo(user.telefoneFixo);

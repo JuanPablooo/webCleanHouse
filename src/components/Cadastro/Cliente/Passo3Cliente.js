@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
@@ -9,7 +9,7 @@ import ImgPasso3 from "../../images/c3.png";
 import { actions } from "../../../actions/passosActions";
 import { element } from "prop-types";
 
-export default function Passo3Cliente() {
+export default function Passo3Cliente(props) {
   const [redirect, setRedirect] = useState(false);
 
   const [imagem, setImagem] = useState("");

@@ -48,14 +48,16 @@ export default function HomeCliente() {
   //Executado assim que o componente é renderizado
   useEffect(() => {
     //Verifca se a foto está nula
-    if (usuario.usuario.uploads.length === 0) {
+    if (usuario.usuario.urlPerfil === null) {
       setFoto(fotoPerfilPadrao);
+    } else {
+      setFoto(usuario.usuario.urlPerfil);
     }
   }, []);
 
   //Executado caso o estado da foto seja alterado
   useEffect(() => {
-    if (usuario.usuario.uploads.length === 0) {
+    if (usuario.usuario.urlPerfil === null) {
       setFoto(fotoPerfilPadrao);
     }
   }, [foto]);
@@ -100,6 +102,8 @@ export default function HomeCliente() {
             controller={controller}
             handleButtonChange={handleButtonChange}
             idProfissional={passo2}
+            passo1={passo1}
+            user={usuario}
           />
           <Pagamento
             controller={controller}

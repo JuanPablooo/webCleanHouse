@@ -52,7 +52,9 @@ export default function ListaProfissionais(props) {
 
   const handleSubmit = async (idProfissional) => {
     const rsData = passo1.data.split("/");
+    const dia = parseInt(rsData[0], 10) + 1;
     const data = rsData[2] + "-" + rsData[1] + "-" + rsData[0];
+    console.log(data);
 
     const solicitacao = {
       idCliente: user.id,
@@ -70,6 +72,7 @@ export default function ListaProfissionais(props) {
       observacao: passo1.observacao,
       status: "aguardando",
     };
+    console.log(solicitacao);
 
     try {
       const { data } = await api.post("/solicitacao/servico", solicitacao);
