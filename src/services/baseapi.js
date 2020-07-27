@@ -1,6 +1,6 @@
 //import { getToken } from "./auth";
 
-const url = "http://localhost:8080/";
+const url = "http://ec2-100-26-18-60.compute-1.amazonaws.com:8080";
 
 //Faz requisição privada
 export const doRequest = async (rota, method, data = "", urlParam = "") => {
