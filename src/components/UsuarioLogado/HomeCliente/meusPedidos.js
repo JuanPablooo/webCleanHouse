@@ -18,6 +18,7 @@ export default function MeusPedidos(props) {
     const { solicitacaoDeServicos } = data;
 
     setSolicitacoes(solicitacaoDeServicos);
+    setCheck(true);
   };
 
   const mudaAba = (nome) => {
@@ -75,22 +76,24 @@ export default function MeusPedidos(props) {
                 </div>
               </div>
               <div className="row ">
-                {solicitacoes.map((solicitacao) => {
-                  if (
-                    solicitacao.status == "aguardando" ||
-                    solicitacao.status == "confirmado"
-                  ) {
-                    return (
-                      <Pedido
-                        solicitacao={solicitacao}
-                        key={solicitacao.id}
-                        aba="pendentes"
-                      />
-                    );
-                  } else {
-                    return null;
-                  }
-                })}
+                {check
+                  ? solicitacoes.map((solicitacao) => {
+                      if (
+                        solicitacao.status == "aguardando" ||
+                        solicitacao.status == "confirmado"
+                      ) {
+                        return (
+                          <Pedido
+                            solicitacao={solicitacao}
+                            key={solicitacao.id}
+                            aba="pendentes"
+                          />
+                        );
+                      } else {
+                        return null;
+                      }
+                    })
+                  : null}
               </div>
             </div>
           </>

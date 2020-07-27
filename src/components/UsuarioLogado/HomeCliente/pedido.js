@@ -63,15 +63,29 @@ export default function Pedido(props) {
         <p className="text-capitalize">{status}</p>
 
         {aba == "pendentes" ? (
-          <button
-            href="#"
-            className="btn btn-primary mt-2 text-white"
-            onClick={() => {
-              mudaStatus("cancelarPedido");
-            }}
-          >
-            Cancelar
-          </button>
+          <>
+            <div className="d-flex flex-column align-items-center">
+              <button
+                href="#"
+                className="btn btn-primary mt-3 w-50 text-white"
+                onClick={() => {
+                  mudaStatus("cancelarPedido");
+                }}
+              >
+                Cancelar
+              </button>
+
+              <button
+                href="#"
+                className="btn mt-2 btn-green w-50 text-white"
+                onClick={() => {
+                  mudaStatus("finalizarPedido");
+                }}
+              >
+                Finalizar
+              </button>
+            </div>
+          </>
         ) : (
           <> </>
         )}
@@ -89,13 +103,6 @@ export default function Pedido(props) {
           <> </>
         )}
         <br></br>
-        <button
-          href="#"
-          className="btn mt-2 mb-4 btn-green text-white"
-          onClick={() => {}}
-        >
-          Detalhes
-        </button>
       </div>
     </div>
   );
