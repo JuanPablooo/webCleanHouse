@@ -3,7 +3,6 @@ import React from "react";
 import "./CadastroCliente.css";
 import MyForm from "../Form";
 import api from "../../../services/apiAxios";
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 const handleSubmit = async (values) => {

@@ -93,9 +93,9 @@ export default function Passo3Cliente(props) {
           </div>
         </div>
 
-        <div className="row justify-content-around  ">
+        <div className="row justify-content-around">
           <div className="col-md-5 col-sm-12 ">
-            <div className="preview cor-teste" id="preview">
+            <div className="preview border">
               <img src={preview} style={{ width: "inherit", height: "auto" }} />
             </div>
           </div>
