@@ -44,7 +44,7 @@ export default function Inicio(props) {
           <div className="d-flex mt-4 mb-3 justify-content-around align-items-center">
             <img src={IconRoupa} alt="icone limpeza roupas" />
             <p className="w-65">
-              Roupas: Empregados (as) que lavam e passam suas roupas.
+              Roupas: Profissionais que lavam e passam suas roupas.
             </p>
           </div>
         </div>
