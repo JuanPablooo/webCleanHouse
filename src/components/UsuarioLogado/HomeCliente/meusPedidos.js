@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import api from "../../../services/apiAxios";
-import fotoPerfilPadrao from "../../images/perfil.png";
 import Pedido from "./pedido";
 
 export default function MeusPedidos(props) {
-  const { controller, handleButtonChange, user } = props;
+  const { controller, user } = props;
 
   const [solicitacoes, setSolicitacoes] = useState({});
   const [aba1, setAba1] = useState(true);
