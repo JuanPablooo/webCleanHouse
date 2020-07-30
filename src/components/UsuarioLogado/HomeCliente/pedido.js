@@ -9,6 +9,7 @@ import av2 from "../../images/av2.png";
 import av3 from "../../images/av3.png";
 import av4 from "../../images/av4.png";
 import av5 from "../../images/av5.png";
+import video from "../../images/Video_1595788571.mp4";
 
 export default function Pedido(props) {
   const { solicitacao, aba } = props;
@@ -23,6 +24,7 @@ export default function Pedido(props) {
   const [idade, setIdade] = useState("");
   const [estrelas, setEstrelas] = useState("");
   const [foto, setFoto] = useState(fotoPerfilPadrao);
+  const [video, setVideo] = useState(false);
   const [detalhes, setDetalhes] = useState(false);
   const servicos = solicitacao.servicos;
 
@@ -57,7 +59,7 @@ export default function Pedido(props) {
     const response = await api.get("/profissionais/" + id);
     const { data } = response;
     const { nomeCompleto, dataNascimento, avaliacao } = data;
-    const { urlPerfil } = data.usuario;
+    const { urlPerfil, urlVideo } = data.usuario;
 
     var ano = dataNascimento;
     ano = ano.substr(6, 4);
@@ -68,6 +70,7 @@ export default function Pedido(props) {
     setIdade(idade);
     setEstrelas(avaliacao);
     urlPerfil != null ? setFoto(urlPerfil) : setFoto(fotoPerfilPadrao);
+    urlVideo != null ? setVideo(urlVideo) : setVideo(false);
   };
 
   const mudaStatus = async (action) => {
@@ -149,6 +152,33 @@ export default function Pedido(props) {
                   <p>{solicitacao.residencia.endereco.cep}</p>
                 </div>
               </div>
+            </div>
+            <div className="col-12 text-white">
+              <h1 className="mt-5">VÍDEO DE APRESENTAÇÃO</h1>
+              {video != false ? (
+                <video controls width="610" height="360">
+                  <source src={video} type="video/mp4" />
+                  <object data={video} type="application/x-shockwave-flash">
+                    <embed
+                      src="videos/Omelete%20Entrevista.mp4"
+                      type="application/x-shockwave-flash"
+                      allowfullscreen="false"
+                      allowscriptaccess="always"
+                    />
+                  </object>
+                  Formato não suportado
+                </video>
+              ) : (
+                <p>ESSE PROFISSIONAL NÃO TEM VÍDEO</p>
+              )}
+            </div>
+            <div className="col-12 text-white">
+              <h1 className="mt-5">COMENTÁRIOS</h1>
+              {estrelas != 0 ? (
+                <div>comentários</div>
+              ) : (
+                <p>ESSE PROFISSIONAL NÃO POSSUI AVALIAÇÕES</p>
+              )}
             </div>
           </div>
         </div>

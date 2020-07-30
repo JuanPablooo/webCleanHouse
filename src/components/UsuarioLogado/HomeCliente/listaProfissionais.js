@@ -94,7 +94,7 @@ export default function ListaProfissionais(props) {
             <div className="w-75">
               <div className="row text-center text-gray">
                 <h1 className="text-capitalize">
-                  Alguns Profissionais que pode lhe interessar
+                  Alguns Profissionais que possam lhe interessar
                 </h1>
                 {profissionais.map((profissional) => {
                   var ano = profissional.dataNascimento;

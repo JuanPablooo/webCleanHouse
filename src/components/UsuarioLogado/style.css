@@ -223,7 +223,8 @@ p {
 
 .detalhes {
   width: 1000px;
-  height: 520px;
+  min-height: 520px;
+  height: auto;
   background-color: #7a55ab;
   position: absolute;
   z-index: 10;
