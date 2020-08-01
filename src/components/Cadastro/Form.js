@@ -7,17 +7,18 @@ import { useHistory } from 'react-router-dom'
 
 //Validações
 const validations = Yup.object().shape({
-  'nome': Yup.string().required('preencha o campo nome')
-  // .required("Preencha o campo do nome")
-  // .min(3, "Seu nome deve ter no minimo 3 letras"),
+  'nome': Yup.string().required('Preencha o campo nome')
+  .required("Preencha o campo do nome")
+  .min(3, "Seu nome deve ter no minimo 3 letras"),
 
-  // 'email': Yup.string().required("Preencha o campo E-mail"),
+  'email': Yup.string().required("Preencha o campo E-mail"),
 
-  // 'senha': Yup.string().min(8, "A senha deve ter no minimo 8 caracteres").required("Preencha o campo de senha"),
+  'senha': Yup.string().min(8, "A senha deve ter no minimo 8 caracteres")
+  .required("Preencha o campo de senha"),
 
-  // 'telefone': Yup.string(),
+  'telefone': Yup.string(),
 
-  // 'celular': Yup.string(),
+  'celular': Yup.string(),
 });
 
 export function FormGroup(props) {

@@ -20,16 +20,16 @@
 }
 
 #imagem_cliente {
-  width: 200px;
-  height: 200px;
-  background-image: url("../../images/i-cli.png");
+  width: 150px;
+  height: 150px;
+  background-image: url("../../images/c-i.png");
   background-size: cover;
 }
 
 #imagem_profissional {
-  width: 200px;
-  height: 200px;
-  background-image: url("../../images/i-pro.png");
+  width: 150px;
+  height: 150px;
+  background-image: url("../../images/p_i.png");
   background-size: cover;
 }
 
