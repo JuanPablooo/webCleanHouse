@@ -21,7 +21,7 @@ export default function Passo1(props) {
           <h2 className="text-primary">Informações Pessoais</h2>
         </div>
 
-        <div className="align-self-center">
+        <div className="align-self-center mb-4">
           <p className="text-muted">
             Precisamos dessas informações para montar o seu perfil.{" "}
             {infoSubtitulo}

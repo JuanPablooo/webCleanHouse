@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { Formik, Form as FormikForm, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
+import { useHistory } from 'react-router-dom'
 
 //Validações
 const validations = yup.object().shape({
@@ -76,11 +77,15 @@ export function FormGroupCheckbox(props) {
 
 const FormProf = ({ handleSubmit, initialValues }) => {
   const passo = useSelector((state) => <state.passoProf.passo formGroup={FormGroup} formGroupCheckbox={FormGroupCheckbox} />);
+  const history = useHistory()
 
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={handleSubmit}
+      onSubmit={async () => {
+        await handleSubmit()
+        history.push("/login")
+      }}
       // validationSchema={validations}
     >
       <FormikForm>{passo}</FormikForm>

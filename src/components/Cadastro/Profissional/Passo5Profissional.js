@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import { Field } from "formik";
 import { Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import VideoPreview from "simple-react-video-thumbnail";
 
 import ImgPasso5 from "../../images/p5.png";
 
@@ -9,6 +10,12 @@ import { actions } from "../../../actions/passosProfActions";
 
 export default function Passo5Profissional(props) {
   const [redirect, setRedirect] = useState(false);
+
+  const dispatch = useDispatch();
+
+  function passoAnterior() {
+    dispatch(actions.mudaPasso(3));
+  }
 
   const [imagem, setImagem] = useState("");
   const [video, setVideo] = useState("");
@@ -55,13 +62,13 @@ export default function Passo5Profissional(props) {
           <h2 className="text-primary">Foto de perfil</h2>
         </div>
 
-        <div className="align-self-center">
+        <div className="align-self-center mb-4">
           <p className="text-muted">
             Complete o seu perfil colocando a sua foto
           </p>
         </div>
 
-        <div className="align-self-center col-sm-10 row d-flex justify-content-center">
+        <div className="align-self-center col-sm-10 row d-flex justify-content-center mb-3">
           <img src={ImgPasso5} alt="passo 5" className="img-passos"></img>
         </div>
 
@@ -75,24 +82,30 @@ export default function Passo5Profissional(props) {
                     component={({ field, form }) => {
                       return (
                         <>
-                          <input
-                            name="imagem"
-                            accept="image/png, image/jpeg"
-                            type="file"
-                            id="fle-images"
-                            className="form-control"
-                            onChange={(e) => {
-                              setImagem(e.target.files[0]);
-                              encodeImageFileAsURL(form, "imagem");
-                            }}
-                          />
+                          <label className="custom-file-label">Selecione o arquivo da sua foto
+                            <input
+                              name="imagem"
+                              accept="image/png, image/jpeg"
+                              type="file"
+                              id="fle-images"
+                              className="custom-file-input"
+                              onChange={(e) => {
+                                setImagem(e.target.files[0]);
+                                encodeImageFileAsURL(form, "imagem");
+                              }}
+                            />
+                          </label>
                         </>
                       );
                     }}
                   />
                 </div>
               </div>
-              <img src={preview} style={{ width: "auto", height: "150px" }} />
+              <div className="col-md-5 col-sm-12 ">
+                <div className="preview border border-secondary overflow-hidden ml-5">
+                  <img src={preview} style={{ width: "inherit", height: "auto" }} />
+                </div>
+              </div>
             </div>
 
             <div className="col-md-6 col-sm-12">
@@ -103,16 +116,19 @@ export default function Passo5Profissional(props) {
                     component={({ field, form }) => {
                       return (
                         <>
-                          <input
-                            name="video"
-                            accept="video/*"
-                            type="file"
-                            id="fle-video"
-                            className="form-control"
-                            onChange={(e) => {
-                              encodeImageFileAsURL(form, "video");
-                            }}
-                          />
+                          <label className="custom-file-label">Selecione vídeo de apresentação
+                            <input
+                              name="video"
+                              accept="video/*"
+                              type="file"
+                              id="fle-video"
+                              className="custom-file-input"
+                              onChange={(e) => {
+                                setVideo(URL.createObjectURL(e.target.files[0]))
+                                form.setFieldValue("video", e.target.files[0])
+                              }}
+                            />
+                          </label>
                         </>
                       );
                     }}
@@ -125,21 +141,23 @@ export default function Passo5Profissional(props) {
                   component={({ field, form }) => {
                     return (
                       <>
-                        <textarea
-                          style={{ resize: "none", width: "100%", height: 100 }}
-                          onChange={(e) => {
-                            form.setFieldValue("detalhes", e.target.value);
-                          }}
-                        ></textarea>
+                        <VideoPreview videoUrl={video} />
                       </>
                     );
                   }}
                 />
 
                 <button
-                  style={{ width: "100%" }}
+                  type="button"
+                  className="btn btn-blue-dark text-white ml-5 mr-2 col-md-4 col-sm-12"
+                  onClick={passoAnterior}
+                >
+                  VOLTAR
+                </button>
+
+                <button
                   type="submit"
-                  className="btn btn-blue-dark text-white col-md-5 col-sm-12"
+                  className="btn btn-blue-dark text-white col-md-4 col-sm-12"
                 >
                   CONTINUAR
                 </button>

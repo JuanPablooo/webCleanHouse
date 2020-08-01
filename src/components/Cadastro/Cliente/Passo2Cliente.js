@@ -10,12 +10,15 @@ export default function Passo2Cliente(props) {
   const dispatch = useDispatch();
   const subitutulo =
     "Precisamos de seu endereço para que o profissional vá até sua residência";
+
   function proximoPasso() {
     dispatch(actions.mudaPasso(2));
   }
+
   function passoAnterior() {
     dispatch(actions.mudaPasso(0));
   }
+  
   return (
     <>
       <Passo2

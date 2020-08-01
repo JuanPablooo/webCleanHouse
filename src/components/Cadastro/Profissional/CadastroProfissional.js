@@ -3,7 +3,7 @@ import React from "react";
 import "./CadastroProfissional.css";
 import MyForm from "../FormProf";
 import api from "../../../services/apiAxios";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function formatData(data) {
   const dia = data.split("/")[0];
@@ -113,6 +113,8 @@ const handleSubmit = async (values) => {
       `/upload/video/${data.usuario.id}`,
       video
     );
+
+    // Redirect
   } catch (e) {
     return console.log(e);
   }

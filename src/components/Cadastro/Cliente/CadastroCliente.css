@@ -45,13 +45,11 @@
 .preview {
   height: 30vh;
   width: 20vw;
-  overflow: hidden;
 }
 
 .text-welcome {
   font-size: 35px;
 }
-
 
 @media (min-width: 576px) and (max-width: 767.98px) {
   .btn {

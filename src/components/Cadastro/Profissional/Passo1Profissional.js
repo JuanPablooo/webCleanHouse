@@ -16,8 +16,12 @@ export default function Passo1Profissional(props){
 
     return(
         <>
-            <Passo1 formGroup={FormGroup} proximoPasso={proximoPasso}
-             img={ImgPasso1} infoSubtitulo={subtitulo}/>
+            <Passo1 
+                formGroup={FormGroup} 
+                proximoPasso={proximoPasso}
+                img={ImgPasso1} 
+                infoSubtitulo={subtitulo}
+            />
         </>
     )
 }

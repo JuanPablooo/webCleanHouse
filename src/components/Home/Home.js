@@ -112,7 +112,7 @@ export default function Home(props) {
                   <p className="ml-auto mr-auto col-8 text-center mb-5">
                     Recebimento do pagamento ocorre de forma segura, diretamente
                     da plataforma. Além disso, a renda de cada serviço realizado
-                    é de 95% para cada funcionário
+                    é de 95% para cada funcionário.
                   </p>
                 </div>
               </div>
@@ -168,7 +168,7 @@ export default function Home(props) {
               className="text-center lead text-subtitle pt-1 text-white 
                 text-capitalize"
             >
-              Para o profissional
+              Para o profissional...
             </h2>
           </div>
 
@@ -191,7 +191,7 @@ export default function Home(props) {
                   ></div>
                   <p className="offset-md-1 col-md-10">
                     Trabalho totalmente autônomo. Sem chefes e com seus próprios
-                    horários
+                    horários.
                   </p>
                 </div>
                 <div className="col-md-6">
@@ -222,8 +222,8 @@ export default function Home(props) {
                     icon-vantagem05 mb-3"
                   ></div>
                   <p className="offset-md-1 col-md-10">
-                    Custo do trabalho é decidido pelo funcionário para que o
-                    próprio adeque o dinheiro da condução.
+                    Custo do trabalho sem surpresas, já que há uma diária fixa 
+                    que não foge dos padrões dos profissionais.
                   </p>
                 </div>
               </div>
@@ -235,7 +235,7 @@ export default function Home(props) {
               className="text-center pl-2 lead text-subtitle pt-1 text-white 
                 text-capitalize"
             >
-              Para o cliente
+              Para o cliente...
             </h2>
           </div>
 

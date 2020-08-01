@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
-
+import "./CadastroCliente.css";
 import { Field } from "formik";
 
 //import { useSelector, useDispatch } from 'react-redux';
@@ -10,6 +10,7 @@ import { actions } from "../../../actions/passosActions";
 import { element } from "prop-types";
 
 export default function Passo3Cliente(props) {
+
   const [redirect, setRedirect] = useState(false);
 
   const [imagem, setImagem] = useState("");
@@ -19,6 +20,7 @@ export default function Passo3Cliente(props) {
   }, [imagem]);
 
   const dispatch = useDispatch();
+  
   function anterior() {
     dispatch(actions.mudaPasso(1));
   }
@@ -55,7 +57,7 @@ export default function Passo3Cliente(props) {
           <h2 className="text-primary">Foto de perfil</h2>
         </div>
 
-        <div className="align-self-center">
+        <div className="align-self-center mb-4">
           <p className="text-muted">
             Complete o seu perfil colocando a sua foto
           </p>
@@ -74,17 +76,19 @@ export default function Passo3Cliente(props) {
                   name="image"
                   component={({ field, form }) => {
                     return (
-                      <input
-                        id="fle-image"
-                        name="imagem"
-                        accept="image/png, image/jpeg"
-                        type="file"
-                        className="form-control"
-                        onChange={(e) => {
-                          setImagem(e.target.files[0]);
-                          encodeImageFileAsURL(form);
-                        }}
-                      />
+                      <label className="custom-file-label">Selecione o arquivo
+                          <input
+                            id="fle-image"
+                            name="imagem"
+                            accept="image/png, image/svg, image/jpg, image/jpeg"
+                            type="file"
+                            className="custom-file-input"                           
+                            onChange={(e) => {
+                              setImagem(e.target.files[0]);
+                              encodeImageFileAsURL(form);
+                            }}
+                          />
+                      </label>
                     );
                   }}
                 />
@@ -95,11 +99,12 @@ export default function Passo3Cliente(props) {
 
         <div className="row justify-content-around">
           <div className="col-md-5 col-sm-12 ">
-            <div className="preview border">
+            <div className="preview border border-secondary overflow-hidden">
               <img src={preview} style={{ width: "inherit", height: "auto" }} />
             </div>
           </div>
-          <div className="col-md-5 col-sm-12 d-flex  align-items-end">
+
+          <div className="col-md-5 col-sm-12 d-flex align-items-end">
             <div className="row w-100 justify-content-around">
               <button
                 type="button"

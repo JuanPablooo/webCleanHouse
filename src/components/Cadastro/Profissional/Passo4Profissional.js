@@ -11,6 +11,10 @@ export default function Passo4Profissional(props) {
     const FormGroupCheckbox = props.formGroupCheckbox;
     const dispatch = useDispatch();
 
+    function passoAnterior() {
+        dispatch(actions.mudaPasso(1));
+    }
+
     function proximoPasso() {
         dispatch(actions.mudaPasso(4));
     }
@@ -23,7 +27,6 @@ export default function Passo4Profissional(props) {
     const [zonaLeste, setZonaLeste] = useState(false)
     const [zonaSudoeste, setZonaSudoeste] = useState(false)
 
-
     return (
         <div>
             <Passo4Modal zona={modalZona} showModal={showModal} setShowModal={setShowModal} />
@@ -34,9 +37,10 @@ export default function Passo4Profissional(props) {
                         <h2 className="text-primary">Informações de serviço</h2>
                     </div>
 
-                    <div className="align-self-center">
+                    <div className="align-self-center mb-4">
                         <p className="text-muted">
-                            Precisamos saber em qual(is) região(ões) você deseja deseja trabalhar para enviarmos ofertas específicas
+                            Precisamos saber em qual(is) região(ões) você deseja deseja trabalhar
+                            para enviarmos ofertas específicas
                         </p>
                     </div>
 
@@ -44,100 +48,102 @@ export default function Passo4Profissional(props) {
                         <img src={ImgPasso4} alt="passo 4" className="img-passos"></img>
                     </div>
 
-                    <p className=" align-self-center mt-4">
-                        No momento, a aplicação está disponível para a região metropolitana de São Paulo:
+                    <p className=" align-self-center mt-4 mb-5">
+                        No momento, a aplicação está disponível para a
+                        região metropolitana de São Paulo:
                     </p>
 
-                    <div className="">
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                            <FormGroupCheckbox
-                                id="norte"
-                                type="checkbox"
-                                titulo="Norte"
-                                checked={zonaNorte}
-                                onChange={e => {
-                                    setZonaNorte(e.target.checked)
+                    <div style={{ marginLeft: 'auto', marginRight: 'auto' }}>
 
-                                    if (e.target.checked) {
-                                        setModalZona("norte")
-                                        setShowModal(true)
-                                    }
-                                }}
-                            />
+                        <FormGroupCheckbox
+                            id="norte"
+                            type="checkbox"
+                            titulo="Norte"
+                            checked={zonaNorte}
+                            onChange={e => {
+                                setZonaNorte(e.target.checked)
 
-                            <FormGroupCheckbox
-                                id="sudeste"
-                                type="checkbox"
-                                titulo="Sudeste"
-                                checked={zonaSudeste}
-                                onChange={e => {
-                                    setZonaSudeste(e.target.checked)
+                                if (e.target.checked) {
+                                    setModalZona("norte")
+                                    setShowModal(true)
+                                }
+                            }}
+                        />
 
-                                    if (e.target.checked) {
-                                        setModalZona("sudeste")
-                                        setShowModal(true)
-                                    }
-                                }}
-                            />
+                        <FormGroupCheckbox
+                            id="sudeste"
+                            type="checkbox"
+                            titulo="Sudeste"
+                            checked={zonaSudeste}
+                            onChange={e => {
+                                setZonaSudeste(e.target.checked)
 
-                            <FormGroupCheckbox
-                                id="leste"
-                                type="checkbox"
-                                titulo="Leste"
-                                checked={zonaLeste}
-                                onChange={e => {
-                                    setZonaLeste(e.target.checked)
+                                if (e.target.checked) {
+                                    setModalZona("sudeste")
+                                    setShowModal(true)
+                                }
+                            }}
+                        />
 
-                                    if (e.target.checked) {
-                                        setModalZona("leste")
-                                        setShowModal(true)
-                                    }
-                                }}
-                            />
+                        <FormGroupCheckbox
+                            id="leste"
+                            type="checkbox"
+                            titulo="Leste"
+                            checked={zonaLeste}
+                            onChange={e => {
+                                setZonaLeste(e.target.checked)
 
-                            <FormGroupCheckbox
-                                id="oeste"
-                                type="checkbox"
-                                titulo="Oeste"
-                                checked={zonaOeste}
-                                onChange={e => {
-                                    setZonaOeste(e.target.checked)
+                                if (e.target.checked) {
+                                    setModalZona("leste")
+                                    setShowModal(true)
+                                }
+                            }}
+                        />
 
-                                    if (e.target.checked) {
-                                        setModalZona("oeste")
-                                        setShowModal(true)
-                                    }
-                                }}
-                            />
+                        <FormGroupCheckbox
+                            id="oeste"
+                            type="checkbox"
+                            titulo="Oeste"
+                            checked={zonaOeste}
+                            onChange={e => {
+                                setZonaOeste(e.target.checked)
 
-                            <FormGroupCheckbox
-                                id="sudoeste"
-                                type="checkbox"
-                                titulo="sudoeste"
-                                checked={zonaSudoeste}
-                                onChange={e => {
-                                    setZonaSudoeste(e.target.checked)
+                                if (e.target.checked) {
+                                    setModalZona("oeste")
+                                    setShowModal(true)
+                                }
+                            }}
+                        />
 
-                                    if (e.target.checked) {
-                                        setModalZona("sudoeste")
-                                        setShowModal(true)
-                                    }
-                                }}
-                            />
-                        </div>
+                        <FormGroupCheckbox
+                            id="sudoeste"
+                            type="checkbox"
+                            titulo="Sudoeste"
+                            checked={zonaSudoeste}
+                            onChange={e => {
+                                setZonaSudoeste(e.target.checked)
+
+                                if (e.target.checked) {
+                                    setModalZona("sudoeste")
+                                    setShowModal(true)
+                                }
+                            }}
+                        />
+
                     </div>
 
-                    <div className="col-md-5 col-sm-12 d-flex  align-items-start">
-                        <div className="form-group row w-100 justify-content-around">
+                    <div className="row align-self-end">
+                        <div className="form-group col-12 d-flex">
                             <button
                                 type="button"
-                                className="btn btn-blue-dark text-white col-md-5 col-sm-12"
+                                className="btn btn-blue-dark text-white col-md-6 col-sm-12"
+                                onClick={passoAnterior}
                             >
                                 VOLTAR
                             </button>
                             <button
                                 type="button"
-                                className="btn btn-blue-dark text-white col-md-5 col-sm-12"
+                                className="btn btn-blue-dark text-white mr-5 ml-2 col-md-6 col-sm-12"
                                 onClick={proximoPasso}
                             >
                                 CONTINUAR
