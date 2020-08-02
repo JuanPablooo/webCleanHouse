@@ -80,7 +80,7 @@ export default function Passo3Cliente(props) {
                           <input
                             id="fle-image"
                             name="imagem"
-                            accept="image/png, image/svg, image/jpg, image/jpeg"
+                            accept="image/*"
                             type="file"
                             className="custom-file-input"                           
                             onChange={(e) => {

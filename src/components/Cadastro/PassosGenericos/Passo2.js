@@ -54,7 +54,7 @@ export default function Passo2(props) {
                         const cep = e.target.value
                         
                         form.setFieldValue("cep", cep)
-                        setCep(cep)
+                        setCep(e.target.value)
 
                         if (e.target.value.length === 9) {
                           try {
